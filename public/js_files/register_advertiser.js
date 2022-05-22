@@ -66,8 +66,7 @@ $(document).ready(function() {
         for(let i = 1; i < 6; i++) {
             let selector = "#s" + i;
 
-            if($(selector).text() == "Country" || $(selector).text() == "Faculty" || $(selector).text() == "Course" ||
-            $(selector).text() == "ID Year" || $(selector).text() == "ID Number") {
+            if($(selector).text() == "Country" || $(selector).text() == "Educational field") {
                 $(selector).parent().addClass("select-btn-empty");
                 flag++;
             }
@@ -187,7 +186,7 @@ $(document).ready(function() {
             else {
                 
                 $.ajax({
-                    url : "http://localhost:8080/ajax-request-register-student",
+                    url : base_url + "/ajax-request-register-student",
                     type : "POST",
                     data : {
                         username : $("#username").val(),
@@ -197,10 +196,8 @@ $(document).ready(function() {
                         date_of_birth : $("#date_of_birth").val(),
                         password : $("#password").val(),
                         country : $("#s1").text(),
-                        faculty : $("#s2").text(),
-                        course : $("#s3").text(),
-                        id_year : $("#s4").text(),
-                        id_num : $("#s5").text(),
+                        educational_field : $("#s2").text(),
+                        degree : $("#s3").text()
                     },
                     dataType : "JSON",
                     success: function(response) {
@@ -217,8 +214,7 @@ $(document).ready(function() {
                             }, 4000);
                         }
                         else{
-                            if(response['message'] == "fail_index_exist") error_message = "Index already exists";
-                            else if(response['message'] == "fail_username_exist") error_message = "Username already exists";
+                            if(response['message'] == "fail_username_exist") error_message = "Username already exists";
                             else if(response['message'] == "fail_email_exist") error_message = "E-mail already exists";
                             else if(response['message'] == "fail_username&email_exist") error_message = "Username and e-mail already exists";
                             $(".popup-top").removeClass("success");
@@ -247,7 +243,7 @@ $(document).ready(function() {
         
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/ajax-request-redirect",
+            url: base_url + "/ajax-request-redirect",
             data: {
                 page : "register_others"
             },

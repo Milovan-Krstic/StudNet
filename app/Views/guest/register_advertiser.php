@@ -143,7 +143,6 @@
                                 <br><span>-Surname must have a capital letter, followed by 1-15 lowercase letters.</span><br>
                                 <br><span>-E-mail must be in an e-mail form (abc@def.com).</span><br>
                                 <br><span>-Date of birth can't a date in the future.</span><br>
-                                <br><span>-Student ID must be unique for each faculty.</span><br>
                                 <br><span>-Password must contain at least one uppercase letter, lowercase letter, number, symbols: !@#$%^&*</span><br>
                                 <span>-Minimal password length is 6 characters!</span>
                             </div>

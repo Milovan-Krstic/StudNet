@@ -190,7 +190,7 @@ $(document).ready(function() {
             else {
                 
                 $.ajax({
-                    url : "http://localhost:8080/ajax-request-register-moderator",
+                    url : base_url + "/ajax-request-register-moderator",
                     type : "POST",
                     data : {
                         username : $("#username").val(),
@@ -246,7 +246,7 @@ $(document).ready(function() {
         
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/ajax-request-redirect",
+            url: base_url + "/ajax-request-redirect",
             data: {
                 page : "/"
             },

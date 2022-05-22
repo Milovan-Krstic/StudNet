@@ -89,7 +89,7 @@
                     <input type="button" value="Sign Up">
                     </div>
                     <div class="redirect">
-                        <a href="#">Back to the last page...</a>
+                        <a href="">Back to the last page...</a>
                     </div>
                     
                 </div>

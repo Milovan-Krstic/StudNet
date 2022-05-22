@@ -179,15 +179,15 @@ $(document).ready(function() {
             else {
                 
                 $.ajax({
-                    url : "http://localhost:8080/ajax-request-register-moderator",
+                    url : base_url + "/ajax-request-register-moderator",
                     type : "POST",
                     data : {
                         username : $("#username").val(),
                         fullname : $("#name").val(),
-                        surname : $("#surname").val(),
+                        country : $("#s1").text(),
                         email : $("#email").val(),
                         date_of_establishment : $("#date_of_establishment").val(),
-                        password : $("#password").val(),
+                        password : $("#password").val()
                     },
                     dataType : "JSON",
                     success: function(response) {
@@ -196,7 +196,7 @@ $(document).ready(function() {
                             $(".top-image img").attr("src", "../icons/StudNet CheckMark.svg");
                             $(".top-message span").text("You have signed up successfully!");
                             $(".bottom-message span").text("Thank you for using the StudNet");
-                            $(".bottom-next span").text("You will be redirected to main page");
+                            $(".bottom-next span").text("You will be redirected to Log In page");
                             
                             $(".popup-background").addClass("popup-active");
                             setTimeout(() => {
@@ -207,6 +207,7 @@ $(document).ready(function() {
                             if(response['message'] == "fail_username_exist") error_message = "Username already exists";
                             else if(response['message'] == "fail_email_exist") error_message = "E-mail already exists";
                             else if(response['message'] == "fail_username&email_exist") error_message = "Username and e-mail already exists";
+                            else if(response['message'] == "fail_university_exist") error_message = "University with the same name already exists";
                             $(".popup-top").removeClass("success");
                             $(".top-image img").attr("src", "../icons/StudNet Exclamation.svg");
                             $(".top-message span").text("Sorry you can't sign up...");
@@ -230,10 +231,10 @@ $(document).ready(function() {
     })
 
     $(".redirect").click(function(){
-        
+
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/ajax-request-redirect",
+            url: base_url + "/ajax-request-redirect",
             data: {
                 page : "register_others"
             },

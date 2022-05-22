@@ -6,6 +6,7 @@ use App\Models\UserModel;
 use App\Models\StudentModel;
 use App\Models\ModeratorModel;
 use App\Models\FacultyModel;
+use App\Models\UniversityModel;
 
 class Guest extends BaseController
 {
@@ -144,6 +145,114 @@ class Guest extends BaseController
                 "IdFacM" => $facultyId
             ]);
             
+        }
+        else if($email == null){
+            echo json_encode([
+                "message" => "fail_username_exist"
+            ]);
+        }
+        else if($username == null){
+            echo json_encode([
+                "message" => "fail_email_exist"
+            ]);
+        }
+        else if($username == null){
+            echo json_encode([
+                "message" => "fail_username&email_exist"
+            ]);
+        }
+        
+    }
+    
+    public function ajaxRequestRegisterUniversity() {
+        $data = $this->request->getVar();
+        
+        $userModel = new UserModel();
+        
+        $username = $userModel->where("Username", ($data['username']))->find();
+        $email = $userModel->where("E-mail", ($data['email']))->find();
+        
+        if($username == null && $email == null) {
+            $universityModel = new UniversityModel();
+            $university = $universityModel->where("Name", ($data['fullname']))->find();
+            
+            if($university == null) {
+                echo json_encode([
+                    "message" => "success"
+                ]);
+                $userModel->save([
+                    "Ime" => $data['fullname'],
+                    "Prezime" => "-",
+                    "Date_of_birth" => $data['date_of_establishment'],
+                    "City" => $data['country'],
+                    "E-mail" => $data['email'],
+                    "Username" => $data['username'],
+                    "Password" => $data['password']
+                ]);
+                
+                $id = $userModel->getInsertID();
+                
+                $universityModel->insert([
+                    "IdUni" => $id,
+                    "Name" => $data['fullname'],
+                    "Date_of_est" => $data['date_of_establishment'],
+                    "Country" => $data['country'],
+                    "E-mail" => $data['email']
+                ]);
+            }
+            else {
+                echo json_encode([
+                    "message" => "fail_university_exist"
+                ]);
+            }
+        }
+        else if($email == null){
+            echo json_encode([
+                "message" => "fail_username_exist"
+            ]);
+        }
+        else if($username == null){
+            echo json_encode([
+                "message" => "fail_email_exist"
+            ]);
+        }
+        else if($username == null){
+            echo json_encode([
+                "message" => "fail_username&email_exist"
+            ]);
+        }
+        
+    }
+    
+    public function ajaxRequestRegisterAdvertiser() {
+        $data = $this->request->getVar();
+        
+        $userModel = new UserModel();
+        
+        $username = $userModel->where("Username", ($data['username']))->find();
+        $email = $userModel->where("E-mail", ($data['email']))->find();
+        
+        if($username == null && $email == null) {
+            $advertiserModel = new AdvertiserModel();
+            
+            echo json_encode([
+                "message" => "success"
+            ]);
+            $userModel->save([
+                "Ime" => $data['name'],
+                "Prezime" => $data['surname'],
+                "Date_of_birth" => $data['date_of_birth'],
+                "City" => $data['country'],
+                "E-mail" => $data['email'],
+                "Username" => $data['username'],
+                "Password" => $data['password']
+            ]);
+            
+            $id = $userModel->getInsertID();
+                
+            $advertiserModel->insert([
+                "IdRek" => $id
+            ]);
         }
         else if($email == null){
             echo json_encode([

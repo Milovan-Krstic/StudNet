@@ -37,6 +37,7 @@ $routes->get('/register_moderator', 'Guest::register_moderator');
 $routes->get('/register_others', 'Guest::register_others');
 $routes->get('/register_university', 'Guest::register_university');
 $routes->get('/register_advertiser', 'Guest::register_advertiser');
+$routes->get('/student-main', 'Student::main');
 
 $routes->post('/ajax-request-register-student', 'Guest::ajaxRequestRegisterStudent');
 $routes->post('/ajax-request-register-moderator', 'Guest::ajaxRequestRegisterModerator');

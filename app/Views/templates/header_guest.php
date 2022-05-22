@@ -7,7 +7,11 @@
     <?= link_tag('bootstrap/css/bootstrap.min.css') ?>
     
     <?= script_tag('jquery/jquery-3.6.0.min.js') ?>
-
+    
+    <script>
+        var base_url = "<?= base_url() ?>";
+    </script>
+    
     <title>StudNet Register</title>
 </head>
 <body>

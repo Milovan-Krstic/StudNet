@@ -4,7 +4,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/ajax-request-redirect",
+            url: base_url + "/ajax-request-redirect",
             data: {
                 page : "register_university"
             },
@@ -19,7 +19,7 @@ $(document).ready(function() {
         
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/ajax-request-redirect",
+            url: base_url + "/ajax-request-redirect",
             data: {
                 page : "register_advertiser"
             },
@@ -34,7 +34,7 @@ $(document).ready(function() {
         
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/ajax-request-redirect",
+            url: base_url + "/ajax-request-redirect",
             data: {
                 page : "/"
             },

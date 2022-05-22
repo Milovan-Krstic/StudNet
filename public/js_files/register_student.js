@@ -210,9 +210,9 @@ $(document).ready(function() {
                 $(".popup-background").addClass("popup-active");
             }
             else {
-                
+                //base_url defined in header_*.php
                 $.ajax({
-                    url : "http://localhost:8080/ajax-request-register-student",
+                    url : base_url + "/ajax-request-register-student",
                     type : "POST",
                     data : {
                         username : $("#username").val(),
@@ -225,7 +225,7 @@ $(document).ready(function() {
                         faculty : $("#s2").text(),
                         course : $("#s3").text(),
                         id_year : $("#s4").text(),
-                        id_num : $("#s5").text(),
+                        id_num : $("#s5").text()
                     },
                     dataType : "JSON",
                     success: function(response) {
@@ -269,17 +269,18 @@ $(document).ready(function() {
     })
 
     $(".redirect").click(function(){
-        
+    
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/ajax-request-redirect",
+            url: base_url + "/ajax-request-redirect",
             data: {
                 page : "register_others"
             },
             dataType : "JSON",
             success: function (response) {
-                window.location.href = response['url'];
+               window.location.href = response['url'];
             }
         });
+        
     });
 });

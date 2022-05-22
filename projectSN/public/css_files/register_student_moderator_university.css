@@ -22,38 +22,29 @@
     
 }
 
-.container {
-    max-width: 650px;
+.sign-up-form {
+    max-width: 600px;
     width: 100%;
     background-color: #FCFCFC;
 
-    padding: 50px 77px;
+    padding: 45px 50px 25px 50px;
+    
     
     border-radius: 30px;
 
     box-shadow: 5px 0px 20px rgba(64, 64, 64, 0.1);
 }
 
-.container .row {
-    margin-top: 20px;
+.sign-up-form .row {
+    margin-top: 15px;
 }
 
-.container .title {
+.sign-up-form .title {
     font-size: 33px;
     color: #444444;
     font-family: roboto-bold;
     text-align: center;
 }
-
-.input-box input:valid {
-    color:#444444;
-}
-.input-box input:focus
-{
-    border-color: #67DBB8;
-    color: #444444;
-}
-
 
 .input-box input {
     width:100%;
@@ -76,12 +67,22 @@
     position: relative;
 }
 
+.input-box input[type="text"]:valid {
+    color:#444444;
+}
+
+.input-box input:focus
+{
+    border-color: #67DBB8;
+    color: #444444;
+}
+
 .input-box-empty input{
     border-color:#EE5253;
 }
 
 .section {
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 .input-box input::placeholder {
@@ -90,7 +91,7 @@
 
 
 .button {
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: center;
 }
 
@@ -113,7 +114,6 @@
     transition: all 0.4s;
     background-color: #6ee9c4;
 }
-
 
 .redirect {
     margin-top: 20px;
@@ -139,6 +139,7 @@
 
 .select-btn {
     height: 43px;
+    
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 1px;
@@ -188,7 +189,7 @@
     position:absolute;
     z-index: 1;
 
-    width: 89%;
+    width: 89.5%;
     right: 50%;
     transform: translateX(50%);
     
@@ -202,9 +203,6 @@
     box-shadow: 0px 0px 20px rgba(64, 64, 64, 0.1);
 
     transition: all 0.4s;
-
-    
-
     
 }
 
@@ -289,15 +287,14 @@ img {
 
 .popup-container {
     width: 30%;
-    height: 39%;
+    height: auto;
+    max-height: 58%;
+    
     background-color: #FCFCFC;
 
     box-shadow: 0px 0px 20px rgba(64, 64, 64, 0.1);
 
     border-radius: 15px;
-
-    
-    
 }
 
 .popup-top {
@@ -305,7 +302,7 @@ img {
     border-radius: 15px 15px 0 0;
     width: 100%;
     background-color: #EE5253;
-
+    
     color: #FCFCFC;
     font-size: 22px;
     font-family: roboto-regular;
@@ -317,6 +314,9 @@ img {
     align-items: center;
 }
 
+.popup-top.success{
+    background-color: #67DBB8;
+}
 
 .popup-top .top-image {
     margin: 30px;
@@ -329,6 +329,9 @@ img {
 
 .popup-top .top-message {
     margin-bottom: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
 }
 
 .popup-bottom {
@@ -341,6 +344,7 @@ img {
     justify-content: center;
     align-items: center;
 }
+
 
 .popup-bottom .bottom-message {
     margin: 30px;
@@ -360,6 +364,101 @@ img {
 }
 
 .popup-bottom .bottom-next:hover{
+    transition: color 0.3s;
+    color: #a8a8a8;
+}
+
+.preclass {
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    font-family: roboto-regular;
+    color:#444444;
+}
+
+.help {
+    margin-top: 5px;
+    text-align: center;
+    color: #BCBCBC;
+    font-size: 12px;
+    font-family: roboto-light;
+}
+
+.help span {
+    cursor: pointer;
+}
+
+.help span:hover {
+    color: #c5c5c5;
+}
+
+.help-background {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000051;
+    visibility: hidden;
+    opacity: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: visibility 0s, opacity 0.4s;
+}
+
+.help-active {
+    visibility: visible;
+    opacity: 0.95;
+}
+
+.help-container {
+    width: 30%;
+    height: auto;
+    max-height: 60%;
+    
+    background-color: #FCFCFC;
+
+    box-shadow: 0px 0px 20px rgba(64, 64, 64, 0.1);
+
+    border-radius: 15px;
+
+}
+
+.help-c {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.help-c .help-message {
+    margin: 30px;
+    font-size: 16px;
+    font-family: roboto-regular;
+    color: #444444;
+    text-align: justify;
+}
+
+.help-c .help-next {
+    
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-family: roboto-regular;
+    color: #BCBCBC;
+    cursor: pointer;
+
+    transition: color 0.3s;
+}
+
+.help-c .help-next:hover{
     transition: color 0.3s;
     color: #a8a8a8;
 }

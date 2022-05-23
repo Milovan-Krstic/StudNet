@@ -11,10 +11,10 @@
     <script type="text/javascript" src="<?php echo base_url('bootstrap/js/bootstrap.js');?>"><</script>
         
         
-    <link rel="stylesheet" href="<?php echo base_url('css/header.css');?>">
-    <link rel="stylesheet" href="<?php echo base_url('css/style_register.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('css_files/header.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('css_files/style_register.css');?>">
 
-    <script type="text/javascript" src="<?php echo base_url('/js/jquery/jquery-3.6.0.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('jquery/jquery-3.6.0.min.js');?>"></script>
 
     
 
@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="header">
-        <img src="<?php echo base_url('imagesLogo/StudNetLogo.svg')?>" alt="StudNet" class="logo">
+        <img src="<?php echo base_url('images/StudNetLogo.svg')?>" alt="StudNet" class="logo">
        
     </div>
     
@@ -169,6 +169,7 @@
                             <div class="input-box col-6">
                                 <input type="password" class="password_confirm" id="password_confirm" placeholder="Confirm your password">
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -207,6 +208,6 @@
         </div>
     </div>
 
-    <script src="/js/register_student_script.js"></script>
+    <script src="/js_files/register_student_script.js"></script>
 </body>
 </html>

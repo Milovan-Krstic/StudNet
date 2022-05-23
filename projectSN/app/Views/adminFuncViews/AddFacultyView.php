@@ -31,38 +31,30 @@
     <div class="content">
         <div class="container">
         
-          <div class="title">Add University</div>
+          <div class="title">Add Faculty</div>
             <hr style="border-top:2px solid #e6e6e6">
             <?php if(!empty($errors)) echo "<span style='color:red'>$errors</span>";?>
             <form action="#" >
                 <div class="user-details">
 
                     <div class="section">
-                       
-                            <div class="input-box posCentr col-6">
-                                <input type="text" class="username" id="a1" name="usernameAUni" placeholder="Username">
-                            </div>
-                             <div class="input-box posCentr col-6">
-                                         <input type="text" class="username" id="a2" name="fullnameAUni" placeholder="Full name">
-                                </div>
-                             <div class="input-box posCentr col-6">
-                                <input type="date" class="date_of_birth" id="a3" name="date_of_birthAUni" placeholder="Date of establishment">
-                            </div>
-                        
-                            
+
                             <div class="input-box posCentr col-6">
                                 
                                 <div class="dropdown-select " tabindex="-1">
                                     <div class="select-btn">
-                                            <span name ="s1AUni" id="s1AUni">Country</span>
+                                            <span name ="s1AFac" id="s1AFac">Search University</span>
                                             <img src="<?php echo base_url('icons/caret-down-solid.svg')?>" alt="+">
                                     </div>
                                     <div class="dropdown-content">
-                                        <ul class="options" name ="s1AUni">
-                                            <li>Serbia</li>
-                                            <li>Montenegro</li>
-                                            <li>Serbia</li>
-                                            <li>Montenegro</li>
+                                        <ul class="options" name ="s1AFac">
+                                         <?php
+                                            
+                                                foreach ($names as $name){
+                                                echo "<li>{$name[0]->Ime}</li>";
+                                                }
+                                           
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -70,16 +62,14 @@
                             </div>
                         
                             <div class="input-box posCentr col-6">
-                                <input type="email" class="email" id="a4" name="emailAUni" placeholder="E-mail">
+                                <input type="text" class="faculty" id="faculty" name="faculty" placeholder="Faculty name">
                             </div>
-                         <div class="input-box posCentr col-6">
-                                <input type="password" class="password_confirm" id="a5" placeholder="password">
-                            </div>
+                   
                         
                     </div>
                     
                       
-                    <input class="buttonAAU" id="addAU" name="Add" type="button" value="Add">         
+                    <input class="buttonAAF" id="addAU" name="Add" type="button" value="Add">         
                     <?= anchor("$controller/AddIUni","<input class='buttonCAU' id='addCU' name='Cancle' type='button' value='Cancle'>")?>
          
                     
@@ -108,11 +98,9 @@
                     <div class="help-container">
                         <div class="help-c">
                             <div class="help-message">
-                                <span>-Username must contain a letter as a first character and letters, numbers or underscores.</span><br>
-                               
-                                <br><span>-Full name must have a capital letter, followed by 1-15 lowercase letters.</span><br>
-                                <br><span>-E-mail must be in an e-mail form (abc@def.com).</span><br>
-                                <br><span>-Date of birth can't a date in the future.</span><br>                        
+       
+                                <span>-Course  must have  1-15 lowercase letters.</span><br>
+                       
                                 
                             </div>
                             <div class="help-next">

@@ -47,7 +47,7 @@
               <?= anchor("$controller/DeleAdvmnt", "<button class='buttonRed' type='submit' value='dAdv'>Delete Advertisement</button>")?>
             </div>
             
-            
+           
         </div>
         
     </div>

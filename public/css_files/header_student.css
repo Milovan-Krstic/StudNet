@@ -26,6 +26,7 @@
     align-items: center;
     box-shadow: -10px 0px 20px rgba(64, 64, 64, 0.1);
     position: relative;
+    z-index: 1;
 }
 
 .logo {
@@ -34,7 +35,10 @@
     height: 25px;
     margin-right: 110px;
 }
-
+.header .header-search {
+    width: 1042px;
+    margin-left: 42px;
+}
 .header-search {
     width: 55%;
 }
@@ -46,17 +50,23 @@
     padding-bottom: 1px;
     border-radius: 20px;
     border: 1px solid #E6E6E6;
-    background-color: F0F5F5;
+    background-color: #F0F5F5;
 
     outline: none;
 
-    font-size: 16px;
+    font-size: 14px;
     color: #BCBCBC;
     font-family: roboto-regular;
 
     transition: all 0.3s ease;
 
     position: relative;
+}
+
+.header-search input::placeholder {
+    font-size: 14px;
+    color: #BCBCBC;
+    font-family: roboto-regular;
 }
 
 .header-search img {
@@ -86,6 +96,7 @@
     
     z-index: 2;
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .user img {
@@ -130,18 +141,19 @@
 
     cursor: pointer;
     
-    transition: border 0.4s
+    transition: all 0.4s ease;
 }
 
 .notifications img:hover,
 .options img:hover {
     border: 1px solid #67DBB8;
-    transition: border 0.4s;
 }
 
 .dropdown-notifications,
 .dropdown-options {
-    display: none;
+  
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     z-index: 1;
 
@@ -149,7 +161,7 @@
     
     
     right: 20px;
-    top: -20px;
+    top: -60px;
     
     
     background-color: #FCFCFC;
@@ -166,7 +178,7 @@
     font-size: 16px;
 
     box-shadow: 0px 10px 20px rgba(64, 64, 64, 0.1);
-    transition: all 0.4s;
+    transition: all 0.4s ease;
 
 }
 
@@ -186,6 +198,11 @@
 }
 
 .request-container::-webkit-scrollbar-thumb {
+    background: #BCBCBC7F;
+    border-radius: 25px;
+}
+
+.request-container::-webkit-scrollbar-thumb:hover {
     background: #BCBCBC;
     border-radius: 25px;
 }
@@ -199,8 +216,11 @@
 
 .dropdown-notifications.active,
 .dropdown-options.active {
-    display: block;
-    transition: all 0.4s;
+    top: -20px;
+    visibility:visible;
+    opacity: 1;
+    
+    
 }
 
 .option {
@@ -228,16 +248,20 @@
     
 }
 
+.request-user {
+    cursor: pointer;
+}
+
 .request-user img,
 .option img {
     width: 36px;
     height: fit-content;
-    cursor: pointer;
+    
 }
 
 .request-user span,
 .option span {
-    cursor: pointer;
+    
     margin-left: 10px;
     color: #444444;
     font-size: 14px;
@@ -278,8 +302,4 @@
     transition: all 0.4s;
     background-color: #f6f6f6;
     box-shadow: 0px 0px 10px rgba(64, 64, 64, 0.1);
-}
-
-.main {
-    height: 100vh;
 }

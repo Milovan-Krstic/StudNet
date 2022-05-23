@@ -11,6 +11,8 @@
     <script>
         var base_url = "<?= base_url() ?>";
     </script>
+
+    <?= script_tag('js_files/header_student.js') ?>
     
     <title>StudNet Main</title>
 </head>
@@ -23,7 +25,7 @@
         <div class="header-search">
             <div class="search-bar">
                 <img src="icons/StudNet Search.svg">
-                <input type="text" name="input-search" id="header-search">
+                <input type="text" name="input-search" id="header-search" placeholder="Search">
             </div>
         </div>
 
@@ -48,6 +50,36 @@
                 <span>Friend requests</span>
                 <hr>
                 <div class="request-container">
+                    <div class="request">
+                        <div class="request-user">
+                            <img src="images/StudNet Profile Picture Default.svg" alt="">
+                            <span>John Doe</span>
+                        </div>
+                        <div class="request-buttons">
+                            <input type="button" value="Accept" class="request-accept">
+                            <input type="button" value="Decline" class="request-decline">
+                        </div>
+                    </div>
+                    <div class="request">
+                        <div class="request-user">
+                            <img src="images/StudNet Profile Picture Default.svg" alt="">
+                            <span>John Doe</span>
+                        </div>
+                        <div class="request-buttons">
+                            <input type="button" value="Accept" class="request-accept">
+                            <input type="button" value="Decline" class="request-decline">
+                        </div>
+                    </div>
+                    <div class="request">
+                        <div class="request-user">
+                            <img src="images/StudNet Profile Picture Default.svg" alt="">
+                            <span>John Doe</span>
+                        </div>
+                        <div class="request-buttons">
+                            <input type="button" value="Accept" class="request-accept">
+                            <input type="button" value="Decline" class="request-decline">
+                        </div>
+                    </div>
                     <div class="request">
                         <div class="request-user">
                             <img src="images/StudNet Profile Picture Default.svg" alt="">

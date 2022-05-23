@@ -1,27 +1,45 @@
 $(document).ready(function(){
-    $(".notifications img").click(function(){
-        $(".dropdown-options").removeClass("active");
-        $(".dropdown-notifications").toggleClass("active");
-        
+    $("#course").click(function(){
+        $(this).toggleClass("clicked");
+        $(".semester").toggleClass("active");
     });
 
-    $(".options img").click(function(){
-        $(".dropdown-notifications").removeClass("active");
-        $(".dropdown-options").toggleClass("active");
+    $(".semester-name").click(function(){
+        if($(this).next().hasClass("active")) {
+            $(this).removeClass("clicked");
+            $(".subject").removeClass("active");
+        }
+        else {
+            $(".subject").removeClass("active");
+            $(".semester-name").removeClass("clicked");
+            $(this).next().toggleClass("active");
+            $(this).toggleClass("clicked");
+        }
     });
 
-    $(".logo img").on("click", function(){
-        $(".dropdown-options").removeClass("active");
-        $(".dropdown-notifications").removeClass("active");
-    })
+    $(".subject li").click(function(){
+        $(".subject li").removeClass("clicked");
+        $(this).toggleClass("clicked");
+    });
 
-    $(".header-search").on("click", function(){
-        $(".dropdown-options").removeClass("active");
-        $(".dropdown-notifications").removeClass("active");
-    })
+    $("textarea").each(function () {
+        this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+    }).on("input", function () {
+        this.style.height = "37px";
+        this.style.height = (this.scrollHeight) + "px";
 
-    $(".container-fluid").on("click", function(){
-        $(".dropdown-options").removeClass("active");
-        $(".dropdown-notifications").removeClass("active");
-    })
+        if($(this).val().length == 250) {
+            $(this).addClass("max");
+        }
+        else {
+            $(this).removeClass("max");
+        }
+
+    });
+
+    $("textarea").keypress(function(e){
+        if(e.which == 13) {
+            //Submit text to the base
+        }
+    });
 });

@@ -7,6 +7,8 @@ use App\Models\UserModel;
 use App\Models\FacultyModel;
 use App\Models\SmeroviModel;
 use App\Models\ClassModel;
+use App\Models\StudentModel;
+use App\Models\AdvertiserModel;
 class Admin extends BaseController
 {
     public function index()
@@ -20,6 +22,8 @@ class Admin extends BaseController
         echo view('adminFuncViews/AFUView',$data); 
     }
     
+    
+    //------add Uni------------
     public function ADDU($data=[]){
           $data['controller']='Admin';     
         echo view('adminFuncViews/AddUniView',$data); 
@@ -39,9 +43,9 @@ class Admin extends BaseController
             'Date_of_birth'=>$this->request->getVar('date_of_birthAUni'),
             'Country'=> $this->request->getVar('country'),  
             'E-mail'=> $this->request->getVar('email'),  
-            'password'=> $this->request->getVar('password')
+            'Password'=> $this->request->getVar('password')
         ];
-         
+        
         $name=$this->request->getVar('Fname');
         $username=$this->request->getVar('username');
         
@@ -61,11 +65,13 @@ class Admin extends BaseController
                 'IdUni'=>$id,
                 'Sertifikat'=>'1'
             ]);
-            
-            return json_encode(['message'=>'success']);   
+          
+           return json_encode(['message'=>'success']);   
            
     
     }
+    
+    //-------add class-----------
     public function ADDC(){
           $data['controller']='Admin';    
           $fac= new FacultyModel();
@@ -100,6 +106,8 @@ class Admin extends BaseController
        return json_encode(['message'=>'success']); 
 
     }
+    
+    //-----add Faculty------
    public function ADDF() {
          $data['controller']='Admin'; 
          
@@ -144,7 +152,7 @@ class Admin extends BaseController
     
     
     
-    
+    //--------add subject-----------
        public function ADDS($data=[]){
           $data['controller']='Admin';    
           $fac= new FacultyModel();
@@ -196,8 +204,81 @@ class Admin extends BaseController
         
         
     }
+    //--------------delete uni----
+    
+    public function DeleFU() {
+         $data['controller']='Admin'; 
+         $uni = new UniversityModel();
+         $names = $uni->getAllUniNames();
+         if($names !=null){
+         $data['names']=$names;
+         }
+        echo view('adminFuncViews/DeleteUniView',$data); 
+    }
+    public function AdminDeleteUni() {
+        
+        $uniName= $this->request->getVar("uni");
+        $korModel = new UserModel();
+        $uni= new UniversityModel();
+        $pom= $korModel->where('Ime',$uniName)->find();
+        $id=$pom[0]->IdKor;
+        $uni->delete($id);
+        $korModel->delete($id);
+        return json_encode(['message'=>'success']); 
+    }
     
     
+    //--------delete Student---------
+    public function DeleStud() {
+         $data['controller']='Admin'; 
+        echo view('adminFuncViews/DeleteStudentView',$data); 
+    }
+    
+    public function AdminDeleteStud() {
+        
+        $kor= new UserModel();
+        $stud = new StudentModel();
+        
+        $Stoken = $this->request->getVar('stud');
+        
+        if(strpos($Stoken, "/")!==false){
+            //found
+            $ids= explode("/", $Stoken);
+            $st= $stud->where("IdGod",$ids[0])->where("IdNum",$ids[1])->find();
+            $ids=$st[0]->IdStud;
+            $stud->delete($ids);
+            $kor->delete($ids);
+            return json_encode(['message'=>'success']); 
+        }
+        return json_encode(['message'=>'unsuccess']); 
+        
+    }
+    //--------delete Advert---------
+    public function DeleAdv() {
+         $data['controller']='Admin'; 
+        echo view('adminFuncViews/DeleteAdvertiserView',$data); 
+    }
+    
+    public function AdminDeleteAtvr() {
+     
+        $userModel = new UserModel();
+        $advModel = new AdvertiserModel();
+        
+        $UsernameToken = $this->request->getVar('user');
+        $entyAd = $userModel->where('Username',$UsernameToken)->find();
+        $idAd = $entyAd[0]->IdKor;
+        
+        if($advModel->delete($idAd)==true){
+            if($userModel->delete($idAd)==true){
+                return json_encode(['message'=>'success']); 
+
+             }  else{
+                 return json_encode(['message'=>'unsuccess']); 
+             }      
+        }else{
+            return json_encode(['message'=>'unsuccess']); 
+        }
+    }
     
 }
     

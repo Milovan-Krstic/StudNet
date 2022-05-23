@@ -72,7 +72,6 @@
                                           <?php
                                             foreach ($namesCla as $name) {
                                                 echo "<li>{$name->Name}</li>";
-                                               
                                             }
                                             ?>
                                         </ul>
@@ -92,7 +91,7 @@
                     
                       
                     <input class="buttonAAS" id="addAU" name="Add" type="button" value="Add">         
-                    <?= anchor("$controller/AddIUni","<input class='buttonCAU' id='addCU' name='Cancle' type='button' value='Cancle'>")?>
+                    <?= anchor("$controller/AddIUni","<input class='buttonCAU' id='addCU' name='Cancle' type='button' value='Cancel'>")?>
          
                     
                     <div class="popup-background">

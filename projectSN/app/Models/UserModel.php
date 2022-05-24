@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UniversityModel extends Model
+class UserModel extends Model
 {
-    protected $table      = 'univerzitet';
-    protected $primaryKey = 'IdUni';
+    protected $table      = 'korisnik';
+    protected $primaryKey = 'IdKor';
 
-    //protected $useAutoIncrement = true;
+    protected $useAutoIncrement = true;
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['IdUni', 'Name', 'Date_of_est', 'Country', 'E-mail', 'Sertifikat'];
+    protected $allowedFields = ['Ime', 'Prezime', 'Date_of_birth', 'City', 'E-mail', 'Username', 'Country', 'Last_login', 'Password'];
 
     /*
     

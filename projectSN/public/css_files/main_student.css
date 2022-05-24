@@ -1,0 +1,419 @@
+html, body {
+    height: 100%;
+    height: 100%;
+    overflow:hidden;
+}
+
+.main {
+    height: inherit;
+
+    position: relative;
+    z-index: 0;
+
+}
+
+/*Left part*/
+
+.left-part {
+    background-color: #E6EDED;
+    height: 100vh;
+
+    padding-top: 20px;
+    
+    padding-left: 40px;
+    padding-right: 40px;
+
+    z-index: 1;
+}
+
+.left-part span,
+.right-part span {
+    color: #777777;
+    font-size: 18px;
+
+    font-family: roboto-regular;
+}
+
+.subjects {
+    margin-top: 30px;
+    color: #444444;
+    
+}
+
+.subjects span {
+    color: #444444;
+    font-size: 16px;
+}
+
+.subjects ul {
+    padding-left: 20px;
+}
+
+.subjects li {
+    list-style: none;
+    padding-top: 10px;
+}
+
+.course {
+    overflow: hidden;
+    font-size: 16px;
+   
+}
+
+.course li {
+    margin-top: 10px;
+    margin-left: -10px;
+
+    border-radius: 25px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+
+    background-color: transparent;
+
+    color: #777777;
+    font-size: 16px;
+    transition: background-color 0.4s;
+}
+.course li:hover,
+#course:hover {
+    background-color: #dee6e6;
+    color: #444444;
+}
+
+#course {
+    margin-top: 10px;
+    cursor: pointer;
+    color: #777777;
+}
+
+#course.clicked,
+.semester-name.clicked,
+.subject li.clicked {
+    color: #444444;
+}
+
+.semester,
+.subject {
+    opacity: 0;
+    display: none;
+
+    top: -10px;
+    
+    cursor: pointer;
+
+    transition: opacity 1s ease;
+}
+
+.semester.active,
+.subject.active{
+    display: block;
+    overflow: visible;
+    opacity: 1;
+
+    top: 0px;
+
+}
+
+/* Central part */
+
+.center-part {
+    background-color: #F0F5F5;
+    height: 100vh;
+}
+
+/* Central part - Search*/
+
+.center-search {
+    background-color: #FCFCFC;
+    height: 70px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: -10px 0px 20px rgba(64, 64, 64, 0.1);
+    position: relative;
+    z-index: 0;
+
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.tags {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    overflow-x: hidden;
+}
+
+.tag {
+    background-color: transparent;
+    border: 1px solid #E6E6E6;
+    border-radius: 15px;
+
+    padding: 5px 15px 5px 15px;
+    
+
+    color: #BDBDBD;
+    font-family: roboto-light;
+    font-size: 14px;
+
+    margin-left: px;
+    margin-right: 10px;
+
+    transition: all 0.4s ease;
+
+    cursor: pointer;
+}
+
+.tag:hover {
+    border-color: #67DBB8;
+    color: #67DBB8;
+}
+
+.tag.active {
+    border-color: #67DBB8;
+    color: #67DBB8;
+}
+
+.center-part .header-search {
+    width: 280px;
+}
+
+/* Central part - Messages*/
+
+.center-chat {
+    padding-right: 14px;
+    padding-left: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-height: 75%;
+
+}
+
+.message-scroll {
+    display: flex;
+    flex-direction:column-reverse;
+    overflow-y: scroll;
+    max-height: 670px;
+}
+
+.message-scroll::-webkit-scrollbar,
+.friends-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.message-scroll::-webkit-scrollbar-track,
+.friends-scroll::-webkit-scrollbar-track {
+    border-radius: 25px;
+    background: #E6E6E6;
+}
+
+.message-scroll::-webkit-scrollbar-thumb,
+.friends-scroll::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background: #bdbdbd7f;
+    transition: 0.4s ease;
+}
+
+.message-scroll::-webkit-scrollbar-thumb:hover,
+.friends-scroll::-webkit-scrollbar-thumb:hover {
+    border-radius: 25px;
+    background: #BDBDBD;
+}
+
+.message {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.message.left {
+    justify-content: flex-start;
+    color: #444444b2;
+}
+
+.message.right {
+    justify-content: flex-end;
+    color: #FCFCFC;
+
+    margin-right: 6px;
+}
+
+.message img{
+    width: 36px;
+}
+
+.message.right img {
+    order: 2;
+}
+
+.message-box {
+    max-width: 400px;
+    box-shadow: 2px 2px 15px rgba(64, 64, 64, 0.1);
+    font-family: roboto-regular;
+    font-size: 14px;
+
+    display: block;
+    word-wrap: break-word;
+}
+
+
+
+.message.left .message-box {
+    background-color: #FCFCFC;
+    border-radius: 7px 14px 14px 20px;
+    padding: 5px 15px 15px 15px;
+    margin-left: 14px;
+}
+
+.message.right .message-box {
+    background-color: #67DBB8;
+    border-radius: 14px 7px 20px 14px;
+    padding: 5px 15px 15px 15px;
+    margin-right: 14px;
+}
+/* Central part - Input*/
+
+.center-type {
+    position: relative;
+    
+    margin: 25px 13px 20px 13px;
+    
+}
+
+#input-message {
+    width: 100%;
+    height: 37px;
+    max-height: 50px;
+
+    overflow: hidden;
+
+    padding-top: 6px;
+    
+    padding-left: 30px;
+    padding-right: 70px;
+
+    background-color: #FCFCFC;
+    font-size: 14px;
+
+    border-radius: 20px;
+
+    border: 0px solid;
+
+    color: #444444;
+
+    box-shadow: 0 0 15px rgba(64, 64, 64, 0.1);
+
+    resize: none;
+}
+
+#input-message:focus {
+    outline: none;
+}
+
+#input-message::-webkit-scrollbar {
+    width: 0px;
+}
+
+#input-message.max {
+    border: 1px solid #EE5253;
+
+    box-shadow: 0 0 15px #ee52523d;
+}
+
+.type-box {
+    padding-bottom: 50px;
+}
+
+.type-box input{
+    width: 100%;
+    height: 80px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+
+    background-color: #FCFCFC;
+    font-size: 14px;
+
+    border-radius: 20px;
+
+    border: 0px solid;
+
+    color: #444444;
+
+    box-shadow: 2px 2px 15px rgba(64, 64, 64, 0.1);
+
+    overflow-wrap: break-word;
+}
+
+.type-box input:focus {
+    outline: none;
+}
+
+.type-box img {
+    width: 20px;
+    z-index: 1;
+
+    position: absolute;
+
+    right: 45px;
+    top: 9px;
+
+    cursor: pointer;
+}
+
+/* Right part */
+
+.right-part {
+    background-color: #E6EDED;
+    height: 100vh;
+
+    padding-top: 20px;
+
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.friends-list {
+    margin-bottom: 40px;
+}
+
+.right-part .friend img {
+    width: 36px;
+}
+
+.right-part .friend {
+    margin-bottom: 12px;
+    
+    margin-right: 15px;
+    padding: 5px;
+
+    border-radius: 25px;
+    background-color: transparent;
+
+    transition: background-color 0.4s ease;
+
+    cursor: pointer;
+}
+
+.right-part .friend:hover {
+    background-color: #dee6e6;
+}
+
+.right-part .friend span {
+    margin: 0 8px 0 8px;
+    color: #444444;
+    font-family: roboto-medium;
+    font-size: 14px;
+}
+
+.friends-scroll {
+    height: 698px;
+    overflow-y: scroll;
+}
+
+hr {
+    margin-top: 20px;
+}

@@ -18,6 +18,16 @@
     src: url("../fonts/Roboto-Medium.ttf");
 }
 
+@font-face {
+    font-family: roboto-regular-italic;
+    src: url("../fonts/Roboto-Italic.ttf");
+}
+
+@font-face {
+    font-family: roboto-light-italic;
+    src: url("../fonts/Roboto-LightItalic.ttf");
+}
+
 .header {
     background-color: #FCFCFC;
     height: 70px;
@@ -35,19 +45,24 @@
     height: 25px;
     margin-right: 110px;
 }
+
 .header .header-search {
-    width: 1042px;
-    margin-left: 42px;
+    width: 1044px;
+    margin-left: 50px;
 }
+
 .header-search {
     width: 55%;
+    position: relative;
+    z-index: 2;
 }
+
 .header-search input{
     width:100%;
     height: 31px;
     padding-left: 50px;
     padding-right: 15px;
-    padding-bottom: 1px;
+    padding-bottom: 1px;    
     border-radius: 20px;
     border: 1px solid #E6E6E6;
     background-color: #F0F5F5;
@@ -55,12 +70,14 @@
     outline: none;
 
     font-size: 14px;
-    color: #BCBCBC;
+    color: #444444;
     font-family: roboto-regular;
 
     transition: all 0.3s ease;
 
     position: relative;
+
+    z-index: 2;
 }
 
 .header-search input::placeholder {
@@ -69,14 +86,13 @@
     font-family: roboto-regular;
 }
 
-.header-search img {
+.search-image {
     width: 17px;
     height: 17px;
     margin-left: 15px;
     margin-top: 7px;
     position: absolute;
-    z-index: 1;
-    
+    z-index: 3;
 }
 
 .header-info {
@@ -95,8 +111,10 @@
     justify-content: flex-start;
     
     z-index: 2;
-    margin-right: 10px;
+    margin-right: 18px;
     margin-left: 10px;
+
+    cursor: pointer;
 }
 
 .user img {
@@ -150,7 +168,8 @@
 }
 
 .dropdown-notifications,
-.dropdown-options {
+.dropdown-options,
+.dropdown-search {
   
     visibility: hidden;
     opacity: 0;
@@ -160,7 +179,7 @@
     width: 100%;
     
     
-    right: 20px;
+    right: 14px;
     top: -60px;
     
     
@@ -181,6 +200,40 @@
     transition: all 0.4s ease;
 
 }
+
+.dropdown-search {
+    width: 103%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding-top: 75px;
+}
+
+.search-scroll {
+    overflow-y: scroll;
+    height: 85%;
+}
+
+.search-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-scroll::-webkit-scrollbar-track {
+    border-radius: 25px;
+    background: #E6E6E6;
+}
+
+.search-scroll::-webkit-scrollbar-thumb{
+    border-radius: 25px;
+    background: #bdbdbd7f;
+    transition: 0.4s ease;
+}
+
+.search-scroll::-webkit-scrollbar-thumb:hover {
+    border-radius: 25px;
+    background: #BDBDBD;
+}
+
 
 .request-container {
     overflow-y: scroll;
@@ -215,12 +268,15 @@
 
 
 .dropdown-notifications.active,
-.dropdown-options.active {
+.dropdown-options.active,
+.dropdown-search.active {
     top: -20px;
     visibility:visible;
     opacity: 1;
-    
-    
+}
+
+.dropdown-search hr {
+    margin: 8px;
 }
 
 .option {
@@ -248,19 +304,81 @@
     
 }
 
-.request-user {
+.request-user,
+.search-user {
     cursor: pointer;
 }
+/*
+.search-user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    height: 36;
+    padding: 3px;
+
+    margin-bottom: 3px;
+
+    border-radius: 20px;
+
+    position: relative;
+}
+*/
+.search-user:hover {
+    background-color: #BCBCBC;
+}
+
+.search-user img {
+    width: 36px;
+}
+
+.search-user {
+
+    padding: 5px 25px 5px 5px;
+
+    margin-right: 20px;
+
+    border-radius: 25px;
+    background-color: transparent;
+
+    transition: background-color 0.4s ease;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-user:hover {
+    background-color: #F7F7F7;
+}
+
+.search-user .status-friend {
+    text-align: right;
+    color: #67DBB8;
+    font-family: roboto-light-italic;
+    
+}
+
+.search-user .status-none {
+    text-align: right;
+    color: #BDBDBD;
+    font-family: roboto-light-italic;
+    
+}
+
 
 .request-user img,
 .option img {
     width: 36px;
     height: fit-content;
-    
 }
 
 .request-user span,
-.option span {
+.option span,
+.search-user span {
     
     margin-left: 10px;
     color: #444444;

@@ -24,8 +24,71 @@
 
         <div class="header-search">
             <div class="search-bar">
-                <img src="icons/StudNet Search.svg">
-                <input type="text" name="input-search" id="header-search" placeholder="Search">
+                <img src="icons/StudNet Search.svg" class="search-image">
+                <input type="text" name="input-search" id="header-search" placeholder="Search" maxlength="33">
+            </div>
+            <div class="dropdown-search">
+                <div class="search-scroll">
+                    <div class="search-user">
+                        <div>
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
+                        </div>
+                        
+                        <span class="status-friend">Friend</span>
+                        
+                    </div>
+                    <hr>
+                    <div class="search-user">
+                        <div>
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
+                        </div>
+                        
+                        <span class="status-none">None</span>
+                        
+                    </div>
+                    <hr><div class="search-user">
+                        <div>
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
+                        </div>
+                        
+                        <span class="status-none">None</span>
+                        
+                    </div>
+
+                    <hr><div class="search-user">
+                        <div>
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
+                        </div>
+                        
+                        <span class="status-friend">Friend</span>
+                        
+                    </div>
+
+                    <hr><div class="search-user">
+                        <div>
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
+                        </div>
+                        
+                        <span class="status-friend">Friend</span>
+                        
+                    </div>
+
+                    <hr><div class="search-user">
+                        <div>
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
+                        </div>
+                        
+                        <span class="status">Friend</span>
+                        
+                    </div>
+                </div>
+                
             </div>
         </div>
 

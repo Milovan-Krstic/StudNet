@@ -40,11 +40,21 @@
                     <div class="tag">
                         <span>#computer science</span>
                     </div>
+                    <div class="tag">
+                        <span>#science</span>
+                    </div>
+                    <div class="tag">
+                        <span>#science</span>
+                    </div>
+                    <div class="tag">
+                        <span>#science</span>
+                    </div>
+                    
                 </div>
                 <div class="header-search">
                     <div class="search-bar">
-                        <img src="icons/StudNet Search.svg" alt="-">
-                        <input type="text" name="input-search" id="header-search" placeholder="Search">
+                        <img src="icons/StudNet Search.svg" alt="-" class="search-image">
+                        <input type="text" name="input-search" id="header-search" placeholder="Search" maxlength="12">
 
                     </div>
                 </div>

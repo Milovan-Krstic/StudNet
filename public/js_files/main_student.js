@@ -42,4 +42,48 @@ $(document).ready(function(){
             //Submit text to the base
         }
     });
+
+
+    // Add these dynamically
+    $(".friend").click(function(){
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-redirect",
+            data: {
+                page : "student-view"
+            },
+            dataType : "JSON",
+            success: function (response) {
+               window.location.href = response['url'];
+            }
+        });
+    })
+
+    $(".request-user").click(function(){
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-redirect",
+            data: {
+                page : "student-view"
+            },
+            dataType : "JSON",
+            success: function (response) {
+               window.location.href = response['url'];
+            }
+        });
+    })
+
+    $(".search-user").click(function(){
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-redirect",
+            data: {
+                page : "student-view"
+            },
+            dataType : "JSON",
+            success: function (response) {
+               window.location.href = response['url'];
+            }
+        });
+    })
 });

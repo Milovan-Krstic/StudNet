@@ -31,6 +31,20 @@ $(document).ready(function(){
         $(".dropdown-search").removeClass("active");
     });
 
+    $(".header-main svg").click(function(){
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-redirect",
+            data: {
+                page : "student-main"
+            },
+            dataType : "JSON",
+            success: function (response) {
+               window.location.href = response['url'];
+            }
+        });
+    })
+
     $("#header-search").on("input", function(){
         if($(this).val().length == 0) {
             $(".dropdown-search").removeClass("active");
@@ -178,6 +192,44 @@ $(document).ready(function(){
         Index: #header-index
     */
 
+
+    // Go to option
+
+    $(".option").click(function(){
+        
+        let option = $(this).find("span").text().toLowerCase();
+
+        option = "student-" + option;
+        
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-redirect",
+            data: {
+                page : option
+            },
+            dataType : "JSON",
+            success: function (response) {
+               window.location.href = response['url'];
+            }
+        });
+    })
+
+    $(".header-info .user").click(function(){
+
+        option = "student-profile";
+        
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-redirect",
+            data: {
+                page : option
+            },
+            dataType : "JSON",
+            success: function (response) {
+               window.location.href = response['url'];
+            }
+        });
+    })
 
     
 });

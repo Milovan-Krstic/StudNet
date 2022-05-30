@@ -32,10 +32,10 @@
               </div>
             </div>
             <div class="mesec">
-              <div class="month"><img class="levo" src="icons/levo.svg" width="20px" height="20px"  ></div>
+              <div class="month"><img class="levo" src="<?= base_url("icons/levo.svg")?>" width="20px" height="20px"  ></div>
               <div class="month" id="monthID">      
               </div>
-              <div class="month"><img class="desno" src="icons/desno.svg" width="20px" height="20px"  ></div>
+              <div class="month"><img class="desno" src="<?= base_url('icons/desno.svg')?>" width="20px" height="20px"  ></div>
               
             </div>
           </div>

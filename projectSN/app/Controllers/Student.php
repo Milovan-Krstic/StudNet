@@ -2,22 +2,27 @@
 
 namespace App\Controllers;
 
+
 class Student extends BaseController
 {
-    public function show($page, $header) {
+    public function show($page, $header ) {
         echo view("templates/$header");
         echo view("student/$page");
         echo view("templates/footer_student");
     }
     
     
+    
     public function main()
     {
+       
         return $this->show('main_student', 'header_student');
+        
     }
     
     public function timer()
     {
+        
         return $this->show('timer_student', 'header_student_options');
     }
     

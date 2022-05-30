@@ -4,12 +4,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UniversityModel extends Model
-{
+
+use App\Models\UserModel;
+
+class UniversityModel extends Model {
+   
     protected $table      = 'univerzitet';
     protected $primaryKey = 'IdUni';
 
-    //protected $useAutoIncrement = true;
 
     protected $returnType     = 'object';
 
@@ -27,4 +29,30 @@ class UniversityModel extends Model
     protected $skipValidation     = false;
     
     */
+
+    protected $useAutoIncrement = false;
+
+  
+    protected $useSoftDeletes = false;
+    
+ 
+
+    public function getAllUniNames(){
+        
+        $unis=$this->findAll();
+        $kor= new UserModel();
+        $kor->findAll();
+      
+           
+        $names=[];
+        for( $i=0;$i<count($unis);$i++){
+              $names[$i]=$kor->dohvatiImeIDa($unis[$i]->IdUni);
+        }
+       
+        return $names;
+        
+    }
+   
 }
+   
+

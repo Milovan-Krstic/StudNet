@@ -11,6 +11,7 @@ class StudentModel extends Model
 
     //protected $useAutoIncrement = true;
 
+
     protected $returnType     = 'object';
 
     protected $allowedFields = ['IdStu', 'Faculty', 'Course', 'IdGod', 'IdNum', 'Penalty_points'];
@@ -27,4 +28,5 @@ class StudentModel extends Model
     protected $skipValidation     = false;
     
     */
+
 }

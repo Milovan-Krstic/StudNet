@@ -12,7 +12,7 @@
         
         
     <link rel="stylesheet" href="<?php echo base_url('css_files/header.css');?>">
-    <link rel="stylesheet" href="<?php echo base_url('css_files/style_register.css');?>">
+      <link rel="stylesheet" href="<?php echo base_url('css_files/AdminStyles.css');?>">
     <link rel="stylesheet" href="<?php echo base_url('css_files/buttons.css');?>">
     <script type="text/javascript" src="<?php echo base_url('jquery/jquery-3.6.0.min.js');?>"></script>
 
@@ -32,6 +32,10 @@
             <div class="button spaces">
                <?= anchor("$controller/ADDU", "<button  class ='buttonGreen' type='submit' value='aiU'>Add University</button>")?>
                 </div>
+               <div class="button spaces">
+               <?= anchor("$controller/ADDF", "<button  class ='buttonGreen' type='submit' value='aiU'>Add Faculty</button>")?>
+                </div>
+            
           <div class="button spaces">
                <?= anchor("$controller/ADDC", "<button  class ='buttonGreen' type='submit' value='aiU'>Add Course</button>")?>
                 </div>

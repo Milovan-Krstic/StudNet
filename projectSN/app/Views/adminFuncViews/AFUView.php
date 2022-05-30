@@ -32,6 +32,10 @@
             <div class="button spaces">
                <?= anchor("$controller/ADDU", "<button  class ='buttonGreen' type='submit' value='aiU'>Add University</button>")?>
                 </div>
+               <div class="button spaces">
+               <?= anchor("$controller/ADDF", "<button  class ='buttonGreen' type='submit' value='aiU'>Add Faculty</button>")?>
+                </div>
+            
           <div class="button spaces">
                <?= anchor("$controller/ADDC", "<button  class ='buttonGreen' type='submit' value='aiU'>Add Course</button>")?>
                 </div>

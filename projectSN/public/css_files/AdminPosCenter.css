@@ -6,13 +6,96 @@
 }
 .buttonAAU{
     
-      margin-top: 50px;
+    margin-top: 50px;
     text-align: center;
-    margin-left: 15%;
+    margin-left: 12%;
+    
+}
+.buttonAAC
+{
+    
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 12%;
+    
+}
+.buttonAAF
+{
+    
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 12%;
+    
+}
+.buttonADAD
+{
+    
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 12%;
+    
+}
+.buttonADU
+{
+    
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 12%;
+    
+}
+
+.buttonAAS
+{
+    
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 12%;
+    
+}
+
+.buttonADS
+{
+    
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 12%;
+    
+}
+
+
+.buttonCAU{
+    
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 12%;
     
 }
 
  #addAU{
+    width: 30%;
+    height: 40px;
+    background-color: #67DBB8;
+    display: inline-block;
+    color: white;
+    border-radius: 12px;
+    border-style: none;
+    transition: all 0.4s;
+    font-size: 17px;
+    font-family: roboto-bold;
+}
+#delUni{
+    width: 30%;
+    height: 40px;
+    background-color: #67DBB8;
+    display: inline-block;
+    color: white;
+    border-radius: 12px;
+    border-style: none;
+    transition: all 0.4s;
+    font-size: 17px;
+    font-family: roboto-bold;
+}
+#delStud{
     width: 30%;
     height: 40px;
     background-color: #67DBB8;

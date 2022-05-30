@@ -39,6 +39,7 @@ $routes->get('/register_university', 'Guest::register_university');
 $routes->get('/register_advertiser', 'Guest::register_advertiser');
 $routes->get('/student-main', 'Student::main');
 $routes->get('/student-timer', 'Student::timer');
+$routes->get('/student-plans', 'Student::plans');
 $routes->get('/student-profile', 'Student::profile');
 $routes->get('/student-view', 'Student::view_user');
 

@@ -21,20 +21,16 @@ class LogIn extends BaseController
     
     public function loginSubmit(){
         
-        /*$this->session->set('logedinModerator','KURAC');
-        $data['controller']=$this->session->get('logedinModerator');
-        echo view("templates/header_guest");
-        echo view('login/login',$data);
-        echo view("templates/footer_guest");*/
+        
         
         $data=$this->request->getVar();
         
         
         
-        //$korisnik=$logInModel->where("Username",($data['username']))->where("Password",($data['password']))->find();
+        
         $adminLogInModel=new AdminModel();
         $korisnik=$adminLogInModel->where("username",($data['username']))->where("PASSWORD",($data['password']))->find();
-        //if($this->session==NULL)$this->session = session();
+        
         if($korisnik==null){
             
             $logInModel=new UserModel();
@@ -49,13 +45,9 @@ class LogIn extends BaseController
                 if($moderator!=null){
                     
                     
-                    //$this->session->set('logedinModerator','KURAC');
+                    
                     $this->session->set('logedinModerator',$korisnik[0]);
-                    //$data['controller']=$this->session->get('logedinModerator');
-                    //echo view("templates/header_guest");
-                    //echo view('login/login',$data);
-                    //echo view("templates/footer_guest");
-                    //echo json_encode($this->session->get('logedinModerator'));
+                    
                     echo json_encode(4);
                     
                 }
@@ -92,7 +84,7 @@ class LogIn extends BaseController
           
             echo json_encode(2);
             $this->session->set('logedinAdmin',$korisnik[0]);
-            //return redirect()->to(site_url('Admin'));
+            
         }
          
          

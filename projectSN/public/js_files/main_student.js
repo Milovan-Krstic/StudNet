@@ -1,4 +1,29 @@
 $(document).ready(function(){
+    $("#input-message").keypress(function(e){
+        if(e.which ==13){
+           
+           
+           let text = $("#input-message").val();     
+           if(text.length<=1){
+                $("#input-message").val("");
+                return;}
+          let message_span = $("<span></span>").text(text);
+            let message_box = $("<div></div>").addClass("message-box");
+               let img = $("<img>").attr("src","images/StudNet Profile Picture Default.svg");
+            message_box.append(message_span);
+            let message = $("<div></div>").addClass("message").addClass("right");  
+               message.append(img);
+            message.append(message_box);
+                
+            $(".message-scroll").prepend(message);     
+            $("#input-message").val("");
+                
+                
+            
+        }
+    })
+    
+    
     $("#course").click(function(){
         $(this).toggleClass("clicked");
         $(".semester").toggleClass("active");

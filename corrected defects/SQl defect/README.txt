@@ -6,3 +6,4 @@ added cascade on delete gde je falilo
 add img to korinsik and admin
 also change on delete cascde to restrict for IdCtag
 added a acctive column identifier for korinsik
+add send_time and seen in chat_room

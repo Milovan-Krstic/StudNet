@@ -12,18 +12,18 @@ $(document).ready(function() {
     //login
     $(".button input").click(function(){
         
-        
+      
         let username1 = $("#username").val();
         let password1 = $("#password").val();
        
 
-        document.getElementById("username").value="";
-        document.getElementById("password").value="";
+        //document.getElementById("username").value="";
+       // document.getElementById("password").value="";
+       $("#username").val("");
+        $("#password").val("");
        
-        
-        
         $.ajax({
-                    url : "http://localhost:8080/LogIn/loginSubmit",
+                    url : "http://localhost:8080/loginSubmit",
                     
                     type : "POST",
                     data : {
@@ -36,14 +36,10 @@ $(document).ready(function() {
                          
                          
                         if(response==1) { // 1 ordinary user
-                            
+                        
                           
                           location.href = "http://localhost:8080/student-main"; ////PROMENITI NA OBICAN HOME PAGE
-                          $.ajax({
-                              url: "https//localhost:8080/Student/main",
-                              type: "POST"
-                          })
-                            
+                         
                             
                         }
                         else if(response==2){// 2 admin
@@ -95,7 +91,7 @@ $(document).ready(function() {
                         
                     },
                     error:function(){
-                        
+                        alert("hello");
                     }
                 });
             

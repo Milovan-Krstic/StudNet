@@ -6,7 +6,7 @@ use App\Models\AdminModel;
 use App\Models\ModeratorModel;
 use App\Models\UniversityModel;
 use App\Models\ReklamerModel;
-
+use App\Models\StudentModel;
 class LogIn extends BaseController
 {
     public function index()
@@ -24,10 +24,7 @@ class LogIn extends BaseController
         
         
         $data=$this->request->getVar();
-        
-        
-        
-        
+
         $adminLogInModel=new AdminModel();
         $korisnik=$adminLogInModel->where("username",($data['username']))->where("PASSWORD",($data['password']))->find();
         
@@ -36,6 +33,7 @@ class LogIn extends BaseController
             $logInModel=new UserModel();
             $korisnik=$logInModel->where("Username",($data['username']))->where("Password",($data['password']))->find();
             
+           
             if($korisnik==null)
                 echo json_encode(0);
             else {
@@ -59,8 +57,9 @@ class LogIn extends BaseController
                         if($university[0]->Sertifikat==null || $university[0]->Sertifikat==0)
                             echo json_encode(6);
                         else{ 
-                            echo json_encode(3);
-                            $this->session->set('logedinReklamer',$korisnik[0]);
+                         
+                            $this->session->set('logedinUniverzitet',$korisnik[0]);
+                             echo json_encode(3);
                         }
                     }
                     else{
@@ -68,12 +67,14 @@ class LogIn extends BaseController
                         $IdKor=$korisnik[0]->IdKor;
                         $reklamer=$reklamerLogInModel->where("IdRek",$IdKor)->find();
                         if($reklamer!=null){
-                            echo json_encode(5);
+                            
                             $this->session->set('logedinReklamer',$korisnik[0]);
+                            echo json_encode(5);
                         }
                         else{
-                            echo json_encode(1);
-                            $this->session->set('logedinUser',$korisnik[0]);
+                           
+                            $this->session->set('logedinUsers',$korisnik[0]);
+                             echo json_encode(1);
                         }
                     
                     }
@@ -90,6 +91,22 @@ class LogIn extends BaseController
          
     }
     
+    public  function ajaxGetKorInfo(){
+       
+        $kor = $_SESSION['logedinUsers'];
+       
+        return json_encode(['idkor'=>$kor->IdKor]);
+       
+
+    }
     
+    
+    public function ajaxGetStud() {
+        
+        $kor = $_SESSION['logedinUsers'];
+        $usermodel = new StudentModel();
+        $user= $usermodel->where("IdStud",$kor->IdKor)->find();
+         return json_encode(['kor'=>$kor,'student'=>$user[0]]);
+    }
     
 }

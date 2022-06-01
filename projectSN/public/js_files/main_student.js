@@ -2,8 +2,7 @@
 
 $(document).ready(function(){
     
-       
-    
+
     $("#input-message").keypress(function(e){
         
         if(e.which ==13){
@@ -113,7 +112,21 @@ $(document).ready(function(){
 
 
     // Add these dynamically
-    $(".friend").click(function(){
+    $(".right-part .friend img").click(function(){
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-redirect",
+            data: {
+                page : "student-view"
+            },
+            dataType : "JSON",
+            success: function (response) {
+               window.location.href = response['url'];
+            }
+        });
+    })
+
+    $(".friend-chat .friend").click(function(){
         $.ajax({
             type: "POST",
             url: base_url + "/ajax-request-redirect",
@@ -153,5 +166,48 @@ $(document).ready(function(){
                window.location.href = response['url'];
             }
         });
+    })
+
+    $(".tag").click(function(){
+        $(".tag").removeClass("active");
+        $(this).addClass("active");
+    })
+
+    $(".friend span").click(function(){
+        setTimeout(() => {
+            $(".tags").addClass("hidden");
+            $(".center-part .header-search").addClass("hidden");
+
+            $(".friend-chat").addClass("active");
+        }, 350);
+        
+    })
+
+    $("#close").click(function(){
+        setTimeout(() => {
+            $(".tags").removeClass("hidden");
+            $(".center-part .header-search").removeClass("hidden");
+
+            $(".friend-chat").removeClass("active");
+        }, 350);
+        
+    })
+
+    // Penalty points popup
+
+    $("textarea").click(function(){
+        // If student has penalty points do:
+
+        // $(".top-image img").attr("src", "../icons/StudNet Exclamation.svg");
+        // $(".top-message span").text("Sorry you can't write...");
+        // $(".bottom-message span").text("You must wait for penalty points to expire!");
+        // $(".bottom-next span").text("Return");
+        // $(".popup-background").addClass("popup-active"); 
+    })
+    
+
+    // Hide the popup
+    $(".bottom-next").click(function(){
+        $(".popup-background").removeClass("popup-active");
     })
 });

@@ -82,7 +82,7 @@ class Guest extends BaseController
                 $id = $userModel->getInsertID();
                 
                 $studentModel->insert([
-                    "IdStu" => $id,
+                    "IdStud" => $id,
                     "Faculty" => $data['faculty'],
                     "Course" => $data['course'],
                     "IdGod" => $data['id_year'],
@@ -141,11 +141,11 @@ class Guest extends BaseController
             $id = $userModel->getInsertID();
             $facultyModel = new FacultyModel();
             
-            $facultyId = $facultyModel->where("Name", $data['faculty'])->find();
+            $facultyId = $facultyModel->where("Name", "ETF")->find();
                 
             $moderatorModel->insert([
                 "IdMod" => $id,
-                "IdFacM" => $facultyId
+                "IdFacM" => $facultyId[0]->IdF
             ]);
             
         }
@@ -254,7 +254,8 @@ class Guest extends BaseController
             $id = $userModel->getInsertID();
                 
             $advertiserModel->insert([
-                "IdRek" => $id
+                "IdRek" => $id,
+                "num_of_ads" => 0
             ]);
         }
         else if($email == null){

@@ -2,6 +2,7 @@ var country_list = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguil
 var educational_field_list = ["Computer science", "Software Engineering", "Biology", "Philosophy", "Mathematics", "Physics", "Web design", "Pharmacy", "Medicine"];
 
 $(document).ready(function() {
+
     
     let country_dropdown = $("[name='s1']");
     let educational_field_dropdown = $("[name='s2']");
@@ -10,11 +11,12 @@ $(document).ready(function() {
         country_dropdown.append("<li>"+element+"</li>");
     });
 
-    educational_field_dropdown.sort();
-    faculty_list.forEach(element => {
+    educational_field_list.sort();
+    educational_field_list.forEach(element => {
         educational_field_dropdown.append("<li>"+element+"</li>");
     });
 
+    $(".options [name='s3']").prop("overflow-y", "hidden");
 
     //Click on the dropdown menu
     $(".dropdown-select").click(function(){
@@ -186,7 +188,7 @@ $(document).ready(function() {
             else {
                 
                 $.ajax({
-                    url : base_url + "/ajax-request-register-student",
+                    url : base_url + "/ajax-request-register-advertiser",
                     type : "POST",
                     data : {
                         username : $("#username").val(),
@@ -245,7 +247,7 @@ $(document).ready(function() {
             type: "POST",
             url: base_url + "/ajax-request-redirect",
             data: {
-                page : "register_others"
+                page : "register-others"
             },
             dataType : "JSON",
             success: function (response) {

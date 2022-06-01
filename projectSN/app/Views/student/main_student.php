@@ -53,7 +53,7 @@
                 </div>
                 <div class="header-search">
                     <div class="search-bar">
-                        <img src="icons/StudNet Search.svg" alt="-" class="search-image">
+                        <img src="<?= base_url("icons/StudNet Search.svg")?>" alt="-" class="search-image">
                         <input type="text" name="input-search" id="header-search" placeholder="Search" maxlength="12">
 
                     </div>
@@ -63,97 +63,97 @@
             <div class="row center-chat">
                 <div class="message-scroll col-12">
                     <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>Poslednja poruka</span>
                         </div>
                     </div>
 
                     <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                         <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
                         </div>
                     </div>
 
                     <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                           <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
                         </div>
                     </div>
 
                     <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                          <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
                         </div>
                     </div>
 
                     <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                       <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
                     <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                           <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
                         </div>
                     </div>
 
                     <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                            <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
                     <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
                         </div>
                     </div>
 
                     <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>Aaaaaaaaaaaaaaaaaagdggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
                     <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                      <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
                         </div>
                     </div>
 
                     <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                            <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
                     <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                          <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
                         </div>
                     </div>
                     <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                           <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
                     <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                          <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
                         </div>
@@ -165,8 +165,7 @@
             <div class="row center-type">
                 <div class="type-box col-12">
                     <textarea name="" id="input-message" cols="10" rows="1" placeholder="Type..." maxlength="250"></textarea>
-                    
-                    <img src="icons/StudNet Plus.svg" alt="+">
+                        <img src="<?= base_url("icons/StudNet Plus.svg")?>" alt="+">  
                 </div>
             </div>
 
@@ -178,55 +177,56 @@
             <div class="friends-list">
                 <div class="friends-scroll">
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                        <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
+                        
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                            <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                              <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                              <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                               <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                              <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                          <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                          <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                               <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                              <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                               <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                               <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
+                               <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
                         <span>John Doe</span>
                     </div>
                     

@@ -13,7 +13,7 @@ class UserModel extends Model
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['Ime', 'Prezime', 'Date_of_birth', 'City', 'E-mail', 'Username', 'Country', 'Last_login', 'Password'];
+    protected $allowedFields = ['IdKor', 'Ime', 'Prezime', 'Date_of_birth', 'City', 'E-mail', 'Username', 'Last_login', 'Password'];
 
     /*
     

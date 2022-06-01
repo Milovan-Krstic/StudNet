@@ -9,11 +9,10 @@ class AdvertiserModel extends Model
     protected $table      = 'reklamer';
     protected $primaryKey = 'IdRek';
 
-    //protected $useAutoIncrement = true;
-
     protected $returnType     = 'object';
 
     protected $allowedFields = ['IdRek', 'num_of_ads'];
+
 
     /*
     
@@ -27,4 +26,5 @@ class AdvertiserModel extends Model
     protected $skipValidation     = false;
     
     */
+
 }

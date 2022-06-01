@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+
 use CodeIgniter\Model;
 
-class FacultyModel extends Model
-{
+class FacultyModel extends Model {
+
     protected $table      = 'fakultet';
     protected $primaryKey = 'IdF';
 
@@ -13,7 +14,6 @@ class FacultyModel extends Model
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['IdF', 'Name', 'IdUni'];
 
     /*
     
@@ -27,4 +27,18 @@ class FacultyModel extends Model
     protected $skipValidation     = false;
     
     */
+
+
+    protected $allowedFields = ['IdF','Name', 'IdUni'];
+    
+    public function getAllFaculty() {
+        
+        return $this->findAll();
+       
+    }
+    
+    public function getId() {
+        return $this->IdF;
+    }
 }
+

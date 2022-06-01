@@ -12,7 +12,7 @@
         
         
     <link rel="stylesheet" href="<?php echo base_url('css_files/header.css');?>">
-    <link rel="stylesheet" href="<?php echo base_url('css_files/style_register.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('css_files/AdminStyles.css');?>">
     <link rel="stylesheet" href="<?php echo base_url('css_files/buttons.css');?>">
     <script type="text/javascript" src="<?php echo base_url('jquery/jquery-3.6.0.min.js');?>"></script>
 
@@ -29,8 +29,13 @@
     <div class="content">
         <div class="container">
             <div class="button spaces">
-               <?= anchor("$controller/AddIUni", "<button  class ='buttonGreen' type='submit' value='aiU'>Add into University</button>")?>
+               <?= anchor("$controller/AddIUni", "<button  class ='buttonGreen' type='submit' value='aiU'>Add into universitys</button>")?>
                 </div>
+            <div class="button spaces">
+               <?= anchor("$controller/AprUnis", "<button  class ='buttonGreen' type='submit' value='apU'>Approve Univ</button>")?>
+                </div>
+            
+            
             <div class="button spaces">
               <?= anchor("$controller/DeleFU", "<button class='buttonRed' type='submit' value='dfU'>Delete from Univesity</button>")?>
             </div>
@@ -47,7 +52,7 @@
               <?= anchor("$controller/DeleAdvmnt", "<button class='buttonRed' type='submit' value='dAdv'>Delete Advertisement</button>")?>
             </div>
             
-            
+           
         </div>
         
     </div>

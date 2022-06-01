@@ -47,6 +47,8 @@ $routes->post('/ajax-request-register-student', 'Guest::ajaxRequestRegisterStude
 $routes->post('/ajax-request-register-moderator', 'Guest::ajaxRequestRegisterModerator');
 $routes->post('/ajax-request-redirect', 'Guest::ajaxRequestRedirect');
 
+$routes->post('/ajax-request-check-requests','Student::ajaxRequestCheckRequests');
+
 
 /*
  * --------------------------------------------------------------------

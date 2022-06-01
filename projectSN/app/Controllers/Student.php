@@ -40,4 +40,28 @@ class Student extends BaseController
     {
         return $this->show('calendar_student', 'header_student_options');
     }
+    public function ajaxRequestCheckRequests(){
+        $friendsModel = new FriendlistModel();
+        
+        //$user = $this->session->get('logedinUser');
+        $user = $_SESSION['logedinUsers'];
+        $id = $user->idKor;
+        
+        $allFriends = $friendsModel->findAllFriendRequests($id);
+        
+        $result = array();
+        $userModel = new UserModel();
+
+        foreach(allFriends as $friend){
+            $my_Friend_Id = $friend->IdF;
+            $userFriend = $userModel->where('IdKor',$my_Friend_Id)->find();
+            $userFriendName = $userFriend->Ime;
+            $userFriendImg = $userFriend->Img;
+            
+            $result[] = array("name" => $userFriendName,"image"=>$userFriendImg);
+        }
+        
+        
+        echo json_encode($result);
+    }
 }

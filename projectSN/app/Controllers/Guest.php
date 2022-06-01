@@ -42,6 +42,9 @@ class Guest extends BaseController
     
     public function ajaxRequestRedirect(){
        $data = $this->request->getVar();
+       if($data["page"]=="Log out"){
+           $this->session->destroy();
+       }
        
        echo json_encode([
            "url" => base_url($data["page"])

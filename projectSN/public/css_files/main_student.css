@@ -212,6 +212,8 @@ html, body {
     flex-direction:column-reverse;
     overflow-y: scroll;
     max-height: 670px;
+    height:670px;
+    
 }
 
 .message-scroll::-webkit-scrollbar,

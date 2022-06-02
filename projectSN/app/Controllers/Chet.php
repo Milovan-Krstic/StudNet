@@ -10,7 +10,8 @@ use App\Models\ClassModel;
 class Chet extends BaseController{
     
     public function ajaxSendMyTextToGroup() {
-        $idkor = $this->request->getVar("korID");
+        $kor = $_SESSION['logedinUsers'];
+        $idkor=$kor->IdKor;
         $text = $this->request->getVar("text");
         $class= $this->request->getVar("class");
         $time= $this->request->getVar("time");
@@ -35,8 +36,8 @@ class Chet extends BaseController{
                 "time_send"=>$time
              
         ]);
-        
-       return json_encode(['message'=>'succes']) ;
+      
+       return json_encode(['message'=>'success']) ;
         
     }
     

@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class StudentModel extends Model
 {
     protected $table      = 'student';
-    protected $primaryKey = 'IdStud';
+    protected $primaryKey = 'IdStu';
 
     //protected $useAutoIncrement = true;
 
@@ -28,5 +28,7 @@ class StudentModel extends Model
     protected $skipValidation     = false;
     
     */
+    
+    
 
 }

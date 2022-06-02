@@ -145,11 +145,13 @@ $(document).ready(function(){
                }
                else{
                     //for each element do
-                    let request = $("<div></div>").addClass("request");
+                    let len = response.length;
+                    for(var i=0;i<len;i++){
+                    let request = $("<div></div>").addClass("request").attr("id",response[i].id);
                     let request_user = $("<div></div>").addClass("request-user");
-                    let request_image = $("<img/>").attr("src", response['image']);
-                    let request_name = $("<span></span>").text(response['name']);
-
+                    let request_image = $("<img/>").attr("src", response[i].image);//response[i].image response['image']
+                    let request_name = $("<span></span>").text(response[i].name);//response[i].name response['name']
+                    
                     request_user.append(request_image).append(request_name);
 
                     let request_buttons = $("<div></div>").addClass("request-buttons");
@@ -157,39 +159,76 @@ $(document).ready(function(){
                         type : 'button',
                         value : 'Accept'
                     }).addClass("request-accept");
+                    
+                   
 
                     let decline = $("<input/>").attr({
                         type : 'button',
                         value : 'Decline'
                     }).addClass("request-decline");
+                    
+                    
+                    
 
                     request_buttons.append(accept).append(decline);
 
                     request.append(request_user).append(request_buttons);
 
                     $(".request-container").append(request);
-               }
+               }}
             }
         });
     }
 
     setInterval(function(){
         //To implement:
-        //checkFriendRequests();
+        checkFriendRequests();
     }, 5000);
 
     //Notification request accept/decline
 
     $(".request-accept").click(function() {
         //Write code here
+        let chosen_option = $(this).parent().parent().attr('id'); 
+        
+        $.ajax({
+            context:this,
+            type: "POST",
+            url: base_url + "/ajax-request-accept",
+            data: {
+                option : chosen_option
+            },
+            dataType : "JSON",
+            success: function (response) {
+               //window.location.href = response['url'];
+               $(this).parent().parent().remove();
 
+            
+            }
+        });
         //Delete request from dropdown
-        $(this).parent().parent().remove();
+        //$(this).parent().parent().remove();
     });
 
     $(".request-decline").click(function() {
+        let chosen_option = $(this).parent().parent().attr('id'); 
+        $.ajax({
+            context:this,
+            type: "POST",
+            url: base_url + "/ajax-request-decline",
+            data: {
+                option : chosen_option
+            },
+            dataType : "JSON",
+            success: function (response) {
+               //window.location.href = response['url'];
+               $(this).parent().parent().remove();
+
+            
+            }
+        });
         //Write code here
-        $(this).parent().parent().remove();
+        //$(this).parent().parent().remove();
     });
 
     

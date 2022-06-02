@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
+use App\Models\FriendlistModel;
 
 class Student extends BaseController
 {
@@ -52,16 +52,47 @@ class Student extends BaseController
         $result = array();
         $userModel = new UserModel();
 
-        foreach(allFriends as $friend){
+        foreach($allFriends as $friend){
             $my_Friend_Id = $friend->IdF;
             $userFriend = $userModel->where('IdKor',$my_Friend_Id)->find();
-            $userFriendName = $userFriend->Ime;
-            $userFriendImg = $userFriend->Img;
+            $userFriendName = $userFriend->getIme();
+            $userFriendImg = $userFriend->getImg();
             
-            $result[] = array("name" => $userFriendName,"image"=>$userFriendImg);
+            $result[] = array("name" => $userFriendName,"image"=>$userFriendImg,"id"=>$my_Friend_Id);
         }
         
         
         echo json_encode($result);
+    }
+    public function ajaxRequestAccept(){
+      $data = $this->request->getVar();
+      
+      $student  = $_SESSION['logedinUsers'];
+      $student_id= $student->idKor;
+      
+      
+      
+      $friendlist = new FriendlistModel();
+      
+      $friendlist_id = $friendlist->where('IdM',$data['option'])->where('IdF',$student_id)->where('status',0)->find();
+      
+      $friendlist->save([
+          "IdFL"=>$friendlist_id[0]->IdFL,
+          "IdM"=>$data['option'],
+          "IdF"=>$student_id,
+          "status"=>1
+      ]);
+      
+      
+      
+      
+      
+      
+      
+    }
+    
+    public function ajaxRequestDecline(){
+       $data = $this->request->getVar('option');
+
     }
 }

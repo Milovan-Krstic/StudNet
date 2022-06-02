@@ -27,7 +27,7 @@ class UserModel extends Model
     
     */
 
-    protected $allowedFields = ['IdKor','Ime', 'Prezime', 'Date_of_birth', 'Country', 'E-mail', 'Username','Last_login', 'Password'];
+    protected $allowedFields = ['IdKor','Ime', 'Prezime', 'Date_of_birth', 'Country', 'E-mail', 'Username','Last_login', 'Password', 'Img'];
     
     public function chechUserForUsername($tekst) {
         return $this->where('Username',$tekst)->findAll();
@@ -42,6 +42,9 @@ class UserModel extends Model
         }
         public function getIme() {
            return $this->Ime;
+        }
+        public function getImg(){
+            return $this->Img;
         }
     public function dohvatiImeIDa($Id){
         return $this->where('IdKor',$Id)->find();

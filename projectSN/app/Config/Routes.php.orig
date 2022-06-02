@@ -46,14 +46,15 @@ $routes->get('/logout', 'LogIn::index');
 $routes->post('/ajax-request-register-student', 'Guest::ajaxRequestRegisterStudent');
 $routes->post('/ajax-request-register-moderator', 'Guest::ajaxRequestRegisterModerator');
 $routes->post('/ajax-request-redirect', 'Guest::ajaxRequestRedirect');
+<<<<<<< HEAD
 
-$routes->post('/ajax-request-check-requests', 'Student::ajaxRequestCheckRequests');
-$routes->post('/ajax-request-accept', 'Student::ajaxRequestAccept');
-$routes->post('/ajax-request-decline', 'Student::ajaxRequestDecline');
+$routes->post('/ajax-request-check-requests','Student::ajaxRequestCheckRequests');
 
 
+=======
 $routes->post('/loginSubmit', 'LogIn::loginSubmit');
 $routes->get('/loginSubmit', 'LogIn::loginSubmit');
+>>>>>>> 37206e98e553e7e14385646f5316eef0860ea318
 /*
  * --------------------------------------------------------------------
  * Additional Routing

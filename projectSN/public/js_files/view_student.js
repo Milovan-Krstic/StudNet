@@ -1,5 +1,7 @@
 $(document).ready(function(){
     
+    
+    
     // Initialize page
     // Status - friend or none
 
@@ -19,6 +21,14 @@ $(document).ready(function(){
         $(this).val("Request sent");
         $(this).parent().removeClass("request");
         //Send request
+        
+        
     })
     
+    $(".row faculty .info-box .name").text();   
+    $(".row course .info-box .name").text();
+    $(".row id .info-box .name").text();
+    $(".row country .info-box .name").text();
+    $(".row email .info-box .name").text();
+
 });

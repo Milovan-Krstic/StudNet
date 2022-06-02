@@ -1,5 +1,34 @@
 $(document).ready(function(){
 
+
+    
+
+   
+          
+               $.ajax({
+                   url:"http://localhost:8080/LogIn/ajaxGetStud",
+                   type:"POST",
+                   dataType:"JSON",
+                   success: function (response){
+                       let tex= response['kor'].Ime;
+                       let prezime =response['kor'].Prezime;
+                       
+                       let input =tex+" "+prezime;
+                       $("#header-name").text(input);
+                       let index=response['student'].IdGod+"/0"+response['student'].IdNum;
+                       
+                       $("#header-index").text(index);
+                    }
+                    
+                   
+               })
+       
+
+
+
+
+
+
     //Header animations
     $(".notifications img").click(function(){
         $(".dropdown-search").removeClass("active");
@@ -107,7 +136,8 @@ $(document).ready(function(){
         if(chosen_option == "Advertisement") chosen_option = "advertiser";
         else if(chosen_option == "Timer") chosen_option = "student_timer";
         else if(chosen_option == "Plans") chosen_option = "student_plans";
-        else chosen_option = "log_in";
+        else chosen_option = "log in";
+ 
         $.ajax({
             type: "POST",
             url: base_url + "/ajax-request-redirect",
@@ -117,6 +147,8 @@ $(document).ready(function(){
             dataType : "JSON",
             success: function (response) {
                window.location.href = response['url'];
+            
+            
             }
         });
     })
@@ -137,11 +169,11 @@ $(document).ready(function(){
                     //for each element do
                     let len = response.length;
                     for(var i=0;i<len;i++){
-                    let request = $("<div></div>").addClass("request");
+                    let request = $("<div></div>").addClass("request").attr("id",response[i].id);
                     let request_user = $("<div></div>").addClass("request-user");
                     let request_image = $("<img/>").attr("src", response[i].image);//response[i].image response['image']
                     let request_name = $("<span></span>").text(response[i].name);//response[i].name response['name']
-
+                    
                     request_user.append(request_image).append(request_name);
 
                     let request_buttons = $("<div></div>").addClass("request-buttons");
@@ -149,11 +181,16 @@ $(document).ready(function(){
                         type : 'button',
                         value : 'Accept'
                     }).addClass("request-accept");
+                    
+                   
 
                     let decline = $("<input/>").attr({
                         type : 'button',
                         value : 'Decline'
                     }).addClass("request-decline");
+                    
+                    
+                    
 
                     request_buttons.append(accept).append(decline);
 
@@ -167,21 +204,53 @@ $(document).ready(function(){
 
     setInterval(function(){
         //To implement:
-        //checkFriendRequests();
+        checkFriendRequests();
     }, 5000);
 
     //Notification request accept/decline
 
     $(".request-accept").click(function() {
         //Write code here
+        let chosen_option = $(this).parent().parent().attr('id'); 
+        
+        $.ajax({
+            context:this,
+            type: "POST",
+            url: base_url + "/ajax-request-accept",
+            data: {
+                option : chosen_option
+            },
+            dataType : "JSON",
+            success: function (response) {
+               //window.location.href = response['url'];
+               $(this).parent().parent().remove();
 
+            
+            }
+        });
         //Delete request from dropdown
-        $(this).parent().parent().remove();
+        //$(this).parent().parent().remove();
     });
 
     $(".request-decline").click(function() {
+        let chosen_option = $(this).parent().parent().attr('id'); 
+        $.ajax({
+            context:this,
+            type: "POST",
+            url: base_url + "/ajax-request-decline",
+            data: {
+                option : chosen_option
+            },
+            dataType : "JSON",
+            success: function (response) {
+               //window.location.href = response['url'];
+               $(this).parent().parent().remove();
+
+            
+            }
+        });
         //Write code here
-        $(this).parent().parent().remove();
+        //$(this).parent().parent().remove();
     });
 
     
@@ -200,8 +269,6 @@ $(document).ready(function(){
     $(".option").click(function(){
         
         let option = $(this).find("span").text().toLowerCase();
-
-        option = "student-" + option;
         
         $.ajax({
             type: "POST",
@@ -211,7 +278,11 @@ $(document).ready(function(){
             },
             dataType : "JSON",
             success: function (response) {
-               window.location.href = response['url'];
+                  window.location.href = response['url'];
+                       
+            },
+            error: function (){
+                alert("greska");
             }
         });
     })

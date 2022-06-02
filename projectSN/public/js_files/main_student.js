@@ -1,9 +1,24 @@
+
+
 $(document).ready(function(){
+    
+       
+    
     $("#input-message").keypress(function(e){
+        
         if(e.which ==13){
            
-           
-           let text = $("#input-message").val();     
+            $.ajax({
+                url:"http://localhost:8080/LogIn/ajaxGetKorInfo",
+                type:"POST",
+                dataType:"JSON",
+                success: function (response){
+                   idkor= response['idkor'];
+                }
+            })
+            
+            
+            let text = $("#input-message").val();     
            if(text.length<=1){
                 $("#input-message").val("");
                 return;}
@@ -15,8 +30,36 @@ $(document).ready(function(){
                message.append(img);
             message.append(message_box);
                 
+           
+            //ovde treba da se loaduje friend lista
+            
+            
+               
+                
+                $.ajax({
+                    url:"http://localhost:8080/Chet/ajaxSendMyTextToGroup",
+                    type:"POST",
+                     data : {
+                         korID:idkor,
+                         text: text
+                     },                   
+                    dataType:"JSON",
+                    success: function (response){
+                      
+                          
+                        
+                    },
+                    error:function (){
+                        
+                        alert("greska");
+                    }
+                    
+                });
+            
+           
             $(".message-scroll").prepend(message);     
             $("#input-message").val("");
+            
                 
                 
             
@@ -80,6 +123,7 @@ $(document).ready(function(){
             dataType : "JSON",
             success: function (response) {
                window.location.href = response['url'];
+               //mora id da se prosledi
             }
         });
     })

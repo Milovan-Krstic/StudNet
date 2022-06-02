@@ -55,7 +55,7 @@ class Chet extends BaseController{
         $mysm=$mysm[0];
         $clsModel = new ClassModel();
         $mycl = $clsModel->where('IdSmr',$mysm->IdSmr)->where("Name",$class)->find();
-            $idC=$mycl[0]->idC;
+        $idC=$mycl[0]->idC;
    
         $db= \Config\Database::connect();
         $query = $db->query("SELECT * FROM chet_rooms 

@@ -233,7 +233,9 @@ $(document).ready(function(){
                if(test!==null){
                    
                  let get =$(".subject.active li.clicked");
-                   
+                
+          
+                   if(get.length<1)return;
                   $.ajax({
                         url:"http://localhost:8080/Chet/ajaxGetChats",
                           data:{
@@ -243,7 +245,7 @@ $(document).ready(function(){
                          dataType:"JSON",
                                     
                        success: function (response){
-                            
+                         
                            let myId= response['myID'];
                            let messages = $(".message-box span").first();
                            let messArr= response['message'].slice(newCurrentLoadedMessages+1);
@@ -286,7 +288,7 @@ $(document).ready(function(){
                    
                }
 
-        },500);
+        },700);
     
     
     
@@ -363,7 +365,7 @@ $(document).ready(function(){
                message.append(img);
             message.append(message_box);
                 
-           
+          
             
             
                 let clas = $("ul.active.subject li.clicked").text();
@@ -384,7 +386,7 @@ $(document).ready(function(){
                     dataType:"JSON",
                     success: function (response){
                       
-                          
+                          newCurrentLoadedMessages++;
                         
                     },
                     error:function (){

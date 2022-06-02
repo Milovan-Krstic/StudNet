@@ -108,5 +108,10 @@ class LogIn extends BaseController
         $user= $usermodel->where("IdStud",$kor->IdKor)->find();
          return json_encode(['kor'=>$kor,'student'=>$user[0]]);
     }
-    
+    public function ajaxGetAdmin() {
+        $kor = $_SESSION['logedinAdmin'];
+        $usermodel = new AdminModel();
+        $user= $usermodel->where("idAdmin",$kor->idAdmin)->find();
+         return json_encode(['admin'=>$user[0]]);
+    }
 }

@@ -321,7 +321,7 @@ $(document).ready(function(){
                                             
                                         })
                                $("#course").click();   
-                              
+               $(".subject").first().find("li").first().parent().prev().click();
                 $(".subject").first().find("li").first().click();
                 localStorage.setItem("lastSelCls",JSON.stringify(lastSelectedClass));
                 },1000)

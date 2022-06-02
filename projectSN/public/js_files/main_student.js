@@ -234,7 +234,7 @@ $(document).ready(function(){
                    
                  let get =$(".subject.active li.clicked");
                 
-          
+                 
                    if(get.length<1)return;
                   $.ajax({
                         url:"http://localhost:8080/Chet/ajaxGetChats",

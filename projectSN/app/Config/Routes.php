@@ -45,12 +45,17 @@ $routes->get('/student-profile', 'Student::profile');
 $routes->get('/student-view', 'Student::view_user');
 $routes->get('/logout', 'LogIn::index');
 $routes->get('/moderator-main', 'Moderator::main');
+
+$routes->get('/moderator-profile', 'Moderator::profile');
+
 $routes->post('/ajax-request-register-student', 'Guest::ajaxRequestRegisterStudent');
 $routes->post('/ajax-request-register-moderator', 'Guest::ajaxRequestRegisterModerator');
 $routes->post('/ajax-request-register-university', 'Guest::ajaxRequestRegisterUniversity');
 $routes->post('/ajax-request-register-advertiser', 'Guest::ajaxRequestRegisterAdvertiser');
 $routes->post('/ajax-request-redirect', 'Guest::ajaxRequestRedirect');
+
 $routes->post('/ajax-request-AdminHome', 'Admin::ajax_request_AdminHome');
+
 $routes->post('/loginSubmit', 'LogIn::loginSubmit');
 $routes->get('/loginSubmit', 'LogIn::loginSubmit');
 $routes->post('/ajax-request-search-user', 'Student::ajax_request_search_user');

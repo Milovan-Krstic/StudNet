@@ -1,3 +1,9 @@
+/*
+    author Djordje Popara 2019/0460
+
+    Student header style
+ */
+
 @font-face {
     font-family: roboto-regular;
     src: url("../fonts/Roboto-Regular.ttf");
@@ -101,6 +107,8 @@
     justify-content: flex-start;
 
     position: relative;
+    
+
 }
 
 .user {
@@ -118,7 +126,9 @@
 .user img {
     width: 40px;
     height: auto;
+    border-radius: 100%;
 }
+
 .user .user-info {
     margin-left: 10px;
     margin-right: 10px;
@@ -138,11 +148,11 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    
+
     z-index: 2;
     margin-right: 18px;
     margin-left: 10px;
-    
+
 }
 
 .userAdmin img {
@@ -156,7 +166,6 @@
     margin-left: 10px;
     margin-right: 10px;
     font-size: 14px;
-    color: #444444;
 }
 
 #header-name {

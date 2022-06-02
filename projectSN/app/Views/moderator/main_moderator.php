@@ -217,4 +217,16 @@
     </div>
 </div>
 
+<div class="popup-background">
+    <div class="popup-container">
+        <input type="text" name="" id="reason" placeholder="Reason" maxlength="20">
+        <input type="number" name="" id="penalty-points" placeholder="Penalty points - use arrows" min="1" max="5">
+
+        <div class="buttons">
+            <input type="button" id="confirm" value="Confirm" disabled = "true">
+            <input type="button" id="discard" value="Discard">
+        </div>
+    </div>
+</div>
+
 <?= script_tag('js_files/main_moderator.js') ?>

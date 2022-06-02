@@ -1,10 +1,6 @@
-
-
-        
-
-  <?= link_tag('css_files/AdminStyles.css')?>
-   <?= link_tag('css_files/buttons.css')?>
-   <?= link_tag('css_files/AdminPosCenter.css')?>
+    <?= link_tag('css_files/AdminStyles.css')?>
+    <?= link_tag('css_files/buttons.css')?>
+    <?= link_tag('css_files/AdminPosCenter.css')?>
 
     <div class="content">
         <div class="container">

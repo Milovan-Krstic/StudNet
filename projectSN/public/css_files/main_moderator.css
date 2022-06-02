@@ -1,3 +1,9 @@
+/*
+    author Djordje Popara 2019/0460
+
+    Moderator main page style
+ */
+
 html, body {
     height: 100%;
     width: 100%;
@@ -161,6 +167,8 @@ html, body {
     flex-direction:column-reverse;
     overflow-y: scroll;
     max-height: 670px;
+
+    height: 670px;
 }
 
 .message-scroll::-webkit-scrollbar,
@@ -208,6 +216,7 @@ html, body {
 
 .message img{
     width: 36px;
+    border-radius: 100%;
 }
 
 .message.right img {
@@ -262,6 +271,7 @@ html, body {
 .right-part .report img,
 .center-part .report img {
     width: 36px;
+    border-radius: 100%;
 }
 
 .right-part .report {
@@ -357,21 +367,171 @@ svg .close:hover {
 
 
 #context-menu {
-    position: absolute;
+    position: fixed;
     z-index: 10;
 
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     
     background-color: #FCFCFC;
     
 
-    color: #D6D6D6;
+    color: #c6c6c6;
+    font-size: 12px;
 
-    width: 100px;
-    height: 100px;
+    
+    border-radius: 8px;
+
+    box-shadow: -10px 0px 20px rgba(64, 64, 64, 0.1);
+
+    transform: scale(0);
+    transform-origin: top left;
+}
+
+#context-menu.active {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
 }
 
 #context-menu img {
-    width: 20px;
+    width: 12px;
+}
+
+#context-menu span {
+    margin-left: 10px;
+}
+
+#penalty,
+#delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px;
+
+    transition: all 0.4s ease;
+
+    cursor: pointer;
+}
+
+#penalty {
+    border-radius: 8px 8px 0px 0px;
+}
+
+#delete {
+    border-radius: 0px 0px 8px 8px;
+}
+
+#penalty:hover,
+#delete:hover {
+    background-color: hsla(0, 0%, 27%, 0.02);
+
+    color: #b6b6b6;
+}
+
+/* Penalty popup */
+
+.popup-background {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000051;
+    visibility: hidden;
+    opacity: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: visibility 0s, opacity 0.4s;
+}
+
+.popup-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-container {
+    height: auto;
+    
+    background-color: #FCFCFC;
+
+    box-shadow: 0px 0px 20px rgba(64, 64, 64, 0.1);
+
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    margin-top: 20px;
+}
+
+.popup-container input[type=text],
+.popup-container input[type=number] {
+    background-color: #F0F5F5;
+    outline: none;
+
+    border-radius: 8px;
+
+    border: 1px solid #E6E6E6;
+
+    margin-bottom: 20px;
+
+    padding-left: 10px;
+
+    font-size: 14px;
+
+    height: 40px;
+    width: 200px;
+}
+
+.popup-container input[type=button] {
+    outline: none;
+
+    border: 0px;
+
+    border-radius: 8px;
+
+    color: #FCFCFC;
+
+    height: 40px;
+    width: 47%;
+
+    box-shadow: 0px 0px 10px rgba(64, 64, 64, 0.1);
+}
+
+#confirm {
+    background-color: #67DBB8;
+    transition: background-color 0.4s ease;
+}
+
+#confirm:hover {
+    background-color: hsl(162, 62%, 68%);
+}
+
+#confirm:disabled {
+    background-color: #d6d6d6;
+    transition: background-color 0.4s ease;
+}
+
+#discard {
+    background-color: #EE5253;
+    transition: background-color 0.4s ease;
+}
+
+#discard:hover {
+    background-color: hsl(360, 82%, 68%);
 }

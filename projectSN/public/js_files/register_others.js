@@ -1,3 +1,8 @@
+/**
+ * @author Djordje Popara 2019-0460
+ * @category Register
+ */
+
 $(document).ready(function() {
 
     $(".button-university").click(function(){

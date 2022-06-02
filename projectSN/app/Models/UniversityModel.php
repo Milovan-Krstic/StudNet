@@ -15,7 +15,7 @@ class UniversityModel extends Model {
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['IdUni', 'Name', 'Date_of_est', 'Country', 'E-mail', 'Sertifikat'];
+    protected $allowedFields = ['IdUni', 'Sertifikat'];
 
     /*
     

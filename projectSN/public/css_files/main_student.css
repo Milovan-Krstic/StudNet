@@ -1,3 +1,9 @@
+/*
+    author Djordje Popara 2019/0460
+
+    Student main page style
+ */
+
 html, body {
     height: 100%;
     width: 100%;
@@ -212,8 +218,9 @@ html, body {
     flex-direction:column-reverse;
     overflow-y: scroll;
     max-height: 670px;
-    height:670px;
-    
+
+    height: 670px;
+
 }
 
 .message-scroll::-webkit-scrollbar,
@@ -261,6 +268,7 @@ html, body {
 
 .message img{
     width: 36px;
+    border-radius: 100%;
 }
 
 .message.right img {
@@ -404,6 +412,7 @@ html, body {
 .right-part .friend img,
 .center-part .friend img {
     width: 36px;
+    border-radius: 100%;
 }
 
 .right-part .friend {
@@ -440,7 +449,6 @@ html, body {
 hr {
     margin-top: 20px;
 }
-
 
 .friend-chat {
     padding-left: 15px;
@@ -610,5 +618,4 @@ svg .close:hover {
     font-size: 16px;
     font-family: roboto-regular;
     color:#444444;
-
 }

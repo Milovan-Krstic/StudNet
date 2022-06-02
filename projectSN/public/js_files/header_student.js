@@ -1,33 +1,29 @@
+/**
+ * @author Djordje Popara 2019-0460
+ * @category Student
+ */
+
 $(document).ready(function(){
-
-
     
+    /**
+     * ajax request - backend team (Milovan & Mladen)
+     * lines 12-26
+     */
+    $.ajax({
+        url:"http://localhost:8080/LogIn/ajaxGetStud",
+        type:"POST",
+        dataType:"JSON",
+        success: function (response){
+            let tex= response['kor'].Ime;
+            let prezime =response['kor'].Prezime;
 
-   
-          
-               $.ajax({
-                   url:"http://localhost:8080/LogIn/ajaxGetStud",
-                   type:"POST",
-                   dataType:"JSON",
-                   success: function (response){
-                       let tex= response['kor'].Ime;
-                       let prezime =response['kor'].Prezime;
-                       
-                       let input =tex+" "+prezime;
-                       $("#header-name").text(input);
-                       let index=response['student'].IdGod+"/0"+response['student'].IdNum;
-                       
-                       $("#header-index").text(index);
-                    }
-                    
-                   
-               })
-       
+            let input =tex+" "+prezime;
+            $("#header-name").text(input);
+            let index=response['student'].IdGod+"/0"+response['student'].IdNum;
 
-
-
-
-
+            $("#header-index").text(index);
+         }
+    });
 
     //Header animations
     $(".notifications img").click(function(){
@@ -140,8 +136,6 @@ $(document).ready(function(){
         }
     });
 
-
-
     //Notifications refresh
 
     function checkFriendRequests() {
@@ -219,9 +213,10 @@ $(document).ready(function(){
     $(".option").click(function(){
         
         let option = $(this).find("span").text().toLowerCase();
-        if(option!="log out")
-          option = "student-" + option;
-         else option = "";
+
+        if(option == "log out") option = "";
+        else option = "student-" + option;
+
         $.ajax({
             type: "POST",
             url: base_url + "/ajax-request-redirect",
@@ -230,11 +225,7 @@ $(document).ready(function(){
             },
             dataType : "JSON",
             success: function (response) {
-                  window.location.href = response['url'];
-                       
-            },
-            error: function (){
-                alert("greska");
+               window.location.href = response['url'];
             }
         });
     })

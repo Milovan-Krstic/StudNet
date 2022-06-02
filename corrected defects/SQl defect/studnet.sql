@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 30, 2022 at 02:54 PM
+-- Generation Time: Jun 01, 2022 at 10:21 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -36,7 +36,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `PASSWORD` varchar(30) DEFAULT NULL,
   `img` longblob,
   PRIMARY KEY (`idAdmin`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`idAdmin`, `name`, `surname`, `username`, `PASSWORD`, `img`) VALUES
+(1, 'Petar', 'Petrovic', 'root', '123', NULL);
 
 -- --------------------------------------------------------
 
@@ -56,13 +63,29 @@ CREATE TABLE IF NOT EXISTS `chet_rooms` (
   `PDF` longblob,
   `IMG` longblob,
   `LinkTag` tinyint(4) DEFAULT NULL,
+  `time_send` time DEFAULT NULL,
+  `seen` int(11) DEFAULT '0',
   PRIMARY KEY (`IdCh`),
   KEY `FK_IdS_C_idx` (`IdSm`),
   KEY `FK_idP_C_idx` (`IdCl`),
   KEY `FK_idPT_C_idx` (`IdClTag`),
   KEY `FK_IdKOd_idx` (`IdKor_OD`),
   KEY `FK_IdKKa_C_idx` (`IdKor_KA`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `chet_rooms`
+--
+
+INSERT INTO `chet_rooms` (`IdCh`, `IdSm`, `IdCl`, `IdClTag`, `IdKor_OD`, `IdKor_KA`, `Text`, `PDF`, `IMG`, `LinkTag`, `time_send`, `seen`) VALUES
+(2, NULL, 1, NULL, 3, NULL, '23\n', NULL, NULL, NULL, NULL, 0),
+(3, NULL, 4, NULL, 3, NULL, 'hello\n', NULL, NULL, NULL, NULL, 0),
+(4, NULL, 1, NULL, 3, NULL, '123\n', NULL, NULL, NULL, NULL, 0),
+(5, NULL, 3, NULL, 3, NULL, 'zdravo \n', NULL, NULL, NULL, NULL, 0),
+(6, NULL, 1, NULL, 3, NULL, 'nesto', NULL, NULL, NULL, NULL, 0),
+(9, NULL, 3, NULL, 3, NULL, 'nesto', NULL, NULL, NULL, NULL, 0),
+(10, NULL, NULL, NULL, 3, NULL, 'djole popara je car', NULL, NULL, NULL, NULL, 0),
+(11, NULL, NULL, NULL, 16, NULL, 'nikola legija', NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -73,11 +96,22 @@ CREATE TABLE IF NOT EXISTS `chet_rooms` (
 DROP TABLE IF EXISTS `classes`;
 CREATE TABLE IF NOT EXISTS `classes` (
   `idC` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(45) NOT NULL,
-  `IdSmr` int(11) NOT NULL,
+  `Name` varchar(45) DEFAULT NULL,
+  `IdSmr` int(11) DEFAULT NULL,
+  `semestar` int(4) DEFAULT NULL,
   PRIMARY KEY (`idC`),
   KEY `FK_IdS_Classes_idx` (`IdSmr`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`idC`, `Name`, `IdSmr`, `semestar`) VALUES
+(1, 'KDP', 1, 6),
+(2, 'PSI', 1, 6),
+(3, 'OS1', 1, 4),
+(4, 'RM2', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -92,7 +126,14 @@ CREATE TABLE IF NOT EXISTS `fakultet` (
   `IdUni` int(11) DEFAULT NULL,
   PRIMARY KEY (`IdF`),
   KEY `FK_IdUni_Fakultet` (`IdUni`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `fakultet`
+--
+
+INSERT INTO `fakultet` (`IdF`, `Name`, `IdUni`) VALUES
+(1, 'Elektrotehnicki fakultet', 15);
 
 -- --------------------------------------------------------
 
@@ -119,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `frindlist` (
 DROP TABLE IF EXISTS `korisnik`;
 CREATE TABLE IF NOT EXISTS `korisnik` (
   `IdKor` int(11) NOT NULL AUTO_INCREMENT,
-  `Ime` varchar(20) DEFAULT NULL,
+  `Ime` varchar(40) DEFAULT NULL,
   `Prezime` varchar(20) DEFAULT NULL,
   `Date_of_birth` date DEFAULT NULL,
   `Country` varchar(45) DEFAULT NULL,
@@ -128,16 +169,22 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
   `Password` varchar(45) DEFAULT NULL,
   `Last_login` datetime DEFAULT NULL,
   `img` longblob,
+  `Active` int(11) DEFAULT '0',
   PRIMARY KEY (`IdKor`),
   UNIQUE KEY `Username_UNIQUE` (`Username`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `korisnik`
 --
 
-INSERT INTO `korisnik` (`IdKor`, `Ime`, `Prezime`, `Date_of_birth`, `Country`, `E-mail`, `Username`, `Password`, `Last_login`, `img`) VALUES
-(15, 'EtfSeljaaas', NULL, NULL, 'Montenegro', 'EtfSelja2@gmail.com', 'EtfSelja2', NULL, NULL, NULL);
+INSERT INTO `korisnik` (`IdKor`, `Ime`, `Prezime`, `Date_of_birth`, `Country`, `E-mail`, `Username`, `Password`, `Last_login`, `img`, `Active`) VALUES
+(2, 'Djole', 'Popara', '2000-05-09', 'Serbia', 'poparaLegija23@yahoo.com', 'Poparino', 'vebdizajnko?', '2022-05-31 15:48:06', NULL, 0),
+(3, 'Nikola', 'uze', '2000-05-03', 'Serbia', 'Uze@gmail.com', 'nikola', '123', '2022-05-31 21:40:46', NULL, 0),
+(4, 'neko', 'neko', NULL, 'Serbia', NULL, 'mod', '123', '2022-05-31 22:16:48', NULL, 0),
+(5, 'rekl', 'rekl', NULL, NULL, NULL, 'rekl', '123', '2022-05-31 22:17:40', NULL, 0),
+(15, 'Univerzitet u Beogradu', NULL, NULL, 'Montenegro', 'BG@gmail.com', 'UniBg', '123', '2022-05-17 17:27:03', NULL, 0),
+(16, 'Misko ', 'Krstic', '2000-11-12', NULL, 'Marko@etf.com', 'milovan23', 'Gogle-12@', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -168,6 +215,13 @@ CREATE TABLE IF NOT EXISTS `moderator` (
   KEY `FK_IdF_Moderator_idx` (`IdFacM`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `moderator`
+--
+
+INSERT INTO `moderator` (`IdMod`, `IdFacM`) VALUES
+(4, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -180,6 +234,13 @@ CREATE TABLE IF NOT EXISTS `reklamer` (
   `num_of_ads` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`IdRek`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `reklamer`
+--
+
+INSERT INTO `reklamer` (`IdRek`, `num_of_ads`) VALUES
+(5, 10);
 
 -- --------------------------------------------------------
 
@@ -209,7 +270,14 @@ CREATE TABLE IF NOT EXISTS `smerovi` (
   `IdFak` int(11) NOT NULL,
   PRIMARY KEY (`IdSmr`),
   KEY `FK_IdF_Smerovi_idx` (`IdFak`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `smerovi`
+--
+
+INSERT INTO `smerovi` (`IdSmr`, `Name`, `Num_of_class`, `IdFak`) VALUES
+(1, 'SI', 50, 1);
 
 -- --------------------------------------------------------
 
@@ -227,6 +295,15 @@ CREATE TABLE IF NOT EXISTS `student` (
   `IdStud` int(11) NOT NULL,
   PRIMARY KEY (`IdStud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`Faculty`, `Course`, `IdGod`, `IdNum`, `Penalty_points`, `IdStud`) VALUES
+('Elektrotehnicki fakultet', 'SI', 2019, 456, 0, 2),
+('Elektrotehnicki fakultet', 'SI', 2019, 556, 0, 3),
+('Elektrotehnicki fakultet', 'SI', 2019, 709, 0, 16);
 
 -- --------------------------------------------------------
 

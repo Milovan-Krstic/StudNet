@@ -154,6 +154,23 @@ $(document).ready(function(){
             },
             dataType : "JSON",
             success: function (response) {
+                
+                let naziv = response['Ime']+" "+response['Prezime'];
+                
+                window.localStorage.setItem("Naziv",naziv);
+                window.localStorage.setItem("Faculty",response['Faculty']);
+                window.localStorage.setItem("Course",response['Course']);                                
+                window.localStorage.setItem("Email",response['Email']);
+                
+                let indeks = response['IdGod']+"/"+response['IdNum'];
+                
+                window.localStorage.setItem("Indeks",indeks);
+                window.localStorage.setItem("Friends",response['Friends']);
+
+
+
+                
+                
                window.location.href = response['url'];
                //mora id da se prosledi
             }

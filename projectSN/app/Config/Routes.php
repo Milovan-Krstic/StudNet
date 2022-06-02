@@ -51,6 +51,11 @@ $routes->post('/ajax-request-check-requests', 'Student::ajaxRequestCheckRequests
 $routes->post('/ajax-request-accept', 'Student::ajaxRequestAccept');
 $routes->post('/ajax-request-decline', 'Student::ajaxRequestDecline');
 
+$routes->post('/ajax-friend-view', 'Student::ajaxFriendView');
+
+
+$routes->post('/ajax-request-get-all-friends', 'Student::ajaxRequestGetAllFriends');
+
 
 $routes->post('/loginSubmit', 'LogIn::loginSubmit');
 $routes->get('/loginSubmit', 'LogIn::loginSubmit');

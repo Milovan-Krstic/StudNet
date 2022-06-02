@@ -14,7 +14,7 @@ class StudentModel extends Model
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['IdStu', 'Faculty', 'Course', 'IdGod', 'IdNum', 'Penalty_points'];
+    protected $allowedFields = ['IdStud', 'Faculty', 'Course', 'IdGod', 'IdNum', 'Penalty_points'];
 
     /*
     

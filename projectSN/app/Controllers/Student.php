@@ -47,7 +47,7 @@ class Student extends BaseController
         $user = $_SESSION['logedinUsers'];
         $id = $user->idKor;
         
-        $allFriends = $friendsModel->findAllFriendRequests($id);
+        $allFriends = $friendsModel->getAllFriendRequests($id);
         
         $result = array();
         $userModel = new UserModel();
@@ -111,5 +111,60 @@ class Student extends BaseController
       
       $friendlist->delete($friendlist_id[0]->IdFL);
 
+    }
+    
+    public function ajaxRequestGetAllFriends(){
+        $student  = $_SESSION['logedinUsers'];
+        $student_id= $student->idKor;
+      
+      
+      
+        $friendsModel = new FriendlistModel();
+        
+        $allFriends = $friendsModel->getAllFriends($student_id);
+        
+        $result = array();
+        $userModel = new UserModel();
+
+        foreach($allFriends as $friend){
+            $my_Friend_Id = $friend->IdF;
+            $userFriend = $userModel->where('IdKor',$my_Friend_Id)->find();
+            $userFriendName = $userFriend->getIme();
+            $userFriendImg = $userFriend->getImg();
+            
+            $result[] = array("name" => $userFriendName,"image"=>$userFriendImg,"id"=>$my_Friend_Id);
+        }
+        
+        
+        echo json_encode($result);
+    }
+    
+    public function ajaxFriendView(){
+        $data = $this->request->getVar();
+        
+        $friend_id = $data['id'];
+        
+        $userModel = new UserModel();
+        $studentModel = new StudentModel();
+        
+        $friend=$userModel->where('IdKor',$friend_id)->find();
+        $student_friend = $studentModel->where('IdStud',$friend_id)->find();
+        
+        
+        
+        
+        
+        echo json_encode([
+            "url"=>base_url($data['page']),
+            "Ime"=>$friend[0]->Ime,
+            "Prezime"=>$friend[0]->Prezime,
+            "Country"=>$friend[0]->Country,
+            "Email"=>$friend[0]->Email,
+            "Faculty"=>$student_friend[0]->Faculty,
+            "Course"=>$$student_friend[0]->Course,
+            "IdNum"=>$student_friend[0]->IdNum,
+            "IdGod"=>$student_friend[0]->IdGod,
+            "Friends"=>1
+        ]);
     }
 }

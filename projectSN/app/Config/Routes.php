@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'LogIn::index');
 $routes->get('/index', 'LogIn::index');
+$routes->get('/register-student', 'Guest::index');
 $routes->get('/register-moderator', 'Guest::register_moderator');
 $routes->get('/register-others', 'Guest::register_others');
 $routes->get('/register-university', 'Guest::register_university');
@@ -58,7 +59,13 @@ $routes->post('/ajax-request-AdminHome', 'Admin::ajax_request_AdminHome');
 
 $routes->post('/loginSubmit', 'LogIn::loginSubmit');
 $routes->get('/loginSubmit', 'LogIn::loginSubmit');
+
+$routes->get('/university-main', 'Univerzitet::index');
+$routes->get('/admin-main', 'Admin::index');
+
+
 $routes->post('/ajax-request-search-user', 'Student::ajax_request_search_user');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

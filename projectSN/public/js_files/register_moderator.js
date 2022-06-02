@@ -13,6 +13,7 @@ $(document).ready(function() {
     let course_dropdown = $("[name='s3']");
     
     let IdUnii;
+ 
     $.ajax({
         url : "http://localhost:8080/Univerzitet/ajaxRequestUni",
         type : "POST",

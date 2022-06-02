@@ -31,6 +31,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
 $routes->get('/', 'LogIn::index');
 $routes->get('/index', 'LogIn::index');
 $routes->get('/register-moderator', 'Guest::register_moderator');
@@ -44,6 +45,7 @@ $routes->get('/student-profile', 'Student::profile');
 $routes->get('/student-view', 'Student::view_user');
 $routes->get('/logout', 'LogIn::index');
 $routes->get('/moderator-main', 'Moderator::main');
+
 $routes->get('/moderator-profile', 'Moderator::profile');
 
 $routes->post('/ajax-request-register-student', 'Guest::ajaxRequestRegisterStudent');
@@ -54,8 +56,6 @@ $routes->post('/ajax-request-redirect', 'Guest::ajaxRequestRedirect');
 
 $routes->post('/loginSubmit', 'LogIn::loginSubmit');
 $routes->get('/loginSubmit', 'LogIn::loginSubmit');
-
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing

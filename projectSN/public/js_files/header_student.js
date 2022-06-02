@@ -202,9 +202,10 @@ $(document).ready(function(){
     $(".option").click(function(){
         
         let option = $(this).find("span").text().toLowerCase();
+
         if(option == "log out") option = "";
         else option = "student-" + option;
-        
+
         $.ajax({
             type: "POST",
             url: base_url + "/ajax-request-redirect",

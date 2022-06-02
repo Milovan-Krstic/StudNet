@@ -6,23 +6,12 @@
             <span>Subjects</span>
             <hr>
             <div class="subjects">
-                <span>#Elektrotehnicki Fakultet</span>
+                
                 
                 <ul class="course">
-                    <li id="course">#Software Engineering</li>
+                  
                     <ul class="semester">
-                        <li class="semester-name">#Second semester</li>
-                        <ul class="subject">
-                            <li>#Sub1</li>
-                            <li>#Sub2</li>
-                            <li>#Sub3</li>
-                        </ul>
-                        <li class="semester-name">#First semester</li>
-                        <ul class="subject">
-                            <li>#Sub1</li>
-                            <li>#Sub2</li>
-                            <li>#Sub3</li>
-                        </ul>
+                        
                     </ul>
                 <ul>
             </div>
@@ -97,7 +86,7 @@
                             <span>Poslednja poruka</span>
                         </div>
                     </div>
-
+               
                     <div class="message right">
                         <img src="images/StudNet Square.svg" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
@@ -111,32 +100,20 @@
                             <span>fafsdfdgsdf</span>
                         </div>
                     </div>
-
+                 
                     <div class="message right">
                         <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
+                            <span>helo poruka</span>
                         </div>
                     </div>
+                    
+                   
 
                     <div class="message left">
                         <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-                        </div>
-                    </div>
-
-                    <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
-                        </div>
-                    </div>
-
-                    <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
@@ -150,7 +127,7 @@
                     <div class="message left">
                         <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaagdggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
@@ -164,7 +141,21 @@
                     <div class="message left">
                         <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+                            <span>Aaaaaaaaaaaaaaaaaagdgggaaaaaaaaaaaa</span>
+                        </div>
+                    </div>
+
+                    <div class="message right">
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <div class="message-box"> <!--.message-left .message-right -->
+                            <span>fafsdfdgsdf</span>
+                        </div>
+                    </div>
+
+                    <div class="message left">
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <div class="message-box"> <!--.message-left .message-right -->
+                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
@@ -177,7 +168,7 @@
                     <div class="message left">
                         <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
@@ -289,3 +280,4 @@
 </div>
 
 <?= script_tag('js_files/main_student.js') ?>
+

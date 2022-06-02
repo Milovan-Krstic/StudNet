@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\FriendlistModel;
 use App\Models\UserModel;
 use App\Models\StudentModel;
+
+
+
 
 class Student extends BaseController
 {
@@ -42,6 +46,7 @@ class Student extends BaseController
     {
         return $this->show('calendar_student', 'header_student_options');
     }
+
     public function ajaxRequestCheckRequests(){
         $friendsModel = new FriendlistModel();
         
@@ -186,4 +191,5 @@ class Student extends BaseController
         
         
     }
+
 }

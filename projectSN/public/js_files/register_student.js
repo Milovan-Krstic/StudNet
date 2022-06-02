@@ -274,7 +274,7 @@ $(document).ready(function() {
             type: "POST",
             url: base_url + "/ajax-request-redirect",
             data: {
-                page : "register_others"
+                page : "register-others"
             },
             dataType : "JSON",
             success: function (response) {

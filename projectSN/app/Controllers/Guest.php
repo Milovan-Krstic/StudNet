@@ -42,17 +42,19 @@ class Guest extends BaseController
         return $this->show('register_advertiser');
     }
     
-    public function ajaxRequestRedirect(){
+       public function ajaxRequestRedirect(){
        $data = $this->request->getVar();
-
-       if($data['page']=='log out'){
+       if($data['page']==""){
            $this->session->destroy();
         echo json_encode([
-            "url" => base_url("/")
+            "url" => base_url()
         ]);
+       }else{
+              echo json_encode([
+            "url" => base_url($data['page'])
+                  ]);
        }
      
-
     }
     
     public function ajaxRequestRegisterStudent() {

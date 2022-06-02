@@ -129,29 +129,7 @@ $(document).ready(function(){
         }
     });
 
-    //Options navigation
 
-    $(".option").click(function(){
-        let chosen_option = $(".option span").text();
-        if(chosen_option == "Advertisement") chosen_option = "advertiser";
-        else if(chosen_option == "Timer") chosen_option = "student_timer";
-        else if(chosen_option == "Plans") chosen_option = "student_plans";
-        else chosen_option = "log in";
- 
-        $.ajax({
-            type: "POST",
-            url: base_url + "/ajax-request-redirect",
-            data: {
-                option : chosen_option
-            },
-            dataType : "JSON",
-            success: function (response) {
-               window.location.href = response['url'];
-            
-            
-            }
-        });
-    })
 
     //Notifications refresh
 
@@ -269,7 +247,9 @@ $(document).ready(function(){
     $(".option").click(function(){
         
         let option = $(this).find("span").text().toLowerCase();
-        
+        if(option!="log out")
+          option = "student-" + option;
+         else option = "";
         $.ajax({
             type: "POST",
             url: base_url + "/ajax-request-redirect",

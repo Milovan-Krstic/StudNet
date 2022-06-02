@@ -6,23 +6,12 @@
             <span>Subjects</span>
             <hr>
             <div class="subjects">
-                <span>#Elektrotehnicki Fakultet</span>
+                
                 
                 <ul class="course">
-                    <li id="course">#Software Engineering</li>
+                  
                     <ul class="semester">
-                        <li class="semester-name">#Second semester</li>
-                        <ul class="subject">
-                            <li>#Sub1</li>
-                            <li>#Sub2</li>
-                            <li>#Sub3</li>
-                        </ul>
-                        <li class="semester-name">#First semester</li>
-                        <ul class="subject">
-                            <li>#Sub1</li>
-                            <li>#Sub2</li>
-                            <li>#Sub3</li>
-                        </ul>
+                        
                     </ul>
                 <ul>
             </div>

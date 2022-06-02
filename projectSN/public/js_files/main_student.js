@@ -2,11 +2,204 @@
 
 $(document).ready(function(){
     
+    
+    $.ajax({
+        url:"http://localhost:8080/Chet/ajaxGetStudentSubjects",
+        type:'POST',
+        dataType:"JSON",
+        success: function (response){
+            
+              let facName = response['faculty'].Name;
+               
+             let span = $("<span></span>").text(facName);
+             $(".subjects").prepend(span);
+         
+            let course = $("<li></li>").attr("id","course").text("#"+response['course'].Name)
+                    .on("click",function(){
+                    $(this).toggleClass("clicked");
+                    $(".semester").toggleClass("active")
+            });
+            $(".course").prepend(course);
+            let li;
+            let semestarc = $(".semester");
+           for(let i =0;i<8;i++){
+               if(i==0){
+                li = $("<li></li>").addClass("semester-name")
+                        .on("click",function(){
+        if($(this).next().hasClass("active")) {
+            $(this).removeClass("clicked");
+            $(".subject").removeClass("active");
+        }
+        else {
+            $(".subject").removeClass("active");
+            $(".semester-name").removeClass("clicked");
+            $(this).next().toggleClass("active");
+            $(this).toggleClass("clicked");
+        }
+    }).text("#First semester");
+                }else if(i==1){
+                     li = $("<li></li>").addClass("semester-name") .on("click",function(){
+        if($(this).next().hasClass("active")) {
+            $(this).removeClass("clicked");
+            $(".subject").removeClass("active");
+        }
+        else {
+            $(".subject").removeClass("active");
+            $(".semester-name").removeClass("clicked");
+            $(this).next().toggleClass("active");
+            $(this).toggleClass("clicked");
+        }
+    }).text("#Second semester");
+                }else if(i==2){
+                     li = $("<li></li>").addClass("semester-name") .on("click",function(){
+        if($(this).next().hasClass("active")) {
+            $(this).removeClass("clicked");
+            $(".subject").removeClass("active");
+        }
+        else {
+            $(".subject").removeClass("active");
+            $(".semester-name").removeClass("clicked");
+            $(this).next().toggleClass("active");
+            $(this).toggleClass("clicked");
+        }
+    }).text("#Third semester");
+                }else if(i==3){
+                     li = $("<li></li>").addClass("semester-name") .on("click",function(){
+        if($(this).next().hasClass("active")) {
+            $(this).removeClass("clicked");
+            $(".subject").removeClass("active");
+        }
+        else {
+            $(".subject").removeClass("active");
+            $(".semester-name").removeClass("clicked");
+            $(this).next().toggleClass("active");
+            $(this).toggleClass("clicked");
+        }
+    }).text("#Fourth  semester");
+                 }else if(i==4){
+                     li = $("<li></li>").addClass("semester-name") .on("click",function(){
+        if($(this).next().hasClass("active")) {
+            $(this).removeClass("clicked");
+            $(".subject").removeClass("active");
+        }
+        else {
+            $(".subject").removeClass("active");
+            $(".semester-name").removeClass("clicked");
+            $(this).next().toggleClass("active");
+            $(this).toggleClass("clicked");
+        }
+    }).text("#Fifth semester");
+                }else if(i==5){
+                     li = $("<li></li>").addClass("semester-name") .on("click",function(){
+        if($(this).next().hasClass("active")) {
+            $(this).removeClass("clicked");
+            $(".subject").removeClass("active");
+        }
+        else {
+            $(".subject").removeClass("active");
+            $(".semester-name").removeClass("clicked");
+            $(this).next().toggleClass("active");
+            $(this).toggleClass("clicked");
+        }
+    }).text("#Sixth semester");
+                }else if(i==6){
+                     li = $("<li></li>").addClass("semester-name") .on("click",function(){
+        if($(this).next().hasClass("active")) {
+            $(this).removeClass("clicked");
+            $(".subject").removeClass("active");
+        }
+        else {
+            $(".subject").removeClass("active");
+            $(".semester-name").removeClass("clicked");
+            $(this).next().toggleClass("active");
+            $(this).toggleClass("clicked");
+        }
+    }).text("#Seventh semester");
+                }else if(i==7){
+                     li = $("<li></li>").addClass("semester-name") .on("click",function(){
+        if($(this).next().hasClass("active")) {
+            $(this).removeClass("clicked");
+            $(".subject").removeClass("active");
+        }
+        else {
+            $(".subject").removeClass("active");
+            $(".semester-name").removeClass("clicked");
+            $(this).next().toggleClass("active");
+            $(this).toggleClass("clicked");
+        }
+    }).text("#Eight semester");
+                }
+            let ul =$("<ul></ul>").addClass("subject");
+            $.each(response['classes'],function (index,value){
+                
+                   if(i+1==value.semestar){
+                       let l = $("<li></li>").text(value.Name).on(
+                              "click",function(){
+                                $(".subject li").removeClass("clicked");
+                                $(this).toggleClass("clicked");
+                                
+                                $.ajax({
+                                    
+                                    url:"http://localhost:8080/Chet/ajaxGetChats",
+                                    data:{
+                                        name:$(this).text()
+                                    },
+                                    type:"POST",
+                                    dataType:"JSON",
+                                    
+                                    success: function (response){
+                                      $.each(response['message'],function(index,value){
+                                          
+                                          alert(value.Text);
+                                          
+                                          
+                                          
+                                      })
+                                   }
+                                    
+                                    
+                                    
+                                })
+                                
+                                
+                                
+                                
+                                });
+                       ul.prepend(l);
+                }
+                
+
+
+               })
+            
+                semestarc.prepend(ul);
+                 semestarc.prepend(li);
+                
+            }
+            
+        },
+        error:function (){
+            alert("greska");
+        }
+    })
+    
+    
+    
+    
+    
+    
+    
+       
+       
+       
+       
        
     
     $("#input-message").keypress(function(e){
         
         if(e.which ==13){
+           
+            e.preventDefault();
            
             $.ajax({
                 url:"http://localhost:8080/LogIn/ajaxGetKorInfo",
@@ -33,15 +226,20 @@ $(document).ready(function(){
            
             
             
-            
-               
+                let clas = $("ul.active.subject li.clicked").text();
+                  
+                let today = new Date();
+                
+                var time =today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                 
                 $.ajax({
                     url:"http://localhost:8080/Chet/ajaxSendMyTextToGroup",
                     type:"POST",
                      data : {
                          korID:idkor,
-                         text: text
+                         text: text,
+                         class:clas,
+                         time:time
                      },                   
                     dataType:"JSON",
                     success: function (response){
@@ -67,7 +265,7 @@ $(document).ready(function(){
     })
     
     
-    $("#course").click(function(){
+    $("#course").on("click",function(){
         $(this).toggleClass("clicked");
         $(".semester").toggleClass("active");
     });

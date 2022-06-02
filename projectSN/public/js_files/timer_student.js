@@ -1,7 +1,16 @@
+/**
+ * @author Djordje Popara 2019-0460
+ * @category Student
+ */
+
 $(document).ready(function(){
 
     // Set timer
 
+    /**
+     * Increases hours or minutes
+     * @param  obj timer
+     */
     function increment(obj) {
         if(obj.hasClass("left")) {
             let hours = parseInt($("#hours").text());
@@ -21,6 +30,10 @@ $(document).ready(function(){
         }
     }
 
+    /**
+     * Decreases hours or minutes
+     * @param  obj timer
+     */
     function decrement(obj) {
         if(obj.hasClass("left")) {
             let hours = parseInt($("#hours").text());
@@ -42,6 +55,10 @@ $(document).ready(function(){
         }
     }
 
+    /**
+     * Mouseup - increases timer and enables/disables buttons
+     * Mousedown - increase stops
+     */
     $(".up svg")
     .on("mousedown", function(){
         timeoutID = setInterval(increment, 75, $(this));
@@ -60,6 +77,10 @@ $(document).ready(function(){
         }
     })
 
+    /**
+     * Mouseup - decreases timer and enables/disables buttons
+     * Mousedown - decrease stops
+     */
     $(".down svg")
     .on("mousedown", function(){
         timeoutID = setInterval(decrement, 75, $(this));
@@ -80,6 +101,10 @@ $(document).ready(function(){
 
     // Start timer
 
+    /**
+     * Counts time, updates timer
+     * @param  time 
+     */
     function timer(time) {
         time.t--;
 
@@ -116,6 +141,9 @@ $(document).ready(function(){
         }
     }
 
+    /**
+     * Starts timer, disables arrows
+     */
     $("#start").click(function() {
         let minutes = parseInt($("#minutes").text());
         let hours = parseInt($("#hours").text());
@@ -137,8 +165,9 @@ $(document).ready(function(){
         $("#message").text("Focus on studying...");
     })
 
-    // Reset timer
-
+    /**
+     * Resets timer
+     */
     $("#reset").click(function(){
         $("#minutes").text("00");
         $("#hours").text("00");
@@ -151,8 +180,9 @@ $(document).ready(function(){
         $("#message").text("Please set up the time");
     })
 
-    // Stop timer
-
+    /**
+     * Stops timer, enables timer change and arrows
+     */
     $("#stop").click(function(){
         clearInterval(timeout);
 

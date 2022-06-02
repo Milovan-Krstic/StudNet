@@ -1,3 +1,8 @@
+/**
+ * @author Djordje Popara 2019-0460
+ * @category Moderator
+ */
+
 $(document).ready(function(){
     
     $("#course").click(function(){
@@ -52,5 +57,71 @@ $(document).ready(function(){
             }
         });
     })  
+
+    // Context menu
+    var lastTarget;
+
+    $(".main")
+    .on("contextmenu", function(event){
+
+         lastTarget = $(event.target);
+
+        if($(event.target).hasClass("message-box")) {
+            event.preventDefault();
+
+            $("#context-menu").css("top", event.pageY + "px");
+            $("#context-menu").css("left", event.pageX + "px");
+
+            $("#context-menu").addClass("active");
+        }
+        else {
+            $("#context-menu").removeClass("active");
+        }
+    });
+
+    $(".main").click(function(){
+        $("#context-menu").removeClass("active");
+    })
+
+    // Context menu - delete
+
+    $("#delete").click(function(){
+        $("#context-menu").removeClass("active");
+        lastTarget.parent().remove();
+        //Remove message from database
+    })
+
+    // Context menu - penalty
+
+    $("#penalty").click(function(){
+        $("#context-menu").removeClass("active");
+        $(".popup-background").addClass("popup-active");
+    })
+
+    $("#discard").click(function() {
+        $(".popup-background").removeClass("popup-active");
+    })
+
+    $("#reason").on("keydown keyup", function(){
+        if($(this).val().length != 0 && $("#penalty-points").val().length != 0) {
+            $("#confirm").prop("disabled", "");
+        }
+        else {
+            $("#confirm").prop("disabled", "disabled");
+        }
+    })
+
+    $("#penalty-points")
+    .on("change", function(){
+        if($(this).val().length != 0 && $("#reason").val().length != 0) {
+            $("#confirm").prop("disabled", "");
+        }
+        else {
+            $("#confirm").prop("disabled", "disabled");
+        }
+    })
+    .on("keypress click", function(event){
+        event.preventDefault();
+    })
     
 });

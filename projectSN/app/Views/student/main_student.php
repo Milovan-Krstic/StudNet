@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
+                        <img src="images/StudNet Square.svg" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
                         </div>

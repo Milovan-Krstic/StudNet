@@ -44,6 +44,7 @@ $routes->get('/student-profile', 'Student::profile');
 $routes->get('/student-view', 'Student::view_user');
 
 $routes->get('/moderator-main', 'Moderator::main');
+$routes->get('/moderator-profile', 'Moderator::profile');
 
 $routes->post('/ajax-request-register-student', 'Guest::ajaxRequestRegisterStudent');
 $routes->post('/ajax-request-register-moderator', 'Guest::ajaxRequestRegisterModerator');

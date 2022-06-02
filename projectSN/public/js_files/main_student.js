@@ -344,14 +344,7 @@ $(document).ready(function(){
            
             e.preventDefault();
            
-            $.ajax({
-                url:"http://localhost:8080/LogIn/ajaxGetKorInfo",
-                type:"POST",
-                dataType:"JSON",
-                success: function (response){
-                   idkor= response['idkor'];
-                }
-            })
+           
             
             
             let text = $("#input-message").val();     
@@ -379,14 +372,14 @@ $(document).ready(function(){
                     url:"http://localhost:8080/Chet/ajaxSendMyTextToGroup",
                     type:"POST",
                      data : {
-                         korID:idkor,
+                     
                          text: text,
                          class:clas,
                          time:time
                      },                   
                     dataType:"JSON",
                     success: function (response){
-                      
+                        
                           newCurrentLoadedMessages++;
                         
                     },

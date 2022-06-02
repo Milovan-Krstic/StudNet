@@ -13,7 +13,7 @@ class ModeratorModel extends Model
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['IdStu', 'IdFacM'];
+    protected $allowedFields = ['IdMod', 'IdFacM'];
 
     /*
     

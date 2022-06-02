@@ -93,7 +93,6 @@ html, body {
 .semester-name.clicked,
 .subject li.clicked {
     color: #444444;
-    font-weight: bold;
 }
 
 .semester,
@@ -146,56 +145,6 @@ html, body {
 
 }
 
-.tags {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    overflow-x: hidden;
-    
-
-}
-
-.tags.hidden,
-.header-search.hidden {
-    display: none;
-}
-
-.tag {
-    background-color: transparent;
-    border: 1px solid #E6E6E6;
-    border-radius: 15px;
-
-    padding: 5px 15px 5px 15px;
-    
-
-    color: #BDBDBD;
-    font-family: roboto-light;
-    font-size: 14px;
-
-    margin-left: px;
-    margin-right: 10px;
-
-    transition: all 0.4s ease;
-
-    cursor: pointer;
-}
-
-.tag:hover {
-    border-color: #67DBB8;
-    color: #67DBB8;
-}
-
-.tag.active {
-    border-color: #67DBB8;
-    color: #67DBB8;
-}
-
-.center-part .header-search {
-    width: 280px;
-
-}
-
 /* Central part - Messages*/
 
 .center-chat {
@@ -215,25 +164,25 @@ html, body {
 }
 
 .message-scroll::-webkit-scrollbar,
-.friends-scroll::-webkit-scrollbar {
+.reports-scroll::-webkit-scrollbar {
     width: 6px;
 }
 
 .message-scroll::-webkit-scrollbar-track,
-.friends-scroll::-webkit-scrollbar-track {
+.reports-scroll::-webkit-scrollbar-track {
     border-radius: 25px;
     background: #E6E6E6;
 }
 
 .message-scroll::-webkit-scrollbar-thumb,
-.friends-scroll::-webkit-scrollbar-thumb {
+.reports-scroll::-webkit-scrollbar-thumb {
     border-radius: 25px;
     background: #bdbdbd7f;
     transition: 0.4s ease;
 }
 
 .message-scroll::-webkit-scrollbar-thumb:hover,
-.friends-scroll::-webkit-scrollbar-thumb:hover {
+.reports-scroll::-webkit-scrollbar-thumb:hover {
     border-radius: 25px;
     background: #BDBDBD;
 }
@@ -290,96 +239,7 @@ html, body {
     padding: 5px 15px 15px 15px;
     margin-right: 14px;
 }
-/* Central part - Input*/
 
-.center-type {
-    position: relative;
-    
-    margin: 25px 13px 20px 13px;
-    
-}
-
-#input-message {
-    
-    width: 100%;
-    height: 37px;
-    max-height: 50px;
-
-    overflow: hidden;
-
-    padding-top: 6px;
-    
-    padding-left: 30px;
-    padding-right: 70px;
-
-    background-color: #FCFCFC;
-    font-size: 14px;
-
-    border-radius: 20px;
-
-    border: 0px solid;
-
-    color: #444444;
-
-    box-shadow: 0 0 15px rgba(64, 64, 64, 0.1);
-
-    resize: none;
-}
-
-#input-message:focus {
-    outline: none;
-}
-
-#input-message::-webkit-scrollbar {
-    width: 0px;
-}
-
-#input-message.max {
-    border: 1px solid #EE5253;
-
-    box-shadow: 0 0 15px #ee52523d;
-}
-
-.type-box {
-    padding-bottom: 50px;
-}
-
-.type-box input{
-    width: 100%;
-    height: 80px;
-
-    padding-left: 30px;
-    padding-right: 30px;
-
-    background-color: #FCFCFC;
-    font-size: 14px;
-
-    border-radius: 20px;
-
-    border: 0px solid;
-
-    color: #444444;
-
-    box-shadow: 2px 2px 15px rgba(64, 64, 64, 0.1);
-
-    overflow-wrap: break-word;
-}
-
-.type-box input:focus {
-    outline: none;
-}
-
-.type-box img {
-    width: 20px;
-    z-index: 1;
-
-    position: absolute;
-
-    right: 45px;
-    top: 9px;
-
-    cursor: pointer;
-}
 
 /* Right part */
 
@@ -395,16 +255,16 @@ html, body {
     background-image: linear-gradient(transparent, rgba(252, 252, 252, 0.15));
 }
 
-.friends-list {
+.reports-list {
     margin-bottom: 40px;
 }
 
-.right-part .friend img,
-.center-part .friend img {
+.right-part .report img,
+.center-part .report img {
     width: 36px;
 }
 
-.right-part .friend {
+.right-part .report {
     margin-bottom: 12px;
     
     margin-right: 15px;
@@ -418,19 +278,19 @@ html, body {
     cursor: pointer;
 }
 
-.right-part .friend:hover {
+.right-part .report:hover {
     background-color: #dee6e69f;
 }
 
-.right-part .friend span,
-.center-part .friend span {
+.right-part .report span,
+.center-part .report span {
     margin: 0 8px 0 8px;
     color: #444444;
     font-family: roboto-medium;
     font-size: 14px;
 }
 
-.friends-scroll {
+.reports-scroll {
     height: 698px;
     overflow-y: scroll;
 }
@@ -439,8 +299,7 @@ hr {
     margin-top: 20px;
 }
 
-
-.friend-chat {
+.report-chat {
     padding-left: 15px;
     width: 100%;
     
@@ -450,13 +309,13 @@ hr {
     transition: all 0.4s ease;
 }
 
-.friend-chat.active {
+.report-chat.active {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.friend-chat .friend {
+.report-chat .report {
     cursor: pointer;
 }
 
@@ -497,116 +356,22 @@ svg .close:hover {
 }
 
 
-/* Popup - Penalty Points */
+#context-menu {
+    position: absolute;
+    z-index: 10;
 
-.popup-background {
-    position:fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #00000051;
-    visibility: hidden;
-    opacity: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: visibility 0s, opacity 0.4s;
-}
-
-.popup-active {
-    visibility: visible;
-    opacity: 1;
-}
-
-.popup-container {
-    width: 30%;
-    height: auto;
-    max-height: 58%;
     
     background-color: #FCFCFC;
-
-    box-shadow: 0px 0px 20px rgba(64, 64, 64, 0.1);
-
-    border-radius: 15px;
-}
-
-.popup-top {
-    position: relative;
-    border-radius: 15px 15px 0 0;
-    width: 100%;
-    background-color: #EE5253;
-
-    background-image: url("../images/StudNet-Pattern-Light-v3.png");
-    
-    color: #FCFCFC;
-    font-size: 22px;
-    font-family: roboto-regular;
     
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    color: #D6D6D6;
+
+    width: 100px;
+    height: 100px;
 }
 
-.popup-top .top-image {
-    margin: 30px;
-}
-
-.popup-top img {
-    width: 70px;
-    height: auto;
-}
-
-.popup-top .top-message {
-    margin-bottom: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: center;
-}
-
-.popup-bottom {
-    position: relative;
-    width: 100%;
-    padding: 15px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.popup-bottom .bottom-message {
-    margin: 30px;
-    font-size: 16px;
-    font-family: roboto-regular;
-    color: #444444;
-}
-
-.popup-bottom .bottom-next {
-    margin-bottom: 30px;
-    font-size: 16px;
-    font-family: roboto-regular;
-    color: #BCBCBC;
-    cursor: pointer;
-
-    transition: color 0.3s;
-}
-
-.popup-bottom .bottom-next:hover{
-    transition: color 0.3s;
-    color: #a8a8a8;
-}
-
-.preclass {
-    text-align: center;
-    display: block;
-    font-size: 16px;
-    font-family: roboto-regular;
-    color:#444444;
-
+#context-menu img {
+    width: 20px;
 }

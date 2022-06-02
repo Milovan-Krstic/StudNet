@@ -7,14 +7,14 @@ use CodeIgniter\Model;
 class StudentModel extends Model
 {
     protected $table      = 'student';
-    protected $primaryKey = 'IdStu';
+    protected $primaryKey = 'IdStud';
 
     //protected $useAutoIncrement = true;
 
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['IdStu', 'Faculty', 'Course', 'IdGod', 'IdNum', 'Penalty_points'];
+    protected $allowedFields = ['IdStud', 'Faculty', 'Course', 'IdGod', 'IdNum', 'Penalty_points'];
 
     /*
     

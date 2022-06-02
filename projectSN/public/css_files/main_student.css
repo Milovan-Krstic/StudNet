@@ -93,6 +93,7 @@ html, body {
 .semester-name.clicked,
 .subject li.clicked {
     color: #444444;
+    font-weight: bold;
 }
 
 .semester,
@@ -299,6 +300,7 @@ html, body {
 }
 
 #input-message {
+    
     width: 100%;
     height: 37px;
     max-height: 50px;
@@ -436,6 +438,7 @@ html, body {
 hr {
     margin-top: 20px;
 }
+
 
 .friend-chat {
     padding-left: 15px;
@@ -605,4 +608,5 @@ svg .close:hover {
     font-size: 16px;
     font-family: roboto-regular;
     color:#444444;
+
 }

@@ -12,7 +12,7 @@ class GuestFilter implements FilterInterface
             
         
         if( $session->has('logedinUsers')){
-            return redirect()->to(site_url('student-main'));
+            return redirect()->to(base_url('student-main'));
             
             }
                   if( $session->has('logedinAdmin')){

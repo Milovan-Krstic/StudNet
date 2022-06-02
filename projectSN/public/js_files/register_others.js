@@ -11,7 +11,7 @@ $(document).ready(function() {
             type: "POST",
             url: base_url + "/ajax-request-redirect",
             data: {
-                page : "register-university"
+                page : "register_university"
             },
             dataType : "JSON",
             success: function (response) {
@@ -26,7 +26,7 @@ $(document).ready(function() {
             type: "POST",
             url: base_url + "/ajax-request-redirect",
             data: {
-                page : "register-advertiser"
+                page : "register_advertiser"
             },
             dataType : "JSON",
             success: function (response) {

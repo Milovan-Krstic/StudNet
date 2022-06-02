@@ -107,8 +107,6 @@
     justify-content: flex-start;
 
     position: relative;
-    
-
 }
 
 .user {
@@ -128,8 +126,40 @@
     height: auto;
     border-radius: 100%;
 }
-
 .user .user-info {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #444444;
+}
+
+.header-info-Admin {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    position: relative;
+}
+
+.userAdmin {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    z-index: 2;
+    margin-right: 18px;
+    margin-left: 10px;
+    
+}
+
+.userAdmin img {
+    width: 40px;
+    height: auto;
+}
+
+
+
+.userAdmin .user-info-Admin {
     margin-left: 10px;
     margin-right: 10px;
     font-size: 14px;

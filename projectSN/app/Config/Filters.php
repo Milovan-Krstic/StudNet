@@ -67,8 +67,10 @@ class Filters extends BaseConfig
      * @var array
      */
     public $filters = [
+
          'UserFilter' => ['before' => ['student-main', 'Student/main','Admin','Admin/','Univerzitet','Univerzitet/Index']],
          'GuestFilter' => ['before' => ['LogIn', '/','index','student-log%20out']],
         
+
     ];
 }

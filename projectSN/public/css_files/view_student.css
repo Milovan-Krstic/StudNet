@@ -1,0 +1,295 @@
+html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow-y:hidden;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    background-color: #F0F5F5;
+
+    background-image: linear-gradient(#f0f5f59d, transparent),url("../images/StudNet-Pattern-Light-v2.png");
+    background-repeat: repeat;
+}
+
+.profile-box {
+    margin-top: -70px;
+    width: 500px;
+    height: 740px;
+    border-radius: 20px;
+    background-color: #FCFCFC;
+    box-shadow: 0px 0px 20px rgba(64, 64, 64, 0.1);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    flex-direction: column;
+
+    padding: 20px 80px 20px 80px;
+
+    position: relative;
+}
+
+.profile-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+#user-picture {
+    width: 150px;
+}
+
+#change {
+    width: 40px;
+
+    position: absolute;
+    z-index: 1;
+
+    left: 71%;
+    top: 71%;
+
+    transition: all 0.4s ease;
+
+    visibility: 0;
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+#change.active {
+    visibility: 1;
+    opacity: 1;
+}
+
+#name {
+    font-family: roboto-light;
+    color: #444444;
+    font-size: 30px;
+
+    display: inline-block;
+
+    word-wrap: break-word;
+}
+
+#status {
+    margin-top: -8px;
+
+    font-family: roboto-light;
+    color: #bdbdbd;
+    font-size: 14px;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    opacity: 1;
+
+    transition: all 0.4s ease;
+}
+
+.info.hidden {
+    opacity: 0.3;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-top: 15px
+}
+
+.row img {
+    width: 30px;
+    height: 30px;
+}
+
+.info-box {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 90%;
+}
+
+.row .text {
+    font-family: roboto-light;
+    color: #444444;
+    font-size: 14px;
+
+    margin: 0 10px 0 20px;
+}
+
+.row .name {
+    font-family: roboto-medium;
+    color: #444444;
+    font-size: 14px;
+
+}
+
+.profile-box hr {
+    width: 100%;
+    border: 1px solid #e6e6e6;
+
+    margin: 0;
+}
+
+.bio {
+    margin-top: 10px;
+    width: 100%;
+
+    opacity: 0.7;
+
+    transition: all 0.4s ease;
+}
+
+.bio.active {
+    opacity: 1;
+}
+
+.bio textarea {
+    width: 100%;
+    resize: none;
+
+    border-radius: 15px;
+
+    outline: none;
+
+    padding: 10px;
+
+    font-size: 14px;
+    color: #444444;
+    font-family: roboto-light;
+
+    border: 1px solid #e6e6e6;
+    background-color: #F0F5F5;
+
+    margin-right: 10px;
+
+    overflow: hidden;
+}
+
+#edit {
+    font-size: 14px;
+    color: #67DBB8;
+    font-family: roboto-light;
+
+    transition: all 0.4s ease;
+
+    cursor: pointer;
+
+    /* display: block; */
+    visibility: 1;
+    opacity: 1;
+
+    z-index: 1;
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#edit.hidden {
+    /* display: none; */
+    visibility: 0;
+    opacity: 0;
+}
+
+#edit:hover {
+    color: #6beec6;
+}
+
+.profile-options {
+    width: 100%;
+
+    /* text-align: center; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.buttons {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;   
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    transition: all 0.4s ease;
+
+    position: relative;
+}
+
+.buttons input {
+    width: 160px;
+    height: 50px;
+    font-family: roboto-regular;
+    font-size: 14px;
+
+    color: #FCFCFC;
+
+    border-radius: 13px;
+
+    outline: none;
+    border: 0px solid;
+
+    box-shadow: 0px 0px 10px rgba(64, 64, 64, 0.1);
+}
+
+.buttons input:disabled {
+    background-color: #DADCDC;
+    color: #FCFCFC;
+
+    transition: all 0.4s ease;
+}
+
+.buttons.request input {
+    background-color: #67DBB8;
+    color: #FCFCFC;
+
+    transition: all 0.4s ease;
+}
+
+.buttons.request input:hover {
+    background-color: #6beec6;
+}
+
+.buttons.remove input {
+    background-color: transparent;
+    color: #444444;
+
+    border: 1px solid #EE5253;
+
+    transition: all 0.4s ease;
+}
+
+.buttons.remove input:hover {
+    color: #FCFCFC;
+    background-color: #EE5253;
+}

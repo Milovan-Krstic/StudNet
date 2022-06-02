@@ -1,0 +1,120 @@
+@font-face {
+    font-family: roboto-regular;
+    src: url("../fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: roboto-bold;
+    src: url("../fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+    font-family: roboto-light;
+    src: url("../fonts/Roboto-Light.ttf");
+}
+
+html, body {
+    height: 100%;
+    height: 100%;
+    overflow:hidden;
+}
+
+.content {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f5f5;
+    
+    background-image: linear-gradient(#f0f5f59d, transparent),url("../images/StudNet-Pattern-Light-v2.png");
+    background-repeat: repeat;
+}
+
+.sign-up-form {
+    max-width: 600px;
+    width: 100%;
+    background-color: #FCFCFC;
+
+    padding: 45px 50px 25px 50px;
+    
+    
+    border-radius: 30px;
+
+    box-shadow: 5px 0px 20px rgba(64, 64, 64, 0.1);
+}
+
+.sign-up-form .row {
+    margin-top: 20px;
+}
+
+.sign-up-form .title {
+    font-size: 33px;
+    color: #444444;
+    font-family: roboto-bold;
+    text-align: center;
+}
+
+.sign-up-form .subtitle {
+    margin-top: -2%;
+    font-size: 23px;
+    color: #7E7E7E;
+    font-family: roboto-light;
+    text-align: center;
+}
+
+
+
+.section {
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+input {
+    width: 100%;
+    height: 65px;
+    display: inline-block;
+    color: white;
+    border-radius: 12px;
+    border-style: none;
+
+    transition: all 0.4s;
+
+    font-size: 22px;
+    font-family: roboto-bold;
+
+    margin-bottom: 5%;
+}
+
+.button-university {
+    background-color: #54A0FF;
+}
+
+.button-advertiser {
+    background-color: #EE5253;
+}
+
+.button-university:hover {
+    transition: all 0.4s;
+    background-color: #60a6fb;
+}
+
+.button-advertiser:hover {
+    transition: all 0.4s;
+    background-color: #f85c5c;
+}
+
+.redirect {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-family: roboto-light;
+}
+
+.redirect a,
+.redirect a:link,
+.redirect a:active,
+.redirect a:visited {
+    color:#67DBB8;
+}
+

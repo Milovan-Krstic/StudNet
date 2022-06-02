@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use App\Models\FriendlistModel;
+use App\Models\UserModel;
+use App\Models\StudentModel;
 
 class Student extends BaseController
 {
@@ -156,6 +158,7 @@ class Student extends BaseController
         
         echo json_encode([
             "url"=>base_url($data['page']),
+            "IdKor"=>$friend[0]->IdKor,
             "Ime"=>$friend[0]->Ime,
             "Prezime"=>$friend[0]->Prezime,
             "Country"=>$friend[0]->Country,
@@ -166,5 +169,21 @@ class Student extends BaseController
             "IdGod"=>$student_friend[0]->IdGod,
             "Friends"=>1
         ]);
+    }
+    
+    public function ajaxRequestSendFriend(){
+        $data = $this->request->getVar();
+         $student  = $_SESSION['logedinUsers'];
+        $student_id= $student->idKor;
+        
+        $friendModel = new FriendlistModel();
+        
+        $friendModel->insert([
+           "IdM"=> $student_id,
+            "IdF"=>$data['id'],
+            'status'=>0
+        ]);
+        
+        
     }
 }

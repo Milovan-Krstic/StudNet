@@ -154,6 +154,7 @@ $(document).ready(function(){
             },
             dataType : "JSON",
             success: function (response) {
+                window.localStorage.setItem("IdKor",response['IdKor']);
                 
                 let naziv = response['Ime']+" "+response['Prezime'];
                 

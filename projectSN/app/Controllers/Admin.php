@@ -11,13 +11,21 @@ use App\Models\StudentModel;
 use App\Models\AdvertiserModel;
 class Admin extends BaseController
 {
+    
+   
+    
+    
     public function index()
     {
         $data['controller']='Admin';
         echo view('templates/header_admin');
         echo view('adminFuncViews/adminview',$data);
     }
-    
+     public function ajax_request_AdminHome () {
+          echo json_encode([
+            "url" => base_url("Admin")
+                  ]);
+    }
     public function AddIUni(){
         $data['controller']='Admin'; 
         echo view('templates/header_admin');
@@ -181,7 +189,7 @@ class Admin extends BaseController
         $ftoken= $this->request->getVar('faculty');
         $stoken= $this->request->getVar('course');
         $ctoken=  $this->request->getVar('subj');
-       
+        $semnum = $this->request->getVar('semnum');
         $pom=$fack->where('Name',$ftoken)->find();
         $idF=$pom[0]->IdF;
        $pom2= $smer->where('Name',$stoken)->find();
@@ -202,7 +210,8 @@ class Admin extends BaseController
         
         $subj->save([
            'Name'=>$ctoken,
-           'IdSmr'=>$idSmr
+           'IdSmr'=>$idSmr,
+            'semestar'=>$semnum
         ]);
               
           return json_encode(['message'=>'success']); 

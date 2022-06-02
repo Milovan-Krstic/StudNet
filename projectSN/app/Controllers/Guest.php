@@ -77,7 +77,7 @@ class Guest extends BaseController
                     "Ime" => $data['name'],
                     "Prezime" => $data['surname'],
                     "Date_of_birth" => $data['date_of_birth'],
-                    "City" => $data['country'],
+                    "Country" => $data['country'],
                     "E-mail" => $data['email'],
                     "Username" => $data['username'],
                     "Password" => $data['password']

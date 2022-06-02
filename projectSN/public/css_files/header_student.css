@@ -442,6 +442,12 @@
     justify-content: center;
     align-items: center;
 }
+.header-mainAdmin {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .header-main svg{
     width: 30px;
@@ -462,5 +468,29 @@
     transition: all 0.4s ease;
 }
 .header-main .st0:hover {
+    fill: #67DBB8;
+}
+
+
+
+.header-mainAdmin svg{
+    width: 30px;
+    height: auto;
+
+    position: absolute;
+    z-index: 1;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    transition: all 0.4s ease;
+    
+    cursor: pointer;
+}
+.header-mainAdmin .st0 {
+    fill: #F0F5F5;
+    transition: all 0.4s ease;
+}
+.header-mainAdmin .st0:hover {
     fill: #67DBB8;
 }

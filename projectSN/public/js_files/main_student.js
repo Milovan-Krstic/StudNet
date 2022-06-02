@@ -1,7 +1,14 @@
 
+let lastSelectedClass=[
+    {
+        class_name:"_",
+    }
+];
 
+let newCurrentLoadedMessages =0;
 $(document).ready(function(){
-    
+     
+     $(".message-scroll").empty();
     
     $.ajax({
         url:"http://localhost:8080/Chet/ajaxGetStudentSubjects",
@@ -130,13 +137,21 @@ $(document).ready(function(){
     }).text("#Eight semester");
                 }
             let ul =$("<ul></ul>").addClass("subject");
+           
             $.each(response['classes'],function (index,value){
                 
                    if(i+1==value.semestar){
                        let l = $("<li></li>").text(value.Name).on(
                               "click",function(){
+                                   $(".message-scroll").empty();
                                 $(".subject li").removeClass("clicked");
                                 $(this).toggleClass("clicked");
+                                    lastSelectedClass.pop();
+                                    lastSelectedClass.push({
+                                            class_name:$(this).text(),
+                                            
+                                        })
+                                        localStorage.setItem('lastSelCls',JSON.stringify(lastSelectedClass));
                                 
                                 $.ajax({
                                     
@@ -148,12 +163,35 @@ $(document).ready(function(){
                                     dataType:"JSON",
                                     
                                     success: function (response){
-                                      $.each(response['message'],function(index,value){
+                                        
+                                    
+
+                                       let myId= response['myID'];
+                                        $.each(response['message'],function(index,value){
+                                          newCurrentLoadedMessages=index;
+                                       if(myId === value.IdKor){
+                                          let message_span = $("<span></span>").text(value.Text);
+                                          let message_box = $("<div></div>").addClass("message-box");
+                                       
+                                           let img = $("<img>").attr("src","images/StudNet Profile Picture Default.svg");
+                                             message_box.append(message_span);
+                                             let message = $("<div></div>").addClass("message").addClass("right");  
+                                            
+                                               message.append(img);
+                                              message.append(message_box);
+                                             $(".message-scroll").prepend(message);  
                                           
-                                          alert(value.Text);
-                                          
-                                          
-                                          
+                                           }else{
+                                               let message_span = $("<span></span>").text(value.Text);
+                                          let message_box = $("<div></div>").addClass("message-box");
+                                           let img = $("<img>").attr("src","images/StudNet Profile Picture Default.svg");
+                                             message_box.append(message_span);
+                                             let message = $("<div></div>").addClass("message").addClass("left");  
+                                               message.append(img);
+                                              message.append(message_box);
+                                             $(".message-scroll").prepend(message);  
+                                               
+                                           }
                                       })
                                    }
                                     
@@ -171,8 +209,9 @@ $(document).ready(function(){
 
 
                })
-            
-                semestarc.prepend(ul);
+                    if(ul.children().length>0){
+                         semestarc.prepend(ul);
+                     }
                  semestarc.prepend(li);
                 
             }
@@ -185,6 +224,107 @@ $(document).ready(function(){
     
     
     
+    
+        
+     
+        setInterval(()=>{
+               
+               let test=$("ul .subject li .clicked");
+               if(test!==null){
+                   
+                 let get =$(".subject.active li.clicked");
+                   
+                  $.ajax({
+                        url:"http://localhost:8080/Chet/ajaxGetChats",
+                          data:{
+                         name:get.text()
+                           },
+                           type:"POST",
+                         dataType:"JSON",
+                                    
+                       success: function (response){
+                            
+                           let myId= response['myID'];
+                           let messages = $(".message-box span").first();
+                           let messArr= response['message'].slice(newCurrentLoadedMessages+1);
+                           
+                           if(messArr.length>0){
+                            $.each(messArr,function (index,value){
+                                         newCurrentLoadedMessages++;
+                                      
+                                       if(myId === value.IdKor){
+                                          let message_span = $("<span></span>").text(value.Text);
+                                          let message_box = $("<div></div>").addClass("message-box");
+                                       
+                                           let img = $("<img>").attr("src","images/StudNet Profile Picture Default.svg");
+                                             message_box.append(message_span);
+                                             let message = $("<div></div>").addClass("message").addClass("right");  
+                                            
+                                               message.append(img);
+                                              message.append(message_box);
+                                             $(".message-scroll").prepend(message);  
+                                          
+                                           }else{
+                                               let message_span = $("<span></span>").text(value.Text);
+                                          let message_box = $("<div></div>").addClass("message-box");
+                                           let img = $("<img>").attr("src","images/StudNet Profile Picture Default.svg");
+                                             message_box.append(message_span);
+                                             let message = $("<div></div>").addClass("message").addClass("left");  
+                                               message.append(img);
+                                              message.append(message_box);
+                                             $(".message-scroll").prepend(message);  
+                                               
+                                           }
+                                    
+
+
+                                })
+                            }
+                       }
+                  })
+                   
+                   
+               }
+
+        },500);
+    
+    
+    
+    
+       let locSto= localStorage.getItem("lastSelCls");
+        if(locSto!=null){
+                setTimeout(function (){
+                    
+                    lastSelectedClass=JSON.parse(locSto);
+                     let name = lastSelectedClass[0].class_name;
+                     $("#course").click(); 
+                    let li = $(".subject li");
+                    li.each(function (){
+                        if($(this).text()===name){
+                            $(this).click();
+                        $(this).parent().prev().click();
+                           
+                        }
+                     })
+                    
+                },500)
+            
+        }else{
+                setTimeout(function (){
+                            let text=$(".subject").first().find("li").first().text();
+      
+               lastSelectedClass.pop();
+               lastSelectedClass.push({
+                                            class_name:text
+                                            
+                                        })
+                               $("#course").click();   
+                              
+                $(".subject").first().find("li").first().click();
+                localStorage.setItem("lastSelCls",JSON.stringify(lastSelectedClass));
+                },1000)
+      
+        }
     
     
     

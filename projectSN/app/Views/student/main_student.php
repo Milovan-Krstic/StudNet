@@ -57,8 +57,9 @@
                             <span>Poslednja poruka</span>
                         </div>
                     </div>
-
+               
                     <div class="message right">
+                       
                          <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
                             <span>fafsdfdgsdf</span>
@@ -71,18 +72,20 @@
                             <span>fafsdfdgsdf</span>
                         </div>
                     </div>
-
+                 
                     <div class="message right">
                           <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
+                            <span>helo poruka</span>
                         </div>
                     </div>
+                    
+                   
 
                     <div class="message left">
                        <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
@@ -96,7 +99,7 @@
                     <div class="message left">
                             <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
@@ -110,7 +113,7 @@
                     <div class="message left">
                         <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaagdggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+                            <span>Aaaaaaaaaaaaaaaaaagdgggaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
@@ -124,7 +127,7 @@
                     <div class="message left">
                             <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 
@@ -137,7 +140,7 @@
                     <div class="message left">
                            <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
                         <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
                         </div>
                     </div>
 

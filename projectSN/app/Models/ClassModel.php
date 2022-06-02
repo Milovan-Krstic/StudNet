@@ -12,5 +12,5 @@ class ClassModel extends Model {
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['idC','Name', 'IdSmr'];
+    protected $allowedFields = ['idC','Name', 'IdSmr','semestar'];
 }

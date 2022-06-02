@@ -32,10 +32,40 @@ $(document).ready(function(){
                 
            
             //ovde treba da se loaduje friend lista
+            //--------------------------------------
             
-            
-               
-                
+               function getAllFriends() {
+        //Get username in PHP from session
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-get-all-friends",
+            success: function (response) {
+                //No requests
+               if(response.length == 0) {
+                    $(".request-container").empty();
+               }
+               else{
+                    //for each element do
+                    let len = response.length;
+                    for(var i=0;i<len;i++){
+                    let friend = $("<div></div>").addClass("friend").attr("id",response[i].id);
+                    //let request_user = $("<div></div>").addClass("request-user");
+                    let friend_image = $("<img/>").attr("src", response[i].image);//response[i].image response['image']
+                    let friend_name = $("<span></span>").text(response[i].name);//response[i].name response['name']
+                    
+                    friend.append(friend_image).append(friend_name);
+
+                    $(".friend-scroll").append(friend);
+               }}
+            }
+        });
+    }
+
+    setInterval(function(){
+        //To implement:
+        getAllFriends();
+    }, 5000);
+            //-------------------------------------- 
                 $.ajax({
                     url:"http://localhost:8080/Chet/ajaxSendMyTextToGroup",
                     type:"POST",
@@ -114,11 +144,13 @@ $(document).ready(function(){
 
     // Add these dynamically
     $(".friend").click(function(){
+        let id = $(this).attr('id');
         $.ajax({
             type: "POST",
-            url: base_url + "/ajax-request-redirect",
+            url: base_url + "/ajax-friend-view",
             data: {
-                page : "student-view"
+                page : "student-view",
+                id:id
             },
             dataType : "JSON",
             success: function (response) {

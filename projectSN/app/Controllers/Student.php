@@ -83,6 +83,12 @@ class Student extends BaseController
           "status"=>1
       ]);
       
+      $friendlist->insert([
+          "IdM"=>$student_id,
+          "IdF"=>$data['option'],
+          "status"=>1
+      ]);
+      
       
       
       
@@ -92,7 +98,18 @@ class Student extends BaseController
     }
     
     public function ajaxRequestDecline(){
-       $data = $this->request->getVar('option');
+       $data = $this->request->getVar();
+      
+      $student  = $_SESSION['logedinUsers'];
+      $student_id= $student->idKor;
+      
+      
+      
+      $friendlist = new FriendlistModel();
+      
+      $friendlist_id = $friendlist->where('IdM',$data['option'])->where('IdF',$student_id)->where('status',0)->find();
+      
+      $friendlist->delete($friendlist_id[0]->IdFL);
 
     }
 }

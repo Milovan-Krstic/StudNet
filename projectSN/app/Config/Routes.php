@@ -55,6 +55,8 @@ $routes->post('/ajax-request-redirect', 'Guest::ajaxRequestRedirect');
 $routes->post('/loginSubmit', 'LogIn::loginSubmit');
 $routes->get('/loginSubmit', 'LogIn::loginSubmit');
 
+$routes->get('/university-main', 'Univerzitet::index');
+$routes->get('/admin-main', 'Admin::index');
 
 /*
  * --------------------------------------------------------------------

@@ -45,24 +45,24 @@ $(document).ready(function() {
                         else if(response==2){// 2 admin
                            
                            
-                          location.href = "http://localhost:8080/Admin";
+                          location.href = "http://localhost:8080/admin-main";
                             
                             
                         }
                         else if(response==3){ // 3 univerzitet
                             
-                            location.href = "http://localhost:8080/Univerzitet"; ////PROMENITI NA OBICAN HOME PAGE
+                            location.href = "http://localhost:8080/university-main"; ////PROMENITI NA OBICAN HOME PAGE
                         }
                         else if(response==4){ // 4 moderator
                             
                             
-                            location.href = "http://localhost:8080/student-main"; ////PROMENITI NA OBICAN HOME PAGE
+                            location.href = "http://localhost:8080/moderator-main"; ////PROMENITI NA OBICAN HOME PAGE
                            
                         }
                         
                         else if(response==5){ // 5 reklamer
                             
-                            location.href = "http://localhost:8080/student-main"; ////PROMENITI NA OBICAN HOME PAGE
+                            location.href = "http://localhost:8080/advertiser-main"; ////PROMENITI NA OBICAN HOME PAGE
                         }
                         else if(response==6){ // 6 UNIVERZITET NEMA SERTIFIKAT
                              error_message = "University still waiting for certificate";

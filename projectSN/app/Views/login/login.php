@@ -18,7 +18,7 @@
     
 
   
-    <title>Document</title>
+    <title>StudNet</title>
 </head>
 <body>
     
@@ -51,7 +51,7 @@
                     <input type="submit" #id="inp" value="Log in">
                 </div>
                 <div class="redirect">
-                    
+                    Don't have an account?
                     <?= anchor("$controller/Index","SignUp for StudNet")?> 
           
                     

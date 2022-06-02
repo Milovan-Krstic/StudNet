@@ -18,6 +18,10 @@ class GuestFilter implements FilterInterface
                   if( $session->has('logedinAdmin')){
                      return redirect()->to(base_url('Admin/index'));
                  }
+                 
+        if( $session->has('logedinUniverzitet')){
+                     return redirect()->to(base_url('Univerzitet'));
+                 }
     }
 
     //--------------------------------------------------------------------

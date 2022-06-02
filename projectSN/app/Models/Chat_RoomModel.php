@@ -11,5 +11,5 @@ class Chat_RoomModel extends Model {
 
     protected $returnType = 'object';
 
-    protected $allowedFields = ['IdKor_OD','Text','IdSem','IdCl','IdClTag','IdKor_KA','seen','time_send'];
+    protected $allowedFields = ['IdKor_OD','Text'];
 }

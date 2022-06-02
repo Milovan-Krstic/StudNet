@@ -51,7 +51,7 @@ $(document).ready(function() {
                         }
                         else if(response==3){ // 3 univerzitet
                             
-                            location.href = "http://localhost:8080/student-main"; ////PROMENITI NA OBICAN HOME PAGE
+                            location.href = "http://localhost:8080/Univerzitet"; ////PROMENITI NA OBICAN HOME PAGE
                         }
                         else if(response==4){ // 4 moderator
                             

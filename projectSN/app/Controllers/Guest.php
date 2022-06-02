@@ -11,9 +11,11 @@ use App\Models\UniversityModel;
 class Guest extends BaseController
 {
     public function show($page) {
-        echo view("templates/header_guest");
-        echo view("guest/$page");
-        echo view("templates/footer_guest");
+        
+            echo view("templates/header_guest");
+            echo view("guest/$page");
+            echo view("templates/footer_guest");
+        
     }
     public function index()
     {
@@ -21,7 +23,7 @@ class Guest extends BaseController
     }
     
     public function register_moderator()
-    {
+    {   
         return $this->show('register_moderator');
     }
     
@@ -82,7 +84,7 @@ class Guest extends BaseController
                 $id = $userModel->getInsertID();
                 
                 $studentModel->insert([
-                    "IdStud" => $id,
+                    "IdStu" => $id,
                     "Faculty" => $data['faculty'],
                     "Course" => $data['course'],
                     "IdGod" => $data['id_year'],
@@ -141,11 +143,11 @@ class Guest extends BaseController
             $id = $userModel->getInsertID();
             $facultyModel = new FacultyModel();
             
-            $facultyId = $facultyModel->where("Name", "ETF")->find();
+            $facultyId = $facultyModel->where("Name", $data['faculty'])->find();
                 
             $moderatorModel->insert([
                 "IdMod" => $id,
-                "IdFacM" => $facultyId[0]->IdF
+                "IdFacM" => $facultyId
             ]);
             
         }
@@ -254,8 +256,7 @@ class Guest extends BaseController
             $id = $userModel->getInsertID();
                 
             $advertiserModel->insert([
-                "IdRek" => $id,
-                "num_of_ads" => 0
+                "IdRek" => $id
             ]);
         }
         else if($email == null){

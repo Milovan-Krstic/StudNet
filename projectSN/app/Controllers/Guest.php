@@ -19,11 +19,9 @@ class Guest extends BaseController
      * Shows guest page header, body, footer
      */
     public function show($page) {
-        
-            echo view("templates/header_guest");
-            echo view("guest/$page");
-            echo view("templates/footer_guest");
-        
+        echo view("templates/header_guest");
+        echo view("guest/$page");
+        echo view("templates/footer_guest");
     }
 
     /**
@@ -40,7 +38,7 @@ class Guest extends BaseController
      * @return view
      */
     public function register_moderator()
-    {   
+    {
         return $this->show('register_moderator');
     }
     
@@ -77,13 +75,10 @@ class Guest extends BaseController
      */
     public function ajaxRequestRedirect(){
        $data = $this->request->getVar();
-       if($data['page']=='log out'){
-           $this->session->destroy();
-        echo json_encode([
-            "url" => base_url("/")
-        ]);
-       }
-     
+       
+       echo json_encode([
+           "url" => base_url($data["page"])
+       ]);
     }
     
     /**
@@ -128,7 +123,7 @@ class Guest extends BaseController
                 $id = $userModel->getInsertID();
                 
                 $studentModel->insert([
-                    "IdStu" => $id,
+                    "IdStud" => $id,
                     "Faculty" => $data['faculty'],
                     "Course" => $data['course'],
                     "IdGod" => $data['id_year'],
@@ -196,11 +191,11 @@ class Guest extends BaseController
             $id = $userModel->getInsertID();
             $facultyModel = new FacultyModel();
             
-            $facultyId = $facultyModel->where("Name", $data['faculty'])->find();
+            $facultyId = $facultyModel->where("Name", "ETF")->find();
                 
             $moderatorModel->insert([
                 "IdMod" => $id,
-                "IdFacM" => $facultyId
+                "IdFacM" => $facultyId[0]->IdF
             ]);
             
         }
@@ -324,7 +319,8 @@ class Guest extends BaseController
             $id = $userModel->getInsertID();
                 
             $advertiserModel->insert([
-                "IdRek" => $id
+                "IdRek" => $id,
+                "num_of_ads" => 0
             ]);
         }
         else if($email == null){

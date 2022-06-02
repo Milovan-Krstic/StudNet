@@ -23,6 +23,9 @@ html, body {
     flex-direction: column;
 
     background-color: #F0F5F5;
+
+    background-image: linear-gradient(#f0f5f59d, transparent),url("../images/StudNet-Pattern-Light-v2.png");
+    background-repeat: repeat;
 }
 
 .profile-box {

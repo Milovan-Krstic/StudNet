@@ -7,29 +7,25 @@
 
 namespace App\Controllers;
 
-
 class Student extends BaseController
 {
 
     /**
      * Shows student page header, body, footer
      */
-    public function show($page, $header ) {
+    public function show($page, $header) {
         echo view("templates/$header");
         echo view("student/$page");
         echo view("templates/footer_student");
     }
     
-
     /**
      * Student main page
      * @return view
      */
     public function main()
     {
-       
         return $this->show('main_student', 'header_student');
-        
     }
     
     /**
@@ -38,7 +34,6 @@ class Student extends BaseController
      */
     public function timer()
     {
-        
         return $this->show('timer_student', 'header_student_options');
     }
     
@@ -58,10 +53,5 @@ class Student extends BaseController
     public function view_user()
     {
         return $this->show('view_student', 'header_student_options');
-    }
-    
-    public function plans()
-    {
-        return $this->show('calendar_student', 'header_student_options');
     }
 }

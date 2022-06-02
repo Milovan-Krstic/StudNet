@@ -93,7 +93,7 @@ $(document).ready(function() {
         else {
             //Check if input types are correct
             let regex_username = /^[a-zA-Z]\w*$/;
-            let regex_name = /^[A-Z][a-z]{1,15}/;
+            let regex_name = /^[A-Z]\w{1,15}/;
             let regex_password_length = /^.{6,}/;
             let regex_password_lowercase = /[a-z]/;
             let regex_password_uppercase = /[A-Z]/;
@@ -106,7 +106,6 @@ $(document).ready(function() {
 
             let username = $("#username").val();
             let name = $("#name").val();
-            let surname = $("#surname").val();
             let email = $("#email").val();
             let password = $("#password").val();
             let password_confirm = $("#password_confirm").val();
@@ -120,10 +119,6 @@ $(document).ready(function() {
             if(regex_name.test(name) == false ) {
                 error_message += "Name does not have the correct form\n";
                 $("#name").parent().addClass("input-box-empty");
-            }
-            if(regex_name.test(surname) == false ) {
-                error_message += "Surname does not have the correct form\n";
-                $("#surname").parent().addClass("input-box-empty");
             }
             if(regex_email.test(email) == false ) {
                 error_message += "Email does not have the correct form\n";
@@ -183,7 +178,7 @@ $(document).ready(function() {
             }
             else {
                 $.ajax({
-                    url : base_url + "/ajax-request-register-moderator",
+                    url : base_url + "/ajax-request-register-university",
                     type : "POST",
                     data : {
                         username : $("#username").val(),
@@ -240,7 +235,7 @@ $(document).ready(function() {
             type: "POST",
             url: base_url + "/ajax-request-redirect",
             data: {
-                page : "register_others"
+                page : "register-others"
             },
             dataType : "JSON",
             success: function (response) {

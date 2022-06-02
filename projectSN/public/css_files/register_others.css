@@ -32,6 +32,8 @@ html, body {
     align-items: center;
     background-color: #f0f5f5;
     
+    background-image: linear-gradient(#f0f5f59d, transparent),url("../images/StudNet-Pattern-Light-v2.png");
+    background-repeat: repeat;
 }
 
 .sign-up-form {

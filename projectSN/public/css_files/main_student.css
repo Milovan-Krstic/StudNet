@@ -25,12 +25,14 @@ html, body {
     background-color: #E6EDED;
     height: 100vh;
 
+    z-index: 1;
+
     padding-top: 20px;
     
     padding-left: 40px;
     padding-right: 40px;
 
-    z-index: 1;
+    background-image: linear-gradient(transparent, rgba(252, 252, 252, 0.15));
 }
 
 .left-part span,
@@ -71,7 +73,7 @@ html, body {
     margin-top: 10px;
     margin-left: -10px;
 
-    border-radius: 25px;
+    border-radius: 15px;
     padding-bottom: 10px;
     padding-left: 15px;
 
@@ -83,7 +85,7 @@ html, body {
 }
 .course li:hover,
 #course:hover {
-    background-color: #dee6e6;
+    background-color: #dee6e69f;
     color: #444444;
 }
 
@@ -126,6 +128,9 @@ html, body {
 .center-part {
     background-color: #F0F5F5;
     height: 100vh;
+
+    background-image: linear-gradient(#f0f5f56b, transparent), url("../images/StudNet-Pattern-Light.png");
+    background-repeat: repeat;
 }
 
 /* Central part - Search*/
@@ -143,6 +148,7 @@ html, body {
 
     padding-left: 40px;
     padding-right: 40px;
+
 }
 
 .tags {
@@ -151,6 +157,13 @@ html, body {
     justify-content: flex-start;
 
     overflow-x: hidden;
+    
+
+}
+
+.tags.hidden,
+.header-search.hidden {
+    display: none;
 }
 
 .tag {
@@ -185,6 +198,7 @@ html, body {
 
 .center-part .header-search {
     width: 280px;
+
 }
 
 /* Central part - Messages*/
@@ -383,13 +397,16 @@ html, body {
 
     padding-left: 40px;
     padding-right: 40px;
+
+    background-image: linear-gradient(transparent, rgba(252, 252, 252, 0.15));
 }
 
 .friends-list {
     margin-bottom: 40px;
 }
 
-.right-part .friend img {
+.right-part .friend img,
+.center-part .friend img {
     width: 36px;
     border-radius: 100%;
 }
@@ -409,10 +426,11 @@ html, body {
 }
 
 .right-part .friend:hover {
-    background-color: #dee6e6;
+    background-color: #dee6e69f;
 }
 
-.right-part .friend span {
+.right-part .friend span,
+.center-part .friend span {
     margin: 0 8px 0 8px;
     color: #444444;
     font-family: roboto-medium;
@@ -426,4 +444,174 @@ html, body {
 
 hr {
     margin-top: 20px;
+}
+
+.friend-chat {
+    padding-left: 15px;
+    width: 100%;
+    
+
+    display: none;
+
+    transition: all 0.4s ease;
+}
+
+.friend-chat.active {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friend-chat .friend {
+    cursor: pointer;
+}
+
+.chat-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75px;
+
+
+    margin-right: -14px;
+
+
+}
+
+.chat-options svg {
+    cursor: pointer;
+}
+
+#call,
+#close {
+    border-radius: 200px;
+    border: 1px solid transparent;
+
+    width: 30px;
+
+    transition: all 0.4s ease;
+}
+
+#call:hover,
+#close:hover {
+    border-radius: 200px;
+    border: 1px solid #67DBB8;
+}
+
+svg .close:hover {
+    fill: #444444;
+}
+
+
+/* Popup - Penalty Points */
+
+.popup-background {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000051;
+    visibility: hidden;
+    opacity: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: visibility 0s, opacity 0.4s;
+}
+
+.popup-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-container {
+    width: 30%;
+    height: auto;
+    max-height: 58%;
+    
+    background-color: #FCFCFC;
+
+    box-shadow: 0px 0px 20px rgba(64, 64, 64, 0.1);
+
+    border-radius: 15px;
+}
+
+.popup-top {
+    position: relative;
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    background-color: #EE5253;
+
+    background-image: url("../images/StudNet-Pattern-Light-v3.png");
+    
+    color: #FCFCFC;
+    font-size: 22px;
+    font-family: roboto-regular;
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-top .top-image {
+    margin: 30px;
+}
+
+.popup-top img {
+    width: 70px;
+    height: auto;
+}
+
+.popup-top .top-message {
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.popup-bottom {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.popup-bottom .bottom-message {
+    margin: 30px;
+    font-size: 16px;
+    font-family: roboto-regular;
+    color: #444444;
+}
+
+.popup-bottom .bottom-next {
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-family: roboto-regular;
+    color: #BCBCBC;
+    cursor: pointer;
+
+    transition: color 0.3s;
+}
+
+.popup-bottom .bottom-next:hover{
+    transition: color 0.3s;
+    color: #a8a8a8;
+}
+
+.preclass {
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    font-family: roboto-regular;
+    color:#444444;
 }

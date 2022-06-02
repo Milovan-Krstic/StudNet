@@ -14,21 +14,18 @@ class Admin extends BaseController
     public function index()
     {
         $data['controller']='Admin';
-        echo view('templates/header_admin');
         echo view('adminFuncViews/adminview',$data);
     }
     
     public function AddIUni(){
-        $data['controller']='Admin'; 
-        echo view('templates/header_admin');
+        $data['controller']='Admin';     
         echo view('adminFuncViews/AFUView',$data); 
     }
     
     
     //------add Uni------------
     public function ADDU($data=[]){
-          $data['controller']='Admin'; 
-       echo view('templates/header_admin');
+          $data['controller']='Admin';     
         echo view('adminFuncViews/AddUniView',$data); 
     }
     public function AdminAddUni(){
@@ -80,7 +77,6 @@ class Admin extends BaseController
           $fac= new FacultyModel();
           $par=$fac->getAllFaculty();
           $data['names']=$par;
-          echo view('templates/header_admin');
         echo view('adminFuncViews/AddCourseView',$data); 
     }
 
@@ -120,7 +116,6 @@ class Admin extends BaseController
          if($names !=null){
          $data['names']=$names;
          }
-       echo view('templates/header_admin');
         echo view('adminFuncViews/AddFacultyView',$data); 
     }
 
@@ -167,7 +162,6 @@ class Admin extends BaseController
           $cour= new SmeroviModel();
           $smr=$cour->findAll();
           $data['namesCla']=$smr;
-         echo view('templates/header_admin');
         echo view('adminFuncViews/AddClassView',$data); 
         }
     
@@ -219,7 +213,6 @@ class Admin extends BaseController
          if($names !=null){
          $data['names']=$names;
          }
-        echo view('templates/header_admin');
         echo view('adminFuncViews/DeleteUniView',$data); 
     }
     public function AdminDeleteUni() {
@@ -238,7 +231,6 @@ class Admin extends BaseController
     //--------delete Student---------
     public function DeleStud() {
          $data['controller']='Admin'; 
-       echo view('templates/header_admin');
         echo view('adminFuncViews/DeleteStudentView',$data); 
     }
     
@@ -264,7 +256,6 @@ class Admin extends BaseController
     //--------delete Advert---------
     public function DeleAdv() {
          $data['controller']='Admin'; 
-         echo view('templates/header_admin'); 
         echo view('adminFuncViews/DeleteAdvertiserView',$data); 
     }
     

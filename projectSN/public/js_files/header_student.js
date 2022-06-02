@@ -5,35 +5,6 @@
 
 $(document).ready(function(){
 
-
-    
-
-   
-          
-               $.ajax({
-                   url:"http://localhost:8080/LogIn/ajaxGetStud",
-                   type:"POST",
-                   dataType:"JSON",
-                   success: function (response){
-                       let tex= response['kor'].Ime;
-                       let prezime =response['kor'].Prezime;
-                       
-                       let input =tex+" "+prezime;
-                       $("#header-name").text(input);
-                       let index=response['student'].IdGod+"/0"+response['student'].IdNum;
-                       
-                       $("#header-index").text(index);
-                    }
-                    
-                   
-               })
-       
-
-
-
-
-
-
     //Header animations
     $(".notifications img").click(function(){
         $(".dropdown-search").removeClass("active");
@@ -141,8 +112,7 @@ $(document).ready(function(){
         if(chosen_option == "Advertisement") chosen_option = "advertiser";
         else if(chosen_option == "Timer") chosen_option = "student_timer";
         else if(chosen_option == "Plans") chosen_option = "student_plans";
-        else chosen_option = "log in";
- 
+        else chosen_option = "log_in";
         $.ajax({
             type: "POST",
             url: base_url + "/ajax-request-redirect",
@@ -152,8 +122,6 @@ $(document).ready(function(){
             dataType : "JSON",
             success: function (response) {
                window.location.href = response['url'];
-            
-            
             }
         });
     })
@@ -235,6 +203,8 @@ $(document).ready(function(){
     $(".option").click(function(){
         
         let option = $(this).find("span").text().toLowerCase();
+
+        option = "student-" + option;
         
         $.ajax({
             type: "POST",
@@ -244,11 +214,7 @@ $(document).ready(function(){
             },
             dataType : "JSON",
             success: function (response) {
-                  window.location.href = response['url'];
-                       
-            },
-            error: function (){
-                alert("greska");
+               window.location.href = response['url'];
             }
         });
     })

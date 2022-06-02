@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="button">
-                    <input type="submit" #id="inp" value="Log in">
+                    <input type="submit"  value="Log in">
                 </div>
                 <div class="redirect">
                     Don't have an account?

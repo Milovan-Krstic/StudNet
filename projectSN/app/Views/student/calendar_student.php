@@ -1,9 +1,7 @@
 <?= link_tag('css_files/calendar_student.css') ?>
 
       
-      <div class="header">
-        <img src="images/StudNet Logo.svg" alt="StudNet" class="logo">
-      </div>
+      
       <div class="content">
         <div class="container">
           <div class="main">

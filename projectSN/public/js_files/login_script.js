@@ -50,8 +50,9 @@ $(document).ready(function() {
                             
                         }
                         else if(response==3){ // 3 univerzitet
-                            
+
                             location.href = "http://localhost:8080/university-main"; ////PROMENITI NA OBICAN HOME PAGE
+
                         }
                         else if(response==4){ // 4 moderator
                             

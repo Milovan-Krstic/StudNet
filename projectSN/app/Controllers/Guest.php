@@ -199,7 +199,7 @@ class Guest extends BaseController
             $id = $userModel->getInsertID();
             $facultyModel = new FacultyModel();
             
-            $facultyId = $facultyModel->where("Name", $data['faculty'])->find();
+            $facultyId = $facultyModel->where("Name", "ETF")->find();
                 
             $moderatorModel->insert([
                 "IdMod" => $id,

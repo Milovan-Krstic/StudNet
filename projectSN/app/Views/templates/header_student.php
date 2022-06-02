@@ -15,6 +15,7 @@
     <?= script_tag('js_files/header_student.js') ?>
     
     <title>StudNet Main</title>
+    <meta charset="UTF-8">
 </head>
 <body>
     <div class="header">

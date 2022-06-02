@@ -76,9 +76,17 @@ class Guest extends BaseController
     public function ajaxRequestRedirect(){
        $data = $this->request->getVar();
        
-       echo json_encode([
-           "url" => base_url($data["page"])
-       ]);
+        if($data['page']==""){
+           $this->session->destroy();
+            echo json_encode([
+                "url" => base_url()
+            ]);
+        }
+        else {
+            echo json_encode([
+                "url" => base_url($data['page'])
+            ]);
+        }
     }
     
     /**
@@ -191,7 +199,7 @@ class Guest extends BaseController
             $id = $userModel->getInsertID();
             $facultyModel = new FacultyModel();
             
-            $facultyId = $facultyModel->where("Name", "ETF")->find();
+            $facultyId = $facultyModel->where("Name", $data['faculty'])->find();
                 
             $moderatorModel->insert([
                 "IdMod" => $id,

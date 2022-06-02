@@ -31,18 +31,18 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Guest::index');
-$routes->get('/index', 'Guest::index');
+$routes->get('/', 'LogIn::index');
+$routes->get('/index', 'LogIn::index');
 $routes->get('/register-moderator', 'Guest::register_moderator');
 $routes->get('/register-others', 'Guest::register_others');
 $routes->get('/register-university', 'Guest::register_university');
 $routes->get('/register-advertiser', 'Guest::register_advertiser');
 $routes->get('/student-main', 'Student::main');
 $routes->get('/student-timer', 'Student::timer');
-$routes->get('/student-log out', 'Guest::index');
+$routes->get('/student-plans', 'Student::plans');
 $routes->get('/student-profile', 'Student::profile');
 $routes->get('/student-view', 'Student::view_user');
-
+$routes->get('/logout', 'LogIn::index');
 $routes->get('/moderator-main', 'Moderator::main');
 $routes->get('/moderator-profile', 'Moderator::profile');
 
@@ -51,6 +51,9 @@ $routes->post('/ajax-request-register-moderator', 'Guest::ajaxRequestRegisterMod
 $routes->post('/ajax-request-register-university', 'Guest::ajaxRequestRegisterUniversity');
 $routes->post('/ajax-request-register-advertiser', 'Guest::ajaxRequestRegisterAdvertiser');
 $routes->post('/ajax-request-redirect', 'Guest::ajaxRequestRedirect');
+
+$routes->post('/loginSubmit', 'LogIn::loginSubmit');
+$routes->get('/loginSubmit', 'LogIn::loginSubmit');
 
 
 /*

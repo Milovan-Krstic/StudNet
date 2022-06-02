@@ -54,4 +54,9 @@ class Student extends BaseController
     {
         return $this->show('view_student', 'header_student_options');
     }
+    
+    public function plans()
+    {
+        return $this->show('calendar_student', 'header_student_options');
+    }
 }

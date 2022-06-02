@@ -46,6 +46,8 @@ $routes->get('/logout', 'LogIn::index');
 $routes->post('/ajax-request-register-student', 'Guest::ajaxRequestRegisterStudent');
 $routes->post('/ajax-request-register-moderator', 'Guest::ajaxRequestRegisterModerator');
 $routes->post('/ajax-request-redirect', 'Guest::ajaxRequestRedirect');
+$routes->post('/loginSubmit', 'LogIn::loginSubmit');
+$routes->get('/loginSubmit', 'LogIn::loginSubmit');
 
 $routes->post('/ajax-request-check-requests', 'Student::ajaxRequestCheckRequests');
 $routes->post('/ajax-request-accept', 'Student::ajaxRequestAccept');

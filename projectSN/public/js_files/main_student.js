@@ -31,6 +31,7 @@ $(document).ready(function(){
             message.append(message_box);
                 
            
+
             //ovde treba da se loaduje friend lista
             //--------------------------------------
             
@@ -66,6 +67,8 @@ $(document).ready(function(){
         getAllFriends();
     }, 5000);
             //-------------------------------------- 
+
+
                 $.ajax({
                     url:"http://localhost:8080/Chet/ajaxSendMyTextToGroup",
                     type:"POST",

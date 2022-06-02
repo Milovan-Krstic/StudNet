@@ -11,9 +11,11 @@ use App\Models\UniversityModel;
 class Guest extends BaseController
 {
     public function show($page) {
-        echo view("templates/header_guest");
-        echo view("guest/$page");
-        echo view("templates/footer_guest");
+        
+            echo view("templates/header_guest");
+            echo view("guest/$page");
+            echo view("templates/footer_guest");
+        
     }
     public function index()
     {
@@ -21,7 +23,7 @@ class Guest extends BaseController
     }
     
     public function register_moderator()
-    {
+    {   
         return $this->show('register_moderator');
     }
     

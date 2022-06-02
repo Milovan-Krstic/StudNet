@@ -52,7 +52,7 @@
                 </div>
                 <div class="redirect">
                     Don't have an account?
-                    <?= anchor("$controller/Index","SignUp for StudNet")?> 
+                    <?= anchor("$controller","SignUp for StudNet")?> 
           
                     
                 </div>

@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'LogIn::index');
 $routes->get('/index', 'LogIn::index');
+$routes->get('/register-student', 'Guest::index');
 $routes->get('/register-moderator', 'Guest::register_moderator');
 $routes->get('/register-others', 'Guest::register_others');
 $routes->get('/register-university', 'Guest::register_university');

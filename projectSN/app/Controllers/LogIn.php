@@ -12,7 +12,7 @@ class LogIn extends BaseController
     public function index()
     {
         
-        $data['controller']='Guest';
+        $data['controller']='register-student';
         echo view("templates/header_guest");
         echo view('login/login',$data);
         echo view("templates/footer_guest");

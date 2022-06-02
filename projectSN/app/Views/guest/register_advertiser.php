@@ -159,4 +159,4 @@
         </div>
     </div>
 
-<?= script_tag('js_files/register_advertiser.js') ?>
+<?= script_tag('js_files/register_student.js') ?>

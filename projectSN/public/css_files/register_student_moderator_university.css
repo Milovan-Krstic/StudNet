@@ -26,9 +26,6 @@ html, body {
     align-items: center;
     background-color: #f0f5f5;
     
-    background-image: linear-gradient(#f0f5f59d, transparent),url("../images/StudNet-Pattern-Light-v2.png");
-    background-repeat: repeat;
-
     padding-bottom: 3.5%;
 }
 
@@ -78,14 +75,6 @@ html, body {
 }
 
 .input-box input[type="text"]:valid {
-    color:#444444;
-}
-
-.input-box input[type="password"]:valid {
-    color:#444444;
-}
-
-.input-box input[type="date"]:valid {
     color:#444444;
 }
 
@@ -325,7 +314,6 @@ img {
     font-size: 22px;
     font-family: roboto-regular;
     
-    background-image: url("../images/StudNet-Pattern-Light-v3.png");
 
     display: flex;
     flex-direction: column;

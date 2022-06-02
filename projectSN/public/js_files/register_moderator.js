@@ -1,23 +1,54 @@
-var country_list = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
-var faculty_list = ["Elektrotehnicki fakultet Univerziteta u Beogradu", "Medicinski fakultet Univerziteta u Beogradu", "Masinski fakultet Univerziteta u Beogradu", "Gradjevinski fakultet Univerziteta u Beogradu", "Arhitektonski fakultet Univerziteta u Beogradu",
-                    "Tehnolosko-metalurski fakultet Univerziteta u Beogradu", "Bioloski fakultet Univerziteta u Beogradu", "Hemijski fakultet Univerziteta u Beogradu", "Farmaceutski fakultet Univerziteta u Beogradu", "Stomatoloski fakultet Univerziteta u Beogradu",
-                    "Poljoprivredni fakultet Univerziteta u Beogradu", "Filoloski fakultet Univerziteta u Beogradu", "Filozofski fakultet Univerziteta u Beogradu", "Pravni fakultet Univerziteta u Beogradu", "Fakultet tehnickih nauka Univerziteta u Novom Sadu"];
 
 $(document).ready(function() {
-    
+    let country_list = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+    let faculty_list=[];
+    let lmao=[];
     let country_dropdown = $("[name='s1']");
     let faculty_dropdown = $("[name='s2']");
     let course_dropdown = $("[name='s3']");
+    
+    let IdUnii;
+    
+    $.ajax({
+        url : "http://localhost:8080/Univerzitet/ajaxRequestUni",
+        type : "POST",
+        data:{
+            
+        },
+        dataType : "JSON",
+        success: function(response){
+            //alert(response[0].Name);
+            
+            let tex= response['kor'].Ime;
+                       
+                       
+            let input =tex;
 
+            //$("#naslov").text(input); 
+            IdUniii=response['kor'].IdKor;
+             // alert(tex);
+                       
+            nizFakulteta=response['fakulteti'];
+            for(let i=0;i<nizFakulteta.length;i++){
+                faculty_list.push(nizFakulteta[i].Name);
+                        
+            }
+             faculty_list.sort();
+    faculty_list.forEach(element => {
+        faculty_dropdown.append("<li class='1'>"+element+"</li>");
+    });
+        },
+        error:function(){
+            alert("error");     
+        }   
+    });
 
+    
     country_list.forEach(element => {
         country_dropdown.append("<li>"+element+"</li>");
     });
 
-    faculty_list.sort();
-    faculty_list.forEach(element => {
-        faculty_dropdown.append("<li>"+element+"</li>");
-    });
+   
 
 
     //Click on the dropdown menu
@@ -45,7 +76,20 @@ $(document).ready(function() {
 
         span.parent().css({"color" : "#444444"});
     })
+    
+     $(".dropdown-select").on('click','.1',function(){
+        let text = $(this).text();
+       
+        let id = $(this).parent().attr("name");
+        let selector = "#" + id;
+        
+        let span = $(selector);
+        span.text(text);
 
+        span.parent().css({"color" : "#444444"});
+    })
+
+    
     $(".help span").click(function(){
         $(".help-background").addClass("help-active");
     })

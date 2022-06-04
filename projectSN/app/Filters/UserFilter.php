@@ -15,6 +15,9 @@ class UserFilter implements FilterInterface
                 && !$session->has('logedinUsers')&& !$session->has('logedinReklamer') 
                 && !$session->has('logedinAdmin'))
             return redirect()->to(base_url('Login'));
+        
+        
+        
     }
 
     //--------------------------------------------------------------------

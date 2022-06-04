@@ -1,3 +1,9 @@
+/*
+    author Djordje Popara 2019/0460
+
+    Moderator header style
+ */
+
 @font-face {
     font-family: roboto-regular;
     src: url("../fonts/Roboto-Regular.ttf");
@@ -70,6 +76,7 @@
 .user img {
     width: 40px;
     height: auto;
+    border-radius: 100%;
 }
 
 .user .user-info {

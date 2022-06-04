@@ -32,7 +32,7 @@
                 <div class="search-scroll">
                     <div class="search-user">
                         <div>
-                            <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
                         </div>
                         
@@ -42,7 +42,7 @@
                     <hr>
                     <div class="search-user">
                         <div>
-                             <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
                         </div>
                         
@@ -51,7 +51,7 @@
                     </div>
                     <hr><div class="search-user">
                         <div>
-                              <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
                         </div>
                         
@@ -61,7 +61,7 @@
 
                     <hr><div class="search-user">
                         <div>
-                               <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
                         </div>
                         
@@ -71,7 +71,7 @@
 
                     <hr><div class="search-user">
                         <div>
-                              <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
                         </div>
                         
@@ -81,7 +81,7 @@
 
                     <hr><div class="search-user">
                         <div>
-                              <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                        <img src="images/StudNet Profile Picture Default.svg" alt="">
                         <span>John Doe, 4th year, Elektrotehnicki fakultet Univerziteta u Beogradu, Serbia</span>
                         </div>
                         
@@ -95,20 +95,18 @@
 
         <div class="header-info">
             <div class="user">
-                       <img src="<?= base_url("images/StudNet Profile Picture Red.svg")?>" alt="">
-               
+                <img src="images/StudNet Profile Picture Red.svg" alt="Profile picture">
                 <div class="user-info">
-                    
                     <span id="header-name">Djordje Popara</span><br>
                     <span id="header-index">2019/0460</span>
                 </div>
             </div>
             <div class="notifications">
-                 <img src="<?= base_url("icons/StudNet Notification Bell.svg")?>" alt="">
+                <img src="icons/StudNet Notification Bell.svg" alt="Notifications">
             </div>
             
             <div class="options">
-                   <img src="<?= base_url("icons/StudNet Options Caret.svg")?>" alt="">
+                <img src="icons/StudNet Options Caret.svg" alt="Options">
             </div>
             
 
@@ -118,8 +116,7 @@
                 <div class="request-container">
                     <div class="request">
                         <div class="request-user">
-                           
-                              <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                            <img src="images/StudNet Profile Picture Default.svg" alt="">
                             <span>John Doe</span>
                         </div>
                         <div class="request-buttons">
@@ -129,8 +126,7 @@
                     </div>
                     <div class="request">
                         <div class="request-user">
-                         
-                              <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                            <img src="images/StudNet Profile Picture Default.svg" alt="">
                             <span>John Doe</span>
                         </div>
                         <div class="request-buttons">
@@ -140,8 +136,7 @@
                     </div>
                     <div class="request">
                         <div class="request-user">
-                           
-                              <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                            <img src="images/StudNet Profile Picture Default.svg" alt="">
                             <span>John Doe</span>
                         </div>
                         <div class="request-buttons">
@@ -151,8 +146,7 @@
                     </div>
                     <div class="request">
                         <div class="request-user">
-                     
-                              <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                            <img src="images/StudNet Profile Picture Default.svg" alt="">
                             <span>John Doe</span>
                         </div>
                         <div class="request-buttons">
@@ -162,7 +156,7 @@
                     </div>
                     <div class="request">
                         <div class="request-user">
-                         <img src="<?= base_url("images/StudNet Profile Picture Default.svg")?>" alt="">
+                            <img src="images/StudNet Profile Picture Default.svg" alt="">
                             <span>John Doe</span>
                         </div>
                         <div class="request-buttons">
@@ -176,26 +170,22 @@
             <div class="dropdown-options">
                 <div class="option-top">
                     <div class="option">
-                    
-                          <img src="<?= base_url("icons/StudNet Ads.svg")?>" alt="">
+                        <img src="icons/StudNet Ads.svg">
                         <span>Advertisements</span>
                     </div>
                     <div class="option">
-                        
-                          <img src="<?= base_url("icons/StudNet Timer.svg")?>" alt="">
+                        <img src="icons/StudNet Timer.svg">
                         <span>Timer</span>
                     </div>
                     <div class="option">
-                    
-                          <img src="<?= base_url("icons/StudNet Calendar.svg")?>" alt="">
+                        <img src="icons/StudNet Calendar.svg">
                         <span>Plans</span>
                     </div>
                 </div>
                 <hr>
                 <div class="option-bottom">
                     <div class="option">
-                    
-                      <img src="<?= base_url("icons/StudNet LogOut.svg")?>" alt="">
+                    <img src="icons/StudNet LogOut.svg">
                         <span id="logout">Log Out</span>
                     </div>
                 </div>

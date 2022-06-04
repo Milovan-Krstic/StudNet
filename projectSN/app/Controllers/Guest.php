@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @category Guest
+ * @author   Djordje Popara 2019/0460
+ */
+
 namespace App\Controllers;
 
 use App\Models\UserModel;
@@ -10,51 +15,87 @@ use App\Models\UniversityModel;
 
 class Guest extends BaseController
 {
+    /**
+     * Shows guest page header, body, footer
+     */
     public function show($page) {
         echo view("templates/header_guest");
         echo view("guest/$page");
         echo view("templates/footer_guest");
     }
+
+    /**
+     * Student register page
+     * @return view
+     */
     public function index()
     {
         return $this->show('register_student');
     }
     
+    /**
+     * Moderator register page
+     * @return view
+     */
     public function register_moderator()
     {
         return $this->show('register_moderator');
     }
     
+    /**
+     * Shows registration options: University, Advertiser
+     * @return view
+     */
     public function register_others()
     {
         return $this->show('register_others');
     }
     
+    /**
+     * University register page
+     * @return view
+     */
     public function register_university()
     {
         return $this->show('register_university');
     }
     
+    /**
+     * Advertiser register page
+     * @return view
+     */
     public function register_advertiser()
     {
         return $this->show('register_advertiser');
     }
     
+    /**
+     * Gets page name through request and sends back page url
+     * @return page-url
+     */
     public function ajaxRequestRedirect(){
        $data = $this->request->getVar();
-       if($data['page']==""){
+       
+        if($data['page']==""){
            $this->session->destroy();
-        echo json_encode([
-            "url" => base_url()
-        ]);
-       }else{
-              echo json_encode([
-            "url" => base_url($data['page'])
-                  ]);
-       }
-     
+            echo json_encode([
+                "url" => base_url()
+            ]);
+        }
+        else {
+            echo json_encode([
+                "url" => base_url($data['page'])
+            ]);
+        }
     }
     
+    /**
+     * Gets student data through request
+     * Checks if username/email already exist, if so returns error message/messages
+     * Else checks if there exists a student with same index on same faculty, if so returns error message
+     * Else saves user to user table and inserts student data in student table
+     * @return string
+     */
     public function ajaxRequestRegisterStudent() {
         $data = $this->request->getVar();
         
@@ -62,6 +103,8 @@ class Guest extends BaseController
         
         $username = $userModel->where("Username", ($data['username']))->find();
         $email = $userModel->where("E-mail", ($data['email']))->find();
+
+        $file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
         
         if($username == null && $email == null) {
             $studentModel = new StudentModel();
@@ -73,14 +116,16 @@ class Guest extends BaseController
                 echo json_encode([
                     "message" => "success"
                 ]);
+
                 $userModel->save([
                     "Ime" => $data['name'],
                     "Prezime" => $data['surname'],
                     "Date_of_birth" => $data['date_of_birth'],
-                    "City" => $data['country'],
+                    "Country" => $data['country'],
                     "E-mail" => $data['email'],
                     "Username" => $data['username'],
-                    "Password" => $data['password']
+                    "Password" => $data['password'],
+                    "img" => $file
                 ]);
                 
                 $id = $userModel->getInsertID();
@@ -117,6 +162,12 @@ class Guest extends BaseController
         
     }
     
+     /**
+     * Gets moderator data through request
+     * Checks if username/email already exist, if so returns error message/messages
+     * Else saves user to user table and inserts moderator data in moderator table
+     * @return string
+     */
     public function ajaxRequestRegisterModerator() {
         $data = $this->request->getVar();
         
@@ -124,6 +175,8 @@ class Guest extends BaseController
         
         $username = $userModel->where("Username", ($data['username']))->find();
         $email = $userModel->where("E-mail", ($data['email']))->find();
+
+        $file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
         
         if($username == null && $email == null) {
             $moderatorModel = new ModeratorModel();
@@ -139,7 +192,8 @@ class Guest extends BaseController
                 "Country" => $data['country'],
                 "E-mail" => $data['email'],
                 "Username" => $data['username'],
-                "Password" => $data['password']
+                "Password" => $data['password'],
+                "img" => $file
             ]);
                 
             $id = $userModel->getInsertID();
@@ -171,6 +225,13 @@ class Guest extends BaseController
         
     }
     
+     /**
+     * Gets university data through request
+     * Checks if username/email already exist, if so returns error message/messages
+     * Else checks if there exists an uiversity with same name, if so returns error message
+     * Else saves user to user table and inserts university data in university table
+     * @return string
+     */
     public function ajaxRequestRegisterUniversity() {
         $data = $this->request->getVar();
         
@@ -179,9 +240,11 @@ class Guest extends BaseController
         $username = $userModel->where("Username", ($data['username']))->find();
         $email = $userModel->where("E-mail", ($data['email']))->find();
         
+        $file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
+
         if($username == null && $email == null) {
             $universityModel = new UniversityModel();
-            $university = $universityModel->where("Name", ($data['fullname']))->find();
+            $university = $userModel->where("Ime", ($data['fullname']))->find();
             
             if($university == null) {
                 echo json_encode([
@@ -191,20 +254,17 @@ class Guest extends BaseController
                     "Ime" => $data['fullname'],
                     "Prezime" => "-",
                     "Date_of_birth" => $data['date_of_establishment'],
-                    "City" => $data['country'],
+                    "Country" => $data['country'],
                     "E-mail" => $data['email'],
                     "Username" => $data['username'],
-                    "Password" => $data['password']
+                    "Password" => $data['password'],
+                    "img" => $file
                 ]);
                 
                 $id = $userModel->getInsertID();
                 
                 $universityModel->insert([
-                    "IdUni" => $id,
-                    "Name" => $data['fullname'],
-                    "Date_of_est" => $data['date_of_establishment'],
-                    "Country" => $data['country'],
-                    "E-mail" => $data['email']
+                    "IdUni" => $id
                 ]);
             }
             else {
@@ -231,6 +291,12 @@ class Guest extends BaseController
         
     }
     
+     /**
+     * Gets advertiser data through request
+     * Checks if username/email already exist, if so returns error message/messages
+     * Else saves user to user table and inserts student data in student table
+     * @return string
+     */
     public function ajaxRequestRegisterAdvertiser() {
         $data = $this->request->getVar();
         
@@ -239,6 +305,8 @@ class Guest extends BaseController
         $username = $userModel->where("Username", ($data['username']))->find();
         $email = $userModel->where("E-mail", ($data['email']))->find();
         
+        $file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
+
         if($username == null && $email == null) {
             $advertiserModel = new AdvertiserModel();
             
@@ -249,10 +317,11 @@ class Guest extends BaseController
                 "Ime" => $data['name'],
                 "Prezime" => $data['surname'],
                 "Date_of_birth" => $data['date_of_birth'],
-                "City" => $data['country'],
+                "Country" => $data['country'],
                 "E-mail" => $data['email'],
                 "Username" => $data['username'],
-                "Password" => $data['password']
+                "Password" => $data['password'],
+                "img" => $file
             ]);
             
             $id = $userModel->getInsertID();

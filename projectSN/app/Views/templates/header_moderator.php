@@ -12,7 +12,7 @@
         var base_url = "<?= base_url() ?>";
     </script>
 
-    <?= script_tag('js_files/header_student.js') ?>
+    <?= script_tag('js_files/header_moderator.js') ?>
     
     <title>StudNet Main</title>
 </head>

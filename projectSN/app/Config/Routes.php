@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'LogIn::index');
 $routes->get('/index', 'LogIn::index');
+$routes->get('/register-student', 'Guest::index');
 $routes->get('/register-moderator', 'Guest::register_moderator');
 $routes->get('/register-others', 'Guest::register_others');
 $routes->get('/register-university', 'Guest::register_university');
@@ -45,12 +46,16 @@ $routes->get('/student-profile', 'Student::profile');
 $routes->get('/student-view', 'Student::view_user');
 $routes->get('/logout', 'LogIn::index');
 $routes->get('/moderator-main', 'Moderator::main');
+
+$routes->get('/moderator-profile', 'Moderator::profile');
+
 $routes->post('/ajax-request-register-student', 'Guest::ajaxRequestRegisterStudent');
 $routes->post('/ajax-request-register-moderator', 'Guest::ajaxRequestRegisterModerator');
 $routes->post('/ajax-request-register-university', 'Guest::ajaxRequestRegisterUniversity');
 $routes->post('/ajax-request-register-advertiser', 'Guest::ajaxRequestRegisterAdvertiser');
 $routes->post('/ajax-request-redirect', 'Guest::ajaxRequestRedirect');
 
+<<<<<<< HEAD
 
 $routes->post('/ajax-request-check-requests', 'Student::ajaxRequestCheckRequests');
 $routes->post('/ajax-request-accept', 'Student::ajaxRequestAccept');
@@ -63,9 +68,19 @@ $routes->post('/ajax-request-send-friend', 'Student::ajaxRequestSendFriend');
 $routes->post('/ajax-request-get-all-friends', 'Student::ajaxRequestGetAllFriends');
 
 
+=======
+$routes->post('/ajax-request-AdminHome', 'Admin::ajax_request_AdminHome');
+>>>>>>> a96dbe8d5c0c21793c69427db89f6d1cc0a6a0d0
 
 $routes->post('/loginSubmit', 'LogIn::loginSubmit');
 $routes->get('/loginSubmit', 'LogIn::loginSubmit');
+
+$routes->get('/university-main', 'Univerzitet::index');
+$routes->get('/admin-main', 'Admin::index');
+
+
+$routes->post('/ajax-request-search-user', 'Student::ajax_request_search_user');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -1,3 +1,9 @@
+/*
+    author Djordje Popara 2019/0460
+
+    Student profile page style
+ */
+
 html, body {
     height: 100vh;
     width: 100vw;
@@ -51,7 +57,10 @@ html, body {
 
 #user-picture {
     width: 150px;
+
+    border-radius: 100%;
 }
+
 
 #change {
     width: 40px;

@@ -409,7 +409,8 @@ $(document).ready(function() {
                     data : {
                         faculty : $("#s1AUni").text(),
                         course : $("#s1AUni2").text(),     
-                        subj: $("#classname").val()
+                        subj: $("#classname").val(),
+                        semnum: $("#semnum").val()
                     },
                     dataType : "JSON",
                     success: function(response) {

@@ -1,12 +1,18 @@
-$(document).ready(function(){
-    
-    // Initialize page
-    // Status - friend or none
+/**
+ * @author Djordje Popara 2019-0460
+ * @category Register
+ */
 
-    //If friend
-    // $(".buttons input").val("Remove Friend")
-    // $(".buttons input").addClass("remove");
-    // $(".buttons input").removeClass("request");
+$(document).ready(function(){
+    /**
+     * TODO Initialize page
+     * Status - friend or none
+
+     * If friend
+     * $(".buttons input").val("Remove Friend")
+     * $(".buttons input").addClass("remove");
+     * $(".buttons input").removeClass("request");
+     */
 
     // else
     $(".buttons input").val("Send Friend Request")

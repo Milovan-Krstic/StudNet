@@ -1,8 +1,6 @@
-
-  <?= link_tag('css_files/AdminStyles.css')?>
-   <?= link_tag('css_files/buttons.css')?>
-   <?= link_tag('css_files/AdminPosCenter.css')?>
-
+    <?= link_tag('css_files/AdminStyles.css')?>
+    <?= link_tag('css_files/buttons.css')?>
+    <?= link_tag('css_files/AdminPosCenter.css')?>
 
     <div class="content">
         <div class="container">
@@ -63,12 +61,20 @@
                             <input type="text" class="course" id="classname" name="classname" placeholder="class name">
                             </div>
                         
+                         <div class="input-box posCentr col-6">
+                            <input type="number" class="course" id="semnum" name="semnum" placeholder="semester number">
+                            </div>
+                        
+                        
                     </div>
                     
                       
                     <input class="buttonAAS" id="addAU" name="Add" type="button" value="Add">         
                     <?= anchor("$controller/AddIUni","<input class='buttonCAU' id='addCU' name='Cancle' type='button' value='Cancel'>")?>
          
+                    
+                    
+                    
                     
                     <div class="popup-background">
                     <div class="popup-container">

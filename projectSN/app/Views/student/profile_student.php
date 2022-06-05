@@ -5,6 +5,9 @@
         <div class="profile-picture">
             <img src="images/StudNet Profile Picture Default.svg" alt="" id="user-picture">
             <img src="icons/StudNet Camera.svg" alt="" id="change">
+        
+            <input type="file" id="imgUpload" name="file"/>
+           
         </div>
         <span id="name">Djordje Popara</span>
         <hr>

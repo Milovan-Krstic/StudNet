@@ -65,7 +65,7 @@ $routes->get('/admin-main', 'Admin::index');
 
 $routes->post('/ajax-request-search-user', 'Student::ajax_request_search_user');
 $routes->post('/ajax-request-get-user-info', 'Student::ajaxGetStudentInfo');
-
+$routes->post('/ajax-setUser-Img', 'Student::setUserImg');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

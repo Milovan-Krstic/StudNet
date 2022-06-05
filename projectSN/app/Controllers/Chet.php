@@ -9,6 +9,8 @@ use App\Models\ClassModel;
 
 class Chet extends BaseController{
     
+    
+    //put my message in the db 
     public function ajaxSendMyTextToGroup() {
         $kor = $_SESSION['logedinUsers'];
         $idkor=$kor->IdKor;
@@ -40,7 +42,7 @@ class Chet extends BaseController{
        return json_encode(['message'=>'success']) ;
         
     }
-    
+    //get all other chat messages in the class
     public function ajaxGetChats() {
         
         $me = $_SESSION['logedinUsers'];
@@ -62,11 +64,12 @@ class Chet extends BaseController{
         $query = $db->query("SELECT * FROM chet_rooms 
 	JOIN korisnik ON korisnik.IdKor= chet_rooms.IdKor_OD
             WHERE chet_rooms.IdCl ={$idC}
-            ORDER BY chet_rooms.time_send ASC")->getResultArray();
+            ORDER BY chet_rooms.time_send DESC")->getResultArray();
         
         return json_encode(['message'=>$query,'myID'=>$myIdkor]);
     }
     
+    //for displaying student subjects in the left side of the main view
     public function ajaxGetStudentSubjects() {
                 $me = $_SESSION['logedinUsers'];
                 $myIdkor = $me->IdKor;

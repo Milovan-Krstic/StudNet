@@ -27,7 +27,7 @@ class UserModel extends Model
     
     */
 
-    protected $allowedFields = ['IdKor','Ime', 'Prezime', 'Date_of_birth', 'Country', 'E-mail', 'Username','Last_login', 'Password', 'img'];
+    protected $allowedFields = ['IdKor','Ime', 'Prezime', 'Date_of_birth', 'Country', 'Email', 'Username','Last_login', 'Password', 'img','Active'];
     
     public function chechUserForUsername($tekst) {
         return $this->where('Username',$tekst)->findAll();

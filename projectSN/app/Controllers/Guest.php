@@ -190,7 +190,7 @@ class Guest extends BaseController
                 "Prezime" => $data['surname'],
                 "Date_of_birth" => $data['date_of_birth'],
                 "Country" => $data['country'],
-                "E-mail" => $data['email'],
+                "Email" => $data['email'],
                 "Username" => $data['username'],
                 "Password" => $data['password'],
                 "img" => $file
@@ -255,7 +255,7 @@ class Guest extends BaseController
                     "Prezime" => "-",
                     "Date_of_birth" => $data['date_of_establishment'],
                     "Country" => $data['country'],
-                    "E-mail" => $data['email'],
+                    "Email" => $data['email'],
                     "Username" => $data['username'],
                     "Password" => $data['password'],
                     "img" => $file
@@ -318,7 +318,7 @@ class Guest extends BaseController
                 "Prezime" => $data['surname'],
                 "Date_of_birth" => $data['date_of_birth'],
                 "Country" => $data['country'],
-                "E-mail" => $data['email'],
+                "Email" => $data['email'],
                 "Username" => $data['username'],
                 "Password" => $data['password'],
                 "img" => $file

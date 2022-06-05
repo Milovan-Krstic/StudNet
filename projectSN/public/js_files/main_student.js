@@ -238,7 +238,7 @@ $(document).ready(function () {
 
                     let myId = response['myID'];
                     let messages = $(".message-box span").first();
-                    let messArr = response['message'].slice(newCurrentLoadedMessages + 1);
+                    let messArr = response['message'].slice(newCurrentLoadedMessages+1);
 
                     if (messArr.length > 0) {
                         $.each(messArr, function (index, value) {
@@ -317,7 +317,7 @@ $(document).ready(function () {
 
             e.preventDefault();
             let text = $("#input-message").val();
-            if (text.length <= 1) {
+            if (text.length <= 0) {
                 $("#input-message").val("");
                 return;
             }

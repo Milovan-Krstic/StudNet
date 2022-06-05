@@ -62,7 +62,7 @@ class Chet extends BaseController{
         $query = $db->query("SELECT * FROM chet_rooms 
 	JOIN korisnik ON korisnik.IdKor= chet_rooms.IdKor_OD
             WHERE chet_rooms.IdCl ={$idC}
-            ORDER BY chet_rooms.time_send ASC")->getResultArray();
+            ORDER BY chet_rooms.time_send DESC")->getResultArray();
         
         return json_encode(['message'=>$query,'myID'=>$myIdkor]);
     }

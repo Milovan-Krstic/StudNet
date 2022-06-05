@@ -54,7 +54,6 @@ $routes->post('/ajax-request-register-moderator', 'Guest::ajaxRequestRegisterMod
 $routes->post('/ajax-request-register-university', 'Guest::ajaxRequestRegisterUniversity');
 $routes->post('/ajax-request-register-advertiser', 'Guest::ajaxRequestRegisterAdvertiser');
 $routes->post('/ajax-request-redirect', 'Guest::ajaxRequestRedirect');
-
 $routes->post('/ajax-request-AdminHome', 'Admin::ajax_request_AdminHome');
 
 $routes->post('/loginSubmit', 'LogIn::loginSubmit');
@@ -65,6 +64,7 @@ $routes->get('/admin-main', 'Admin::index');
 
 
 $routes->post('/ajax-request-search-user', 'Student::ajax_request_search_user');
+$routes->post('/ajax-request-get-user-info', 'Student::ajaxGetStudentInfo');
 
 /*
  * --------------------------------------------------------------------

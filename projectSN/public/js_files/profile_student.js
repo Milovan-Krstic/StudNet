@@ -9,6 +9,37 @@ $(document).ready(function(){
     /**
      * Opens edit mode, upload image and change bio available
      */
+    
+    $.ajax({
+        
+        url:"http://localhost:8080/ajax-request-get-user-info",     
+        type: 'POST',
+        dataType: "JSON",
+         success: function (response) {
+            let user =response['message'][0];
+            $("#name").text(user.Ime+" "+user.Prezime)
+            $("div.faculty span.name").text(user.Faculty);
+            $("div.course span.name").text(user.Course);
+            $("div.row.id span.name").text(user.IdGod+"/"+user.IdNum);
+            $("div.row.country span.name").text(user.Country);
+            $("div.row.email span.name").text(user.Email);
+        }
+        
+    })
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     $("#edit").click(function() {
         $(this).toggleClass("hidden");
         $(".buttons").toggleClass("active");

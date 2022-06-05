@@ -53,7 +53,6 @@ class Student extends BaseController
     {
         return $this->show('profile_student', 'header_student_options');
     }
-    
     /**
      * View of another user profile
      * @return view
@@ -82,7 +81,18 @@ class Student extends BaseController
         
         return json_encode(["message"=>$query]);
     }
-    
+     
+    public function ajaxGetStudentInfo() {
+        
+       $Kor= $_SESSION['logedinUsers'];
+       $idkor = $Kor->IdKor;
+         $db= \Config\Database::connect();
+           $query=$db->query("SELECT * FROM korisnik  JOIN student ON korisnik.IdKor=student.IdStud WHERE korisnik.IdKor={$idkor}")->getResultArray();
+        
+           return json_encode(['message'=>$query]);
+           
+        
+    }
     
     
 }

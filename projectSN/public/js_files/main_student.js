@@ -415,8 +415,8 @@ $(document).ready(function () {
             },
             dataType: "JSON",
             success: function (response) {
-<<<<<<< HEAD
 
+/*
                 window.localStorage.setItem("IdKor",response['IdKor']);
                 
                 let naziv = response['Ime']+" "+response['Prezime'];
@@ -436,10 +436,9 @@ $(document).ready(function () {
                 
                 
 
-               window.location.href = response['url'];
-=======
+               window.location.href = response['url'];*/
+
                 window.location.href = response['url'];
->>>>>>> a96dbe8d5c0c21793c69427db89f6d1cc0a6a0d0
             }
         });
     })
@@ -513,5 +512,86 @@ $(document).ready(function () {
     // Hide the popup
     $(".bottom-next").click(function () {
         $(".popup-background").removeClass("popup-active");
-    })
+    });
+    
+    function getAllFriends(){
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-get-all-friends",
+            dataType: "JSON",
+            success: function (response) {
+            
+
+            $(".friends-scroll").empty();
+                //No requests
+               if(response.length == 0) {
+                   
+                    $(".friends-scroll").empty();
+               }
+               else{
+                    for(var i = 0;i<response.length;i++){
+                    let friend = $("<div></div>").addClass("friend").attr("id",response[i].id);
+                    
+                    let friend_image = $("<img/>").attr("src", "images/StudNet Profile Picture Default.svg")//response[i].image)
+                            .on("click",function(){
+                               
+                                 $.ajax({
+                                 type: "POST",
+                                 url: base_url + "/ajax-friend-view",
+                                 data: {
+                                        id: $(this).parent().attr("id"),
+                                        page:"student-view"
+                                 },
+                                 dataType: "JSON",
+                                 success: function (response) {
+                                 //window.location.href = response['url'];
+                                 
+                                 window.localStorage.setItem("IdKor",response['IdKor']);
+                
+                                /*let naziv = response['Ime']+" "+response['Prezime'];
+                
+                                window.localStorage.setItem("Naziv",naziv);
+                                window.localStorage.setItem("Faculty",response['Faculty']);
+                                window.localStorage.setItem("Course",response['Course']);                                
+                                window.localStorage.setItem("Email",response['Email']);
+                
+                                let indeks = response['IdGod']+"/"+response['IdNum'];
+                
+                                window.localStorage.setItem("Indeks",indeks);
+                                window.localStorage.setItem("Friends",response['Friends']);*/
+
+
+
+                
+                
+
+                                window.location.href = response['url'];
+                                 
+                            }
+                        });
+                                    
+                    });
+                    
+                    
+                    let friend_name = $("<span></span>").text(response[i].name);
+                    friend.append(friend_image).append(friend_name);
+                    
+                    $(".friends-scroll").append(friend);
+                    }
+                }
+                
+
+
+
+                
+              
+            }
+        });
+    }
+    
+    setInterval(function(){
+        //To implement:
+       getAllFriends();
+    }, 5000);
+    
 });

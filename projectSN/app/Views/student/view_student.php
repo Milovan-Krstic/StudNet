@@ -29,7 +29,7 @@
                 <img src="icons/StudNet Index.svg" alt="">
                 <div class="info-box">
                     <span class="text">Student ID: </span>
-                    <span class="name">2019/0123</span>
+                    <span class="name"></span>
                 </div>
             </div>
 

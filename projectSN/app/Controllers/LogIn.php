@@ -20,8 +20,7 @@ class LogIn extends BaseController
     
     
     public function loginSubmit(){
-        
-        
+     
         
         $data=$this->request->getVar();
 

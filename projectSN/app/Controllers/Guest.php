@@ -104,7 +104,7 @@ class Guest extends BaseController
         $username = $userModel->where("Username", ($data['username']))->find();
         $email = $userModel->where("Email", ($data['email']))->find();
 
-        $file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
+        //$file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
         
         if($username == null && $email == null) {
             $studentModel = new StudentModel();
@@ -124,8 +124,8 @@ class Guest extends BaseController
                     "Country" => $data['country'],
                     "Email" => $data['email'],
                     "Username" => $data['username'],
-                    "Password" => $data['password'],
-                    "img" => $file
+                    "Password" => $data['password']
+                    //"img" => $file
                 ]);
                 
                 $id = $userModel->getInsertID();

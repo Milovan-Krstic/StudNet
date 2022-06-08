@@ -102,9 +102,9 @@ class Guest extends BaseController
         $userModel = new UserModel();
         
         $username = $userModel->where("Username", ($data['username']))->find();
-        $email = $userModel->where("E-mail", ($data['email']))->find();
+        $email = $userModel->where("Email", ($data['email']))->find();
 
-        $file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
+        //$file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
         
         if($username == null && $email == null) {
             $studentModel = new StudentModel();
@@ -122,10 +122,10 @@ class Guest extends BaseController
                     "Prezime" => $data['surname'],
                     "Date_of_birth" => $data['date_of_birth'],
                     "Country" => $data['country'],
-                    "E-mail" => $data['email'],
+                    "Email" => $data['email'],
                     "Username" => $data['username'],
-                    "Password" => $data['password'],
-                    "img" => $file
+                    "Password" => $data['password']
+                    //"img" => $file
                 ]);
                 
                 $id = $userModel->getInsertID();
@@ -174,7 +174,7 @@ class Guest extends BaseController
         $userModel = new UserModel();
         
         $username = $userModel->where("Username", ($data['username']))->find();
-        $email = $userModel->where("E-mail", ($data['email']))->find();
+        $email = $userModel->where("Email", ($data['email']))->find();
 
         $file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
         
@@ -190,7 +190,7 @@ class Guest extends BaseController
                 "Prezime" => $data['surname'],
                 "Date_of_birth" => $data['date_of_birth'],
                 "Country" => $data['country'],
-                "E-mail" => $data['email'],
+                "Email" => $data['email'],
                 "Username" => $data['username'],
                 "Password" => $data['password'],
                 "img" => $file
@@ -238,7 +238,7 @@ class Guest extends BaseController
         $userModel = new UserModel();
         
         $username = $userModel->where("Username", ($data['username']))->find();
-        $email = $userModel->where("E-mail", ($data['email']))->find();
+        $email = $userModel->where("Email", ($data['email']))->find();
         
         $file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
 
@@ -255,7 +255,7 @@ class Guest extends BaseController
                     "Prezime" => "-",
                     "Date_of_birth" => $data['date_of_establishment'],
                     "Country" => $data['country'],
-                    "E-mail" => $data['email'],
+                    "Email" => $data['email'],
                     "Username" => $data['username'],
                     "Password" => $data['password'],
                     "img" => $file
@@ -303,7 +303,7 @@ class Guest extends BaseController
         $userModel = new UserModel();
         
         $username = $userModel->where("Username", ($data['username']))->find();
-        $email = $userModel->where("E-mail", ($data['email']))->find();
+        $email = $userModel->where("Email", ($data['email']))->find();
         
         $file = new \CodeIgniter\Files\File("../public/images/StudNet-Profile-Default.png");
 
@@ -318,7 +318,7 @@ class Guest extends BaseController
                 "Prezime" => $data['surname'],
                 "Date_of_birth" => $data['date_of_birth'],
                 "Country" => $data['country'],
-                "E-mail" => $data['email'],
+                "Email" => $data['email'],
                 "Username" => $data['username'],
                 "Password" => $data['password'],
                 "img" => $file

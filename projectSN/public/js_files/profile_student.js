@@ -26,8 +26,8 @@ $(document).ready(function(){
             $("div.row.country span.name").text(user.Country);
             $("div.row.email span.name").text(user.Email);
             $("#user-picture").attr("src","localFiles/"+user.img);
-        }
-        
+
+           }    
     })
     
     
@@ -125,7 +125,7 @@ $(document).ready(function(){
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("imgUpload").files[0]);
         form_data.append('file',document.getElementById("imgUpload").files[0]);
-  
+        
         $.ajax({
             url:"http://localhost:8080/ajax-setUser-Img",
             method:"POST",
@@ -135,8 +135,16 @@ $(document).ready(function(){
             processData: false,
             dataType: "JSON",
             success:function (response){
-                alert("localFiles/"+response['message']);
-               $("#user-picture").attr("src","localFiles/"+response['message']); 
+         
+               
+                 if(response['message']){
+                      $("#user-picture").attr("src","localFiles/"+response['message']);  
+                      
+                    
+                 }else
+                     if(response['errormessage']){
+                        alert(response['errormessage']);  
+                     }
             },
             error:function (){
                 alert("error");

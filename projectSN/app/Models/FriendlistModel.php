@@ -1,18 +1,27 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 namespace App\Models;
+use CodeIgniter\Model;
 
-/**
- * Description of FriendlistModel
- *
- * @author misko
- */
-class FriendlistModel {
-    //put your code here
+class FriendlistModel extends Model {
+     protected $table      = 'frindlist';
+    protected $primaryKey = 'idFL';
+
+    protected $useAutoIncrement = true;
+
+    protected $returnType     = 'object';
+
+    protected $allowedFields = ['idFL','IdM', 'IdF','status'];
+
+    public function findAllFriends(){
+        $kor = $_SESSION['logedinUsers'];
+        $idkor=$kor->IdKor;
+        return $this->groupStart()->where('IdM',$idkor)->orWhere('IdF',$idkor)->groupEnd()->where('status',1)->findAll();
+    }
+    public function findAllFriendRequests(){
+        $kor = $_SESSION['logedinUsers'];
+        $idkor=$kor->IdKor;
+        return $this->where('IdF',$idkor)->where('status',0)->findAll();
+    }
 }

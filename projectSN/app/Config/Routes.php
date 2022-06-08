@@ -66,6 +66,16 @@ $routes->get('/admin-main', 'Admin::index');
 $routes->post('/ajax-request-search-user', 'Student::ajax_request_search_user');
 $routes->post('/ajax-request-get-user-info', 'Student::ajaxGetStudentInfo');
 $routes->post('/ajax-setUser-Img', 'Student::setUserImg');
+$routes->post('/ajax-request-check-requests', 'Student::ajaxRequestCheckRequests');
+$routes->post('/ajax-request-accept', 'Student::ajaxRequestAccept');
+$routes->post('/ajax-request-decline', 'Student::ajaxRequestDecline');
+
+$routes->post('/ajax-friend-view', 'Student::ajaxFriendView');
+/*$routes->post('/ajax-request-send-friend', 'Student::ajaxRequestSendFriend');
+*/
+$routes->post('/ajax-request-get-all-friends', 'Student::ajaxRequestGetAllFriends');
+$routes->post('/ajax-request-friend-data','Student::ajaxRequestFriendData');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

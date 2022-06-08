@@ -95,10 +95,10 @@
 
         <div class="header-info">
             <div class="user">
-                <img src="images/StudNet Profile Picture Red.svg" alt="Profile picture">
+                <img src="" alt="Profile picture">
                 <div class="user-info">
-                    <span id="header-name">Djordje Popara</span><br>
-                    <span id="header-index">2019/0460</span>
+                    <span id="header-name"></span><br>
+                    <span id="header-index"></span>
                 </div>
             </div>
             <div class="notifications">
@@ -114,56 +114,8 @@
                 <span>Friend requests</span>
                 <hr>
                 <div class="request-container">
-                    <div class="request">
-                        <div class="request-user">
-                            <img src="images/StudNet Profile Picture Default.svg" alt="">
-                            <span>John Doe</span>
-                        </div>
-                        <div class="request-buttons">
-                            <input type="button" value="Accept" class="request-accept">
-                            <input type="button" value="Decline" class="request-decline">
-                        </div>
-                    </div>
-                    <div class="request">
-                        <div class="request-user">
-                            <img src="images/StudNet Profile Picture Default.svg" alt="">
-                            <span>John Doe</span>
-                        </div>
-                        <div class="request-buttons">
-                            <input type="button" value="Accept" class="request-accept">
-                            <input type="button" value="Decline" class="request-decline">
-                        </div>
-                    </div>
-                    <div class="request">
-                        <div class="request-user">
-                            <img src="images/StudNet Profile Picture Default.svg" alt="">
-                            <span>John Doe</span>
-                        </div>
-                        <div class="request-buttons">
-                            <input type="button" value="Accept" class="request-accept">
-                            <input type="button" value="Decline" class="request-decline">
-                        </div>
-                    </div>
-                    <div class="request">
-                        <div class="request-user">
-                            <img src="images/StudNet Profile Picture Default.svg" alt="">
-                            <span>John Doe</span>
-                        </div>
-                        <div class="request-buttons">
-                            <input type="button" value="Accept" class="request-accept">
-                            <input type="button" value="Decline" class="request-decline">
-                        </div>
-                    </div>
-                    <div class="request">
-                        <div class="request-user">
-                            <img src="images/StudNet Profile Picture Default.svg" alt="">
-                            <span>John Doe</span>
-                        </div>
-                        <div class="request-buttons">
-                            <input type="button" value="Accept" class="request-accept">
-                            <input type="button" value="Decline" class="request-decline">
-                        </div>
-                    </div>
+                    
+                   
                 </div>
             </div>
 

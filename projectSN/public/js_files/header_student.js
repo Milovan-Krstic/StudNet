@@ -19,8 +19,9 @@ $(document).ready(function(){
 
             let input =tex+" "+prezime;
             $("#header-name").text(input);
-            let index=response['student'].IdGod+"/0"+response['student'].IdNum;
-
+            let index=response['student'].IdGod+"/"+response['student'].IdNum;
+            $(".user img").attr("src","localFiles/"+response['kor'].img);
+         
             $("#header-index").text(index);
          }
     });
@@ -137,42 +138,77 @@ $(document).ready(function(){
     });
 
     //Notifications refresh
-
-    function checkFriendRequests() {
+function checkFriendRequests() {
         //Get username in PHP from session
+
+
         $.ajax({
             type: "POST",
             url: base_url + "/ajax-request-check-requests",
+            dataType : "JSON",
             success: function (response) {
+               $(".request-container").empty();
                 //No requests
                if(response.length == 0) {
+
                     $(".request-container").empty();
                }
                else{
-                    //for each element do
-                    let request = $("<div></div>").addClass("request");
-                    let request_user = $("<div></div>").addClass("request-user");
-                    let request_image = $("<img/>").attr("src", response['image']);
-                    let request_name = $("<span></span>").text(response['name']);
-
-                    request_user.append(request_image).append(request_name);
+                   for(var i = 0;i<response.length;i++){
+                    let request = $("<div></div>").addClass("request").attr("id",response[i].id);
+                   let request_user = $("<div></div>").addClass("request-user");
+                     let request_image = $("<img/>").attr("src", "../images/StudNet Profile Picture Default.svg");//response[i].image);
+                    let request_name = $("<span></span>").text(response[i].name);
+                   request_user.append(request_image).append(request_name);
 
                     let request_buttons = $("<div></div>").addClass("request-buttons");
                     let accept = $("<input/>").attr({
                         type : 'button',
                         value : 'Accept'
-                    }).addClass("request-accept");
+                         }).addClass("request-accept")
+                    .on("click",function() {
+                        //Write code here
 
-                    let decline = $("<input/>").attr({
+                        $.ajax({
+                            type: "POST",
+                            url: base_url + "/ajax-request-accept",
+                            data : {
+                                option : $(this).parent().parent().attr("id")
+                            },
+                            dataType : "JSON",
+                        success: function (response) {
+
+                        }
+                    });
+                        //Delete request from dropdown
+                        $(this).parent().parent().remove();
+    });
+let decline = $("<input/>").attr({
                         type : 'button',
                         value : 'Decline'
-                    }).addClass("request-decline");
+               }).addClass("request-decline").
+                    on("click",function() {
+                        //Write code here
 
-                    request_buttons.append(accept).append(decline);
+                        $.ajax({
+                            type: "POST",
+                            url: base_url + "/ajax-request-decline",
+                            data : {
+                                option : $(this).parent().parent().attr("id")
+                            },
+                            dataType : "JSON",
+                        success: function (response) {
+
+                        }
+                    });
+                        //Delete request from dropdown
+                        $(this).parent().parent().remove();
+    });
+    
+     request_buttons.append(accept).append(decline);
 
                     request.append(request_user).append(request_buttons);
-
-                    $(".request-container").append(request);
+$(".request-container").append(request);}
                }
             }
         });
@@ -180,8 +216,12 @@ $(document).ready(function(){
 
     setInterval(function(){
         //To implement:
-        //checkFriendRequests();
+      //checkFriendRequests();
+        checkFriendRequests();
     }, 5000);
+
+    //Notification request accept/decline
+
 
     //Notification request accept/decline
 

@@ -30,19 +30,6 @@
            }    
     })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     $("#edit").click(function() {
         $(this).toggleClass("hidden");
         $(".buttons").toggleClass("active");
@@ -136,11 +123,9 @@
             dataType: "JSON",
             success:function (response){
 
-
                  if(response['message']){
                       $("#user-picture").attr("src","localFiles/"+response['message']);  
-
-
+                   
                  }else
                      if(response['errormessage']){
                         alert(response['errormessage']);  

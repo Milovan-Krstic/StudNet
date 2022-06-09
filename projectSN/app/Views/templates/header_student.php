@@ -114,8 +114,13 @@
                 <span>Friend requests</span>
                 <hr>
                 <div class="request-container">
+<<<<<<< HEAD
 
 
+=======
+                    
+                   
+>>>>>>> cd530ec7064ac60ed32fa3466422898949fde878
                 </div>
             </div>
 

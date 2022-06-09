@@ -3,8 +3,10 @@
  * @category Student
  */
 
- $(document).ready(function(){
-
+let interval;
+let interval2;
+let numf=0;
+$(document).ready(function(){
     /**
      * ajax request - backend team (Milovan & Mladen)
      * lines 12-26
@@ -208,7 +210,7 @@ let decline = $("<input/>").attr({
      request_buttons.append(accept).append(decline);
 
                     request.append(request_user).append(request_buttons);
-$(".request-container").append(request);}
+                    $(".request-container").append(request);}
                }
             }
         });

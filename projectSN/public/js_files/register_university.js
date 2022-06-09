@@ -243,8 +243,12 @@ $(document).ready(function() {
             }
         });
     });
+<<<<<<< HEAD
     
     $(".header img").click(function(){
+=======
+        $(".header img").click(function(){
+>>>>>>> cd530ec7064ac60ed32fa3466422898949fde878
         $.ajax({
             type: "POST",
             url: base_url + "/ajax-request-redirect",

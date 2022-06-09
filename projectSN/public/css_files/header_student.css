@@ -107,7 +107,6 @@
     justify-content: flex-start;
 
     position: relative;
-    
     width: 19%;
 
 }
@@ -181,14 +180,12 @@
 }
 
 .notifications {
-    /* margin-left: 50px; */
     margin-right: 20px;
 
     z-index: 2;
 }
 
 .options {
-
     z-index: 2;
 }
 

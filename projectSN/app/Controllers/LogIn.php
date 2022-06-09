@@ -71,8 +71,10 @@ class LogIn extends BaseController
                             echo json_encode(5);
                         }
                         else{
-                           
-                            $this->session->set('logedinUsers',$korisnik[0]);
+                            $IdKor=$korisnik[0]->IdKor;
+                              $this->session->set('logedinUsers',$korisnik[0]);
+                                $db= \Config\Database::connect();
+                                 $query = $db->query("UPDATE korisnik SET Active=1 where IdKor={$IdKor}");
                              echo json_encode(1);
                         }
                     

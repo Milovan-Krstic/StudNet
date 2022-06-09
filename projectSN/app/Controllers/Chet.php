@@ -42,6 +42,46 @@ class Chet extends BaseController{
        return json_encode(['message'=>'success']) ;
         
     }
+    
+    //put message for friend chat
+    
+       public function ajaxSendMyTextToFriend() {
+        $kor = $_SESSION['logedinUsers'];
+        $idkor=$kor->IdKor;
+        $text = $this->request->getVar("text");
+        $time= $this->request->getVar("time");
+        $friendid= $this->request->getVar("friend");
+        $chetModel = new Chat_RoomModel();
+        
+        $chetModel->insert([
+         
+             "IdKor_OD"=>$idkor,
+             "IdKor_KA"=>$friendid,
+              "Text"=>$text,     
+               "time_send"=>$time
+             
+        ]);
+      
+       return json_encode(['message'=>'success']) ;
+        
+    }
+    //get friend chat when opening it
+        public function ajaxGetChatFriend() {
+        
+        $me = $_SESSION['logedinUsers'];
+        $myIdkor = $me->IdKor;
+        $friend = $this->request->getVar("friend");
+        $chatModel = new Chat_RoomModel();
+        $db= \Config\Database::connect();
+        $query = $db->query("SELECT * FROM chet_rooms 
+	JOIN korisnik ON korisnik.IdKor= chet_rooms.IdKor_OD
+            WHERE (chet_rooms.IdKor_KA ={$friend} AND chet_rooms.IdKor_OD ={$myIdkor})||(chet_rooms.IdKor_KA ={$myIdkor} AND chet_rooms.IdKor_OD ={$friend})
+            ORDER BY chet_rooms.time_send DESC")->getResultArray();
+        
+        return json_encode(['message'=>$query,'myID'=>$myIdkor]);
+    }
+    
+    
     //get all other chat messages in the class
     public function ajaxGetChats() {
         

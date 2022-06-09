@@ -78,6 +78,12 @@ class Guest extends BaseController
        $data = $this->request->getVar();
        
         if($data['page']==""){
+                 if(isset($_SESSION['logedinUsers'])){
+                        $Kor= $_SESSION['logedinUsers'];
+                        $IdKor=$Kor->IdKor;
+                         $db= \Config\Database::connect();
+                           $query = $db->query("UPDATE korisnik SET Active=0 where IdKor={$IdKor}");
+                   }
            $this->session->destroy();
             echo json_encode([
                 "url" => base_url()
@@ -350,11 +356,12 @@ class Guest extends BaseController
         
     }
     
+
     public function ajaxRequestFacultyNames() {
         
         $facultyModel = new facultyModel();
         $facultyNames = $facultyModel->findAll();
-        
+
         echo json_encode([
             "facultyNames" => $facultyNames
         ]);
@@ -374,4 +381,5 @@ class Guest extends BaseController
         ]);
         
     }
+
 }

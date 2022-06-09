@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 05, 2022 at 10:24 PM
+-- Generation Time: Jun 09, 2022 at 09:44 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `chet_rooms` (
   KEY `FK_idPT_C_idx` (`IdClTag`),
   KEY `FK_IdKOd_idx` (`IdKor_OD`),
   KEY `FK_IdKKa_C_idx` (`IdKor_KA`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `chet_rooms`
@@ -122,7 +122,20 @@ INSERT INTO `chet_rooms` (`IdCh`, `IdSm`, `IdCl`, `IdClTag`, `IdKor_OD`, `IdKor_
 (56, NULL, 3, NULL, 16, NULL, 'aha', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
 (57, NULL, 3, NULL, 16, NULL, 'e buraz', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
 (58, NULL, 3, NULL, 3, NULL, 'ee', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
-(59, NULL, 3, NULL, 3, NULL, 'e', NULL, NULL, NULL, '0000-00-00 00:00:00', 0);
+(59, NULL, 3, NULL, 3, NULL, 'e', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(60, NULL, 3, NULL, 3, NULL, 'nikooooooollaaaaa', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(61, NULL, 3, NULL, 16, NULL, 'budi se', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(62, NULL, 3, NULL, 20, NULL, 'i am dio ', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(63, NULL, 3, NULL, 20, NULL, 'suck my dick', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(64, NULL, 5, NULL, 20, NULL, 'or aora roarnoaroaroaoraoroar', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(65, NULL, 5, NULL, 20, NULL, 'oraaaaaaaaaaaaaaaa', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(66, NULL, 5, NULL, 20, NULL, 'damu damu damu damu', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(67, NULL, 1, NULL, 16, NULL, 'k', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(68, NULL, 5, NULL, 16, NULL, 'j', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(69, NULL, 4, NULL, 16, NULL, 'n', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(70, NULL, 2, NULL, 16, NULL, 'fgg', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(71, NULL, 1, NULL, 16, NULL, '5465', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(72, NULL, 3, NULL, 16, NULL, 'misko', NULL, NULL, NULL, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -138,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `semestar` int(4) DEFAULT NULL,
   PRIMARY KEY (`idC`),
   KEY `FK_IdS_Classes_idx` (`IdSmr`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `classes`
@@ -150,7 +163,8 @@ INSERT INTO `classes` (`idC`, `Name`, `IdSmr`, `semestar`) VALUES
 (3, 'OS1', 1, 4),
 (4, 'RM2', 1, 2),
 (5, 'PS', 1, 2),
-(6, 'Mata1', 2, 1);
+(6, 'Mata1', 2, 1),
+(7, 'fiziologija', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -165,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `fakultet` (
   `IdUni` int(11) DEFAULT NULL,
   PRIMARY KEY (`IdF`),
   KEY `FK_IdUni_Fakultet` (`IdUni`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `fakultet`
@@ -173,7 +187,8 @@ CREATE TABLE IF NOT EXISTS `fakultet` (
 
 INSERT INTO `fakultet` (`IdF`, `Name`, `IdUni`) VALUES
 (1, 'Elektrotehnicki fakultet', 15),
-(2, 'fakultet Organizacionih  nauka', 15);
+(2, 'fakultet Organizacionih  nauka', 15),
+(3, 'TIMS fakultet za psho i sort', 15);
 
 -- --------------------------------------------------------
 
@@ -186,26 +201,18 @@ CREATE TABLE IF NOT EXISTS `frindlist` (
   `IdFL` int(11) NOT NULL AUTO_INCREMENT,
   `IdM` int(11) NOT NULL,
   `IdF` int(11) NOT NULL,
+  `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`IdFL`),
   KEY `FK_IdKor_FL2_idx` (`IdF`),
   KEY `FK_IdKor_FL_idx` (`IdM`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `frindrequest`
+-- Dumping data for table `frindlist`
 --
 
-DROP TABLE IF EXISTS `frindrequest`;
-CREATE TABLE IF NOT EXISTS `frindrequest` (
-  `IdFR` int(11) NOT NULL AUTO_INCREMENT,
-  `IdMe` int(11) DEFAULT NULL,
-  `IdFriend` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IdFR`),
-  KEY `FK_IdKor_Friend_idx` (`IdFriend`),
-  KEY `FK_IdKor_Me_idx` (`IdMe`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `frindlist` (`IdFL`, `IdM`, `IdF`, `status`) VALUES
+(1, 16, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -253,12 +260,12 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
 
 INSERT INTO `korisnik` (`IdKor`, `Ime`, `Prezime`, `Date_of_birth`, `Country`, `Email`, `Username`, `Password`, `Last_login`, `Active`, `img`, `bio`) VALUES
 (2, 'Djole', 'Popara', '2000-05-09', 'Serbia', 'poparaLegija23@yahoo.com', 'Poparino', 'vebdizajnko?', '2022-05-31 15:48:06', 0, 'StudNet Profile Picture Default.svg', NULL),
-(3, 'Nikola', 'uze', '2000-05-03', 'Rumunija', 'Uze@gmail.com', 'nikola', '123', '2022-05-31 21:40:46', 0, 'StudNet Profile Picture Default.svg', NULL),
+(3, 'Nikola', 'uze', '2000-05-03', 'Rumunija', 'Uze@gmail.com', 'nikola', '123', '2022-05-31 21:40:46', 0, '3_user.jpg', NULL),
 (4, 'neko', 'neko', NULL, 'Serbia', NULL, 'mod', '123', '2022-05-31 22:16:48', 0, 'StudNet Profile Picture Default.svg', NULL),
 (5, 'rekl', 'rekl', NULL, NULL, NULL, 'rekl', '123', '2022-05-31 22:17:40', 0, 'StudNet Profile Picture Default.svg', NULL),
 (15, 'Univerzitet u Beogradu', NULL, NULL, 'Montenegro', 'BG@gmail.com', 'UniBg', '123', '2022-05-17 17:27:03', 0, 'StudNet Profile Picture Default.svg', NULL),
 (16, 'Misko ', 'Krstic', '2000-11-12', 'Serbia', 'Marko@etf.com', 'milovan23', '123', NULL, 0, '16_user.jpg', NULL),
-(20, 'Mladen', 'Lulic', '2000-06-14', 'SSSR', 'Staljin234@yahoo.com', 'Muladen', '123', '2022-06-02 19:53:09', 0, 'StudNet Profile Picture Default.svg', NULL);
+(20, 'Mladen', 'Lulic', '2000-06-14', 'SSSR', 'Staljin234@yahoo.com', 'Muladen', '123', '2022-06-02 19:53:09', 0, '20_user.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -344,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `smerovi` (
   `IdFak` int(11) NOT NULL,
   PRIMARY KEY (`IdSmr`),
   KEY `FK_IdF_Smerovi_idx` (`IdFak`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `smerovi`
@@ -352,7 +359,8 @@ CREATE TABLE IF NOT EXISTS `smerovi` (
 
 INSERT INTO `smerovi` (`IdSmr`, `Name`, `Num_of_class`, `IdFak`) VALUES
 (1, 'SI', 50, 1),
-(2, 'ISI', 50, 2);
+(2, 'ISI', 50, 2),
+(3, 'SP', 40, 3);
 
 -- --------------------------------------------------------
 
@@ -379,7 +387,7 @@ INSERT INTO `student` (`Faculty`, `Course`, `IdGod`, `IdNum`, `Penalty_points`, 
 ('Elektrotehnicki fakultet', 'SI', '2019', '456', 0, 2),
 ('Elektrotehnicki fakultet', 'SI', '2019', '556', 0, 3),
 ('Elektrotehnicki fakultet', 'SI', '2019', '709', 0, 16),
-('Geografski fakultet', 'GDF', '2019', '482', 0, 20);
+('Elektrotehnicki fakultet', 'SI', '2019', '482', 0, 20);
 
 -- --------------------------------------------------------
 
@@ -448,13 +456,6 @@ ALTER TABLE `fakultet`
 ALTER TABLE `frindlist`
   ADD CONSTRAINT `FK_IdKor_FL` FOREIGN KEY (`IdM`) REFERENCES `student` (`IdStud`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_IdKor_FL2` FOREIGN KEY (`IdF`) REFERENCES `student` (`IdStud`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `frindrequest`
---
-ALTER TABLE `frindrequest`
-  ADD CONSTRAINT `FK_IdKor_Friend` FOREIGN KEY (`IdFriend`) REFERENCES `korisnik` (`IdKor`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_IdKor_Me` FOREIGN KEY (`IdMe`) REFERENCES `korisnik` (`IdKor`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `inbox`

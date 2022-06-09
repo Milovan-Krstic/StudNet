@@ -41,7 +41,9 @@ $(document).ready(function() {
             type: "POST",
             url: base_url + "/ajax-request-redirect",
             data: {
+
                 page : "/register-student"
+
             },
             dataType : "JSON",
             success: function (response) {
@@ -63,5 +65,4 @@ $(document).ready(function() {
             }
         });
     })
-
 });

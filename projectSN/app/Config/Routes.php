@@ -78,6 +78,10 @@ $routes->post('/ajax-friend-view', 'Student::ajaxFriendView');
 $routes->post('/ajax-request-get-all-friends', 'Student::ajaxRequestGetAllFriends');
 $routes->post('/ajax-request-friend-data','Student::ajaxRequestFriendData');
 
+$routes->post('/ajax-chta-friend','Chet::ajaxSendMyTextToFriend');
+$routes->post('/ajax-chta-friend-get-all','Chet::ajaxGetChatFriend');
+$routes->post('/ajax-request-faculty-names', 'Guest::ajaxRequestFacultyNames');
+$routes->post('/ajax-request-course-names', 'Guest::ajaxRequestCourseNames');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

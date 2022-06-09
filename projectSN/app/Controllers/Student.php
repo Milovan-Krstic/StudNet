@@ -108,8 +108,8 @@ class Student extends BaseController
 
             $fileExt = explode('.',$fileName);
             $fileActualExt = strtolower(end($fileExt));
-
-            $allowed = array('jpg','jpeg','png','pdf','svg.png');
+            
+            $allowed = array('jpg','jpeg','png','svg.png');
             if(in_array($fileActualExt,$allowed)){
                 if($fileError===0){
                         if($fileSize<800000){
@@ -249,9 +249,12 @@ class Student extends BaseController
 
             $userFriend = $userModel->where('IdKor',$my_Friend_Id)->find();
             $userFriendName = $userFriend[0]->Ime;
-            $userFriendImg = $userFriend[0]->img;
 
-            $result[] = array("name" => $userFriendName,"image"=>$userFriendImg,"id"=>$my_Friend_Id);
+            $userFriendSurname=$userFriend[0]->Prezime;
+            $userFriendImg = $userFriend[0]->img;
+            $status = $userFriend[0]->Active;
+            $result[] = array("name" => $userFriendName,"image"=>$userFriendImg,"id"=>$my_Friend_Id,"prezime"=>$userFriendSurname,"status"=>$status);
+
         }
 
         array_multisort(array_column($result, 'name'), SORT_ASC, $result);
@@ -363,5 +366,5 @@ class Student extends BaseController
         
     }
     */
-
 }
+

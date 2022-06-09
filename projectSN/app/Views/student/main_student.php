@@ -87,6 +87,7 @@
 
             <div class="row center-type">
                 <div class="type-box col-12">
+                    <div id="emojis"> </div>
                     <textarea name="" id="input-message" cols="10" rows="1" placeholder="Type..." maxlength="250"></textarea>
                     
                     <img src="icons/StudNet Plus.svg" alt="+">

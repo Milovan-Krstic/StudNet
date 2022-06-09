@@ -3,7 +3,12 @@
  * @author Milovan Krstic 2019-0709
  * @category Student
  */
-
+let emojis = [0x1F600, 0x1F603,0x1F604,0x1F606, 0x1F605,0x1F923, 0x1F602,0x1F34A,0x1F643,0x1F970,0x1F60D, 
+        0x1F60B,0x1F61B,0x1F910,0x1F634,	
+                0x1F344, 0x1F37F, 0x1F363, 0x1F370, 0x1F355,
+              0x1F354, 0x1F35F, 0x1F6C0, 0x1F48E, 0x1F5FA, 0x23F0, 0x1F579, 0x1F4DA,
+              0x1F431, 0x1F42A, 0x1F439, 0x1F424,];
+          
 
 let lastSelectedClass = [
     {
@@ -20,6 +25,24 @@ $(document).ready(function () {
      * lines: 21-364
      */
     $(".message-scroll").empty();
+    let ul=$("<ul></ul>").css({"text-align":"left","padding-left":"0px"});
+    $.each(emojis,function(index,values){
+        let li= $("<li></li>").css({
+            "display":"inline-block",
+            "cursor":"pointer"
+        });
+       li.text(String.fromCodePoint(values));
+       li.on("click",function (){
+           let textpr=  $("#input-message").val()+$(this).text();
+           $("#input-message").val(textpr);
+           $("#emojis").hide();
+       })
+       ul.append(li);
+    })
+    $("#emojis").append(ul);
+
+
+
 
     $.ajax({
         url: "http://localhost:8080/Chet/ajaxGetStudentSubjects",
@@ -389,11 +412,11 @@ $(document).ready(function () {
 
     }
 
-
+    $("#input-message").on("click",()=>{$("#emojis").hide()})
     $("#input-message").keypress(function (e) {
       
         if (e.which == 13) {
-            
+           
                if($("#input-message").hasClass("friend")==true){
                    e.preventDefault();
             let text = $("#input-message").val();
@@ -403,7 +426,7 @@ $(document).ready(function () {
             }
             let message_span = $("<span></span>").text(text);
             let message_box = $("<div></div>").addClass("message-box");
-            let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+            let img = $("<img>").attr("src", $(".header-info .user img").attr("src"));
             message_box.append(message_span);
             let message = $("<div></div>").addClass("message").addClass("right");
             message.append(img);
@@ -450,7 +473,7 @@ $(document).ready(function () {
             }
             let message_span = $("<span></span>").text(text);
             let message_box = $("<div></div>").addClass("message-box");
-            let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+            let img = $("<img>").attr("src", $(".header-info .user img").attr("src"));
             message_box.append(message_span);
             let message = $("<div></div>").addClass("message").addClass("right");
             message.append(img);
@@ -764,5 +787,8 @@ $(document).ready(function () {
         //To implement:
        getAllFriends();
     }, 500);
-    
+   
+    $(".type-box img").on("click",function (){
+         $("#emojis").toggle();
+    })
 });

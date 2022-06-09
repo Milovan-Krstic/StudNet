@@ -20,10 +20,23 @@ use CodeIgniter\Test\FeatureTestTrait;
 
 use Config\Services;
 
+use App\Models\UserModel;
+use App\Models\UniversityModel;
+
 final class UniversityTests extends CIUnitTestCase{
     //put your code here
-    use ControllerTestTrait;
-
+    use ControllerTestTrait, FeatureTestTrait {
+        ControllerTestTrait::withBody insteadof FeatureTestTrait;
+    }
+    
+    use DatabaseTestTrait;
+    
+    private static $id;
+    private static $idF;
+    private static $idS;
+    private static $userModel = null;
+    private static $universityModel;
+    
     protected function setUp(): void
     {
         parent::setUp();
@@ -32,6 +45,34 @@ final class UniversityTests extends CIUnitTestCase{
     protected function tearDown(): void
     {
         parent::tearDown();
+        
+    }
+    
+    public static function setUpBeforeClass(): void {
+        parent::setUpBeforeClass();
+        
+        UniversityTests::$userModel = new UserModel();
+        UniversityTests::$universityModel = new UniversityModel();
+
+        UniversityTests::$userModel->save([
+            "Ime" => "TestUniversity",
+            "Prezime" => "-",
+            "Country" => "-",
+            "Email" => "-",
+            "Username" => "testuniversity",
+            "Password" => "-"
+        ]);
+
+        UniversityTests::$id = UniversityTests::$userModel->getInsertID();
+
+        UniversityTests::$universityModel->insert([
+            "IdUni" => UniversityTests::$id
+        ]);
+    }
+    public static function tearDownAfterClass(): void {
+        parent::tearDownAfterClass();
+        
+        UniversityTests::$userModel->delete(UniversityTests::$id);
     }
     
     public function testUniversityControllerIndex() {
@@ -43,32 +84,133 @@ final class UniversityTests extends CIUnitTestCase{
         $this->assertTrue($result->seeElement("#naslov"));
     }
     
-    public function testUniversityAddFaculty() {
-        
-        $requestBody = json_encode([
-            "Name" => "Fakultet 1",
-            "IdUni" => "15"
+    public function testUniversityAddFacultySuccess() {
+        $result = $this->call('post', 'Univerzitet/ajaxRequestAddingFac', [
+            "Name" => "TestFaculty",
+            "IdUni" => UniversityTests::$id
         ]);
         
-        $result = $this->withBody($requestBody)
-                       ->controller(\App\Controllers\Univerzitet::class)
-                       ->execute('ajaxRequestAddingFac');
+        $this->assertTrue(json_decode($result->getJSON()) != "null");
         
-        $this->assertTrue($result->getJSON() !== false);
+        $json = json_decode($result->getJSON());
+        $json = rtrim($json, "\n");
+        self::$idF = json_decode($json)->IdF;
     }
     
-    public function testUniversityAddCourse() {
+    public function testUniversityAddFacultyFail() {
+        $result = $this->call('post', 'Univerzitet/ajaxRequestAddingFac', [
+            "Name" => "TestFaculty",
+            "IdUni" => UniversityTests::$id
+        ]);
         
-        $requestBody = json_encode([
-            "IdFak" => "2",
-            "Name" => "Course 1",
+        $this->assertTrue(json_decode($result->getJSON()) == "null");
+       
+    }
+    
+    public function testUniversityAddCourseSuccess() {
+        $result = $this->call('post', 'Univerzitet/ajaxRequestAddingCourse', [
+            "IdFak" => self::$idF,
+            "Name" => "Test Course",
             "Num_of_class" => "8"
         ]);
         
-        $result = $this->withBody($requestBody)
-                       ->controller(\App\Controllers\Univerzitet::class)
-                       ->execute('ajaxRequestAddingCourse');
+        $json = json_decode($result->getJSON());
         
-        $this->assertTrue($result->getJSON() !== false);
+        $this->assertTrue($json != "null");
+        
+        $json = rtrim($json, "\n");
+        self::$idS = json_decode($json)->IdSmr;
     }
+    
+     public function testUniversityAddCourseFail() {
+        $result = $this->call('post', 'Univerzitet/ajaxRequestAddingCourse', [
+            "IdFak" => self::$idF,
+            "Name" => "Test Course",
+            "Num_of_class" => "8"
+        ]);
+        
+        $json = json_decode($result->getJSON());
+        
+        $this->assertTrue($json == "null");
+    }
+    
+    public function testUniversityAddSubjectSuccess() {
+        $result = $this->call('post', 'Univerzitet/ajaxRequestAddingClass', [
+            "IdSmr" => self::$idS,
+            "Name" => "Test Subject",
+            "semestar" => "1"
+        ]);
+        
+        $json = json_decode($result->getJSON());
+        
+        $this->assertTrue($json != "null");
+    }
+    
+    public function testUniversityAddSubjectFail() {
+        $result = $this->call('post', 'Univerzitet/ajaxRequestAddingClass', [
+            "IdSmr" => self::$idS,
+            "Name" => "Test Subject",
+            "semestar" => "1"
+        ]);
+        
+        $json = json_decode($result->getJSON());
+        
+        $this->assertTrue($json == "null");
+    }
+    
+    public function testUniversityGetCoursesSuccess() {
+        $result = $this->call('post', 'Univerzitet/ajaxGetSmerovi', [
+            "IdFak" => self::$idS
+        ]);
+        
+        $json = json_decode($result->getJSON());
+        
+        $this->assertTrue($json != "null");
+    }
+    
+    public function testUniversityGetCoursesFail() {
+        $result = $this->call('post', 'Univerzitet/ajaxGetSmerovi', [
+            "IdFak" => 1000
+        ]);
+        
+        $json = json_decode($result->getJSON());
+        
+        $this->assertTrue($json == "[]");
+    }
+    
+    public function testUniversityGetSubjectsSuccess() {
+        $result = $this->call('post', 'Univerzitet/ajaxGetPredmeti', [
+            "IdSmr" => self::$idS
+        ]);
+        
+        $json = json_decode($result->getJSON());
+        
+        $this->assertTrue($json != "null");
+    }
+    
+    public function testUniversityGetSubjectsFail() {
+        $result = $this->call('post', 'Univerzitet/ajaxGetPredmeti', [
+            "IdSmr" => 1000
+        ]);
+        
+        $json = json_decode($result->getJSON());
+        
+        $this->assertTrue($json == "[]");
+    }
+    
+//    public function testGetUniversity() {
+////        $session = Services::session();
+////        
+////        $session->set('logedinUniverzitet', [
+////            "Ime" => "TestUniversity"
+////        ]);
+//        
+//        $_SESSION['logedinUniverzitet'] = ([
+//            "Ime" => "TestUniversity"
+//        ]);
+//        
+//        $result = $this->withSession()->call('post', 'Univerzitet/ajaxGetUni');
+//        
+//        $this->assertSame("TestUniversity", $result);
+//    }
 }

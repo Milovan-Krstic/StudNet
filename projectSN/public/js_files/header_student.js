@@ -2,7 +2,9 @@
  * @author Djordje Popara 2019-0460
  * @category Student
  */
-
+let interval;
+let interval2;
+let numf=0;
 $(document).ready(function(){
     
     /**

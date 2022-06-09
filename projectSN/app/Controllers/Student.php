@@ -109,7 +109,7 @@ class Student extends BaseController
             $fileExt = explode('.',$fileName);
             $fileActualExt = strtolower(end($fileExt));
             
-            $allowed = array('jpg','jpeg','png','pdf','svg.png');
+            $allowed = array('jpg','jpeg','png','svg.png');
             if(in_array($fileActualExt,$allowed)){
                 if($fileError===0){
                         if($fileSize<800000){

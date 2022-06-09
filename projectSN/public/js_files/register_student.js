@@ -20,20 +20,8 @@ $(document).ready(function() {
         country_dropdown.append("<li>"+element+"</li>");
     });
 
-<<<<<<< HEAD
-//    faculty_list.sort();
-//    faculty_list.forEach(element => {
-//        faculty_dropdown.append("<li>"+element+"</li>");
-//    });
-    
-    $.ajax({
-=======
-    //faculty_list.sort();
-    //faculty_list.forEach(element => {
-   //     faculty_dropdown.append("<li>"+element+"</li>");
-   // });
+
  $.ajax({
->>>>>>> cd530ec7064ac60ed32fa3466422898949fde878
         type: "POST",
         url: base_url + "/ajax-request-faculty-names",
         data: {},
@@ -53,11 +41,7 @@ $(document).ready(function() {
                     span.text(text);
 
                     span.parent().css({"color" : "#444444"});
-<<<<<<< HEAD
-                    
-=======
 
->>>>>>> cd530ec7064ac60ed32fa3466422898949fde878
                     $.ajax({
                         type: "POST",
                         url: base_url + "/ajax-request-course-names",
@@ -97,14 +81,6 @@ $(document).ready(function() {
     for(let n = 2022; n >= 1990; n--) {
         id_year_dropdown.append("<li>" + n + "</li>");
     }
-
-<<<<<<< HEAD
-//    for(n = 1; n <= 20; n++) {
-//        course_dropdown.append("<li>" + "Course " + n + "</li>");
-//    }
-=======
- 
->>>>>>> cd530ec7064ac60ed32fa3466422898949fde878
 
     let id_num_dropdown_element;
     for(n = 1; n <= 1000; n++) {

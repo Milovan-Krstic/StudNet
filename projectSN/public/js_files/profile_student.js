@@ -3,17 +3,17 @@
  * @category Student
  */
 
-$(document).ready(function(){
+ $(document).ready(function(){
     let changed = false;
-    
+
     /**
      * Opens edit mode, upload image and change bio available
      */
-    
-    
+
+
     //input student info when entering your profile
     $.ajax({
-        
+
         url:"http://localhost:8080/ajax-request-get-user-info",     
         type: 'POST',
         dataType: "JSON",
@@ -26,23 +26,23 @@ $(document).ready(function(){
             $("div.row.country span.name").text(user.Country);
             $("div.row.email span.name").text(user.Email);
             $("#user-picture").attr("src","localFiles/"+user.img);
-        }
-        
+
+           }    
     })
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $("#edit").click(function() {
         $(this).toggleClass("hidden");
         $(".buttons").toggleClass("active");
@@ -110,22 +110,22 @@ $(document).ready(function(){
 
         // Ajax request for file explorer
     })
-    
-    
+
+
     $("img#change").on('click',function(){     
             $("#imgUpload").click();
-            
-    
+
+
     })
-    
-    
+
+
     $("input#save").on("click",function (){
-      
+
         var form_data = new FormData();
         var oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("imgUpload").files[0]);
         form_data.append('file',document.getElementById("imgUpload").files[0]);
-  
+
         $.ajax({
             url:"http://localhost:8080/ajax-setUser-Img",
             method:"POST",
@@ -135,18 +135,26 @@ $(document).ready(function(){
             processData: false,
             dataType: "JSON",
             success:function (response){
-                alert("localFiles/"+response['message']);
-               $("#user-picture").attr("src","localFiles/"+response['message']); 
+
+
+                 if(response['message']){
+                      $("#user-picture").attr("src","localFiles/"+response['message']);  
+
+
+                 }else
+                     if(response['errormessage']){
+                        alert(response['errormessage']);  
+                     }
             },
             error:function (){
                 alert("error");
             }
         })
-        
+
     })
-    
+
      $("input#discard").on("click",function (){
        $("#imgUpload").val("");
     })
-    
+
 });

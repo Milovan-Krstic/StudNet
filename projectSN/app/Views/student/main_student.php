@@ -80,105 +80,7 @@
 
             <div class="row center-chat">
                 <div class="message-scroll col-12">
-                    <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Poslednja poruka</span>
-                        </div>
-                    </div>
-               
-                    <div class="message right">
-                        <img src="images/StudNet Square.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
-                        </div>
-                    </div>
-
-                    <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
-                        </div>
-                    </div>
-                 
-                    <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>helo poruka</span>
-                        </div>
-                    </div>
                     
-                   
-
-                    <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-                        </div>
-                    </div>
-
-                    <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
-                        </div>
-                    </div>
-
-                    <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-                        </div>
-                    </div>
-
-                    <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
-                        </div>
-                    </div>
-
-                    <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaagdgggaaaaaaaaaaaa</span>
-                        </div>
-                    </div>
-
-                    <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
-                        </div>
-                    </div>
-
-                    <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-                        </div>
-                    </div>
-
-                    <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
-                        </div>
-                    </div>
-                    <div class="message left">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-                        </div>
-                    </div>
-
-                    <div class="message right">
-                        <img src="images/StudNet Profile Picture Default.svg" alt="">
-                        <div class="message-box"> <!--.message-left .message-right -->
-                            <span>fafsdfdgsdf</span>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
@@ -198,58 +100,7 @@
             <hr>
             <div class="friends-list">
                 <div class="friends-scroll">
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
-                    <div class="friend">
-                        <img src="images/StudNet Profile Picture Red.svg" alt="">
-                        <span>John Doe</span>
-                    </div>
+                  
                     
                 </div>
             </div>
@@ -280,4 +131,3 @@
 </div>
 
 <?= script_tag('js_files/main_student.js') ?>
-

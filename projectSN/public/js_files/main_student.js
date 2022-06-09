@@ -189,7 +189,7 @@ $(document).ready(function () {
                                                 let message_span = $("<span></span>").text(value.Text);
                                                 let message_box = $("<div></div>").addClass("message-box");
 
-                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                                let img = $("<img>").attr("src", "localFiles/"+value.img);
                                                 message_box.append(message_span);
                                                 let message = $("<div></div>").addClass("message").addClass("right");
 
@@ -200,7 +200,7 @@ $(document).ready(function () {
                                             } else {
                                                 let message_span = $("<span></span>").text(value.Text);
                                                 let message_box = $("<div></div>").addClass("message-box");
-                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                                 let img = $("<img>").attr("src", "localFiles/"+value.img);
                                                 message_box.append(message_span);
                                                 let message = $("<div></div>").addClass("message").addClass("left");
                                                 message.append(img);
@@ -657,7 +657,7 @@ $(document).ready(function () {
                        
                     let friend = $("<div></div>").addClass("friend").attr("id",response[i].id);
 
-                    let friend_image = $("<img/>").attr("src", "images/StudNet Profile Picture Default.svg")//response[i].image)
+                    let friend_image = $("<img/>").attr("src", "localFiles/"+response[i].image)
                             .on("click",function(){
 
                                  $.ajax({
@@ -695,7 +695,8 @@ $(document).ready(function () {
 
                                 $(".friend-chat").addClass("active");
                                 $(".friend-chat .friend span").text($(this).text());
-                                 
+                                        
+                                 $(".friend-chat .friend img").attr("src",$(this).parent().children("img").attr("src"));
                                 $("#input-message").addClass("friend");
                                   $(".subject.active .clicked").removeClass("clicked");
                                     $(".subject.active").removeClass("active");
@@ -716,7 +717,7 @@ $(document).ready(function () {
                                                 let message_span = $("<span></span>").text(value.Text);
                                                 let message_box = $("<div></div>").addClass("message-box");
 
-                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                                let img = $("<img>").attr("src", "localFiles/"+value.img);
                                                 message_box.append(message_span);
                                                 let message = $("<div></div>").addClass("message").addClass("right");
 
@@ -727,7 +728,7 @@ $(document).ready(function () {
                                             } else {
                                                 let message_span = $("<span></span>").text(value.Text);
                                                 let message_box = $("<div></div>").addClass("message-box");
-                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                                let img = $("<img>").attr("src", "localFiles/"+value.img);
                                                 message_box.append(message_span);
                                                 let message = $("<div></div>").addClass("message").addClass("left");
                                                 message.append(img);

@@ -23,7 +23,11 @@ use Config\Services;
 
 final class LoginTests extends CIUnitTestCase
 {
-    use ControllerTestTrait;
+    use ControllerTestTrait, FeatureTestTrait {
+        ControllerTestTrait::withBody insteadof FeatureTestTrait;
+    }
+    
+    use DatabaseTestTrait;
 
     protected function setUp(): void
     {
@@ -62,19 +66,62 @@ final class LoginTests extends CIUnitTestCase
         $this->assertTrue($result->see("Log Into StudNet"));
     }
     
-    public function testLogInControllerSubmit() {
-        
-        $requestBody = json_encode([
+    public function testLogInControllerSubmitStudent() { 
+        $result = $this->call('post', '/loginSubmit', [
             "username" => "nikola",
             "password" => "123"
         ]);
         
-        $result = $this->withBody($requestBody)
-                       ->controller(\App\Controllers\LogIn::class)
-                       ->execute('loginSubmit');
+        $this->assertTrue(json_decode($result->getJSON()) == "1");
+    }
+    
+    public function testLogInControllerSubmitUniversity() { 
+        $result = $this->call('post', '/loginSubmit', [
+            "username" => "UniBg",
+            "password" => "123"
+        ]);
         
-        $json = json_decode($result->getJSON());
+        $this->assertTrue(json_decode($result->getJSON()) == "3");
         
-        $this->assertTrue($result->getJSON() !== false);
+    }
+    
+    public function testLogInControllerSubmitModerator() { 
+        $result = $this->call('post', '/loginSubmit', [
+            "username" => "mod",
+            "password" => "123"
+        ]);
+        
+        $this->assertTrue(json_decode($result->getJSON()) == "4");
+        
+    }
+    
+    public function testLogInControllerSubmitAdvertiser() { 
+        $result = $this->call('post', '/loginSubmit', [
+            "username" => "rekl",
+            "password" => "123"
+        ]);
+        
+        $this->assertTrue(json_decode($result->getJSON()) == "5");
+        
+    }
+    
+    public function testLogInControllerSubmitAdmin() { 
+        $result = $this->call('post', '/loginSubmit', [
+            "username" => "root",
+            "password" => "123"
+        ]);
+        
+        $this->assertTrue(json_decode($result->getJSON()) == "2");
+        
+    }
+    
+     public function testLogInControllerSubmitNonExistingUser() { 
+        $result = $this->call('post', '/loginSubmit', [
+            "username" => "NonExistingUser",
+            "password" => "NonExistingUsersPassword"
+        ]);
+        
+        $this->assertTrue(json_decode($result->getJSON()) == "0");
+        
     }
 }

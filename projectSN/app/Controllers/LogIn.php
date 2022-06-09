@@ -95,8 +95,6 @@ class LogIn extends BaseController
         $kor = $_SESSION['logedinUsers'];
        
         return json_encode(['idkor'=>$kor->IdKor]);
-       
-
     }
     
     

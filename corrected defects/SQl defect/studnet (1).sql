@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 01, 2022 at 10:21 PM
+-- Generation Time: Jun 05, 2022 at 10:24 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -59,11 +59,11 @@ CREATE TABLE IF NOT EXISTS `chet_rooms` (
   `IdClTag` int(11) DEFAULT NULL,
   `IdKor_OD` int(11) DEFAULT NULL,
   `IdKor_KA` int(11) DEFAULT NULL,
-  `Text` varchar(255) DEFAULT NULL,
+  `Text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `PDF` longblob,
   `IMG` longblob,
   `LinkTag` tinyint(4) DEFAULT NULL,
-  `time_send` time DEFAULT NULL,
+  `time_send` datetime DEFAULT NULL,
   `seen` int(11) DEFAULT '0',
   PRIMARY KEY (`IdCh`),
   KEY `FK_IdS_C_idx` (`IdSm`),
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `chet_rooms` (
   KEY `FK_idPT_C_idx` (`IdClTag`),
   KEY `FK_IdKOd_idx` (`IdKor_OD`),
   KEY `FK_IdKKa_C_idx` (`IdKor_KA`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `chet_rooms`
@@ -79,13 +79,50 @@ CREATE TABLE IF NOT EXISTS `chet_rooms` (
 
 INSERT INTO `chet_rooms` (`IdCh`, `IdSm`, `IdCl`, `IdClTag`, `IdKor_OD`, `IdKor_KA`, `Text`, `PDF`, `IMG`, `LinkTag`, `time_send`, `seen`) VALUES
 (2, NULL, 1, NULL, 3, NULL, '23\n', NULL, NULL, NULL, NULL, 0),
-(3, NULL, 4, NULL, 3, NULL, 'hello\n', NULL, NULL, NULL, NULL, 0),
-(4, NULL, 1, NULL, 3, NULL, '123\n', NULL, NULL, NULL, NULL, 0),
-(5, NULL, 3, NULL, 3, NULL, 'zdravo \n', NULL, NULL, NULL, NULL, 0),
-(6, NULL, 1, NULL, 3, NULL, 'nesto', NULL, NULL, NULL, NULL, 0),
-(9, NULL, 3, NULL, 3, NULL, 'nesto', NULL, NULL, NULL, NULL, 0),
-(10, NULL, NULL, NULL, 3, NULL, 'djole popara je car', NULL, NULL, NULL, NULL, 0),
-(11, NULL, NULL, NULL, 16, NULL, 'nikola legija', NULL, NULL, NULL, NULL, 0);
+(3, NULL, 4, NULL, 3, NULL, 'hello\n', NULL, NULL, NULL, '2022-05-02 14:45:28', 0),
+(4, NULL, 1, NULL, 2, NULL, '123\n', NULL, NULL, NULL, '2022-05-17 14:45:51', 0),
+(5, NULL, 3, NULL, 3, NULL, 'zdravo \n', NULL, NULL, NULL, '2022-04-19 14:45:47', 0),
+(6, NULL, 1, NULL, 16, NULL, 'nesto', NULL, NULL, NULL, '2022-03-07 14:45:44', 0),
+(9, NULL, 3, NULL, 16, NULL, 'nesto', NULL, NULL, NULL, '2022-06-01 14:45:09', 0),
+(17, NULL, 3, NULL, 3, NULL, 'ksjda', NULL, NULL, NULL, '2022-05-31 14:45:16', 0),
+(19, NULL, 3, NULL, 3, NULL, 'os2', NULL, NULL, NULL, '2022-06-03 01:27:26', 0),
+(20, NULL, 2, NULL, 16, NULL, 'hello PSI', NULL, NULL, NULL, '2022-06-03 13:21:00', 0),
+(21, NULL, 4, NULL, 3, NULL, 'rm2 love', NULL, NULL, NULL, '2022-06-03 14:17:43', 0),
+(22, NULL, 4, NULL, 3, NULL, ':D', NULL, NULL, NULL, '2022-06-03 14:17:45', 0),
+(23, NULL, 4, NULL, 3, NULL, '💗', NULL, NULL, NULL, '2022-06-03 14:18:13', 0),
+(24, NULL, 1, NULL, 16, NULL, 'update', NULL, NULL, NULL, '2022-06-03 15:29:41', 0),
+(25, NULL, 1, NULL, 3, NULL, 'update2', NULL, NULL, NULL, '2022-06-03 15:31:13', 0),
+(26, NULL, 1, NULL, 3, NULL, 'update3', NULL, NULL, NULL, '2022-06-03 15:34:35', 0),
+(27, NULL, 1, NULL, 16, NULL, 'hello kdp', NULL, NULL, NULL, '2022-06-03 15:35:25', 0),
+(28, NULL, 1, NULL, 2, NULL, 'djole kdp', NULL, NULL, NULL, '2022-06-03 17:06:25', 0),
+(29, NULL, 1, NULL, 16, NULL, 'cao', NULL, NULL, NULL, '2022-06-03 17:09:36', 0),
+(30, NULL, 1, NULL, 16, NULL, 'kako si', NULL, NULL, NULL, '2022-06-03 17:09:39', 0),
+(31, NULL, 1, NULL, 16, NULL, 'poz', NULL, NULL, NULL, '2022-06-03 17:12:38', 0),
+(32, NULL, 1, NULL, 16, NULL, 'yoho', NULL, NULL, NULL, '2022-06-03 17:18:06', 0),
+(35, NULL, 1, NULL, 16, NULL, 'poz', NULL, NULL, NULL, '2022-06-03 17:25:57', 0),
+(37, NULL, 1, NULL, 2, NULL, 'sta ima', NULL, NULL, NULL, '2022-06-03 17:31:16', 0),
+(38, NULL, 2, NULL, 16, NULL, 'helo', NULL, NULL, NULL, '2022-06-03 19:42:34', 0),
+(39, NULL, 2, NULL, 16, NULL, 'hello', NULL, NULL, NULL, '2022-06-03 19:50:43', 0),
+(40, NULL, 4, NULL, 16, NULL, '💗:smiley: ', NULL, NULL, NULL, '2022-06-03 22:35:06', 0),
+(41, NULL, 2, NULL, 3, NULL, 'hey', NULL, NULL, NULL, '2022-06-03 14:29:10', 0),
+(42, NULL, 2, NULL, 3, NULL, 'jo', NULL, NULL, NULL, '2022-06-03 14:29:23', 0),
+(43, NULL, 2, NULL, 3, NULL, 'ew', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(44, NULL, 2, NULL, 3, NULL, 'nikola', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(45, NULL, 2, NULL, 3, NULL, 'je', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(46, NULL, 2, NULL, 3, NULL, 'hey', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(47, NULL, 2, NULL, 16, NULL, 'hey', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(48, NULL, 2, NULL, 16, NULL, 'who dis', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(49, NULL, 2, NULL, 3, NULL, 'PSI buraz', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(50, NULL, 3, NULL, 3, NULL, 'mac is bether', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(51, NULL, 3, NULL, 3, NULL, 'os', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(52, NULL, 3, NULL, 3, NULL, 'milicev', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(53, NULL, 2, NULL, 3, NULL, 'hwlo', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(54, NULL, 3, NULL, 3, NULL, 'windows', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(55, NULL, 3, NULL, 16, NULL, 'ma da', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(56, NULL, 3, NULL, 16, NULL, 'aha', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(57, NULL, 3, NULL, 16, NULL, 'e buraz', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(58, NULL, 3, NULL, 3, NULL, 'ee', NULL, NULL, NULL, '0000-00-00 00:00:00', 0),
+(59, NULL, 3, NULL, 3, NULL, 'e', NULL, NULL, NULL, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -101,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `semestar` int(4) DEFAULT NULL,
   PRIMARY KEY (`idC`),
   KEY `FK_IdS_Classes_idx` (`IdSmr`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `classes`
@@ -111,7 +148,9 @@ INSERT INTO `classes` (`idC`, `Name`, `IdSmr`, `semestar`) VALUES
 (1, 'KDP', 1, 6),
 (2, 'PSI', 1, 6),
 (3, 'OS1', 1, 4),
-(4, 'RM2', 1, 2);
+(4, 'RM2', 1, 2),
+(5, 'PS', 1, 2),
+(6, 'Mata1', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -126,14 +165,15 @@ CREATE TABLE IF NOT EXISTS `fakultet` (
   `IdUni` int(11) DEFAULT NULL,
   PRIMARY KEY (`IdF`),
   KEY `FK_IdUni_Fakultet` (`IdUni`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `fakultet`
 --
 
 INSERT INTO `fakultet` (`IdF`, `Name`, `IdUni`) VALUES
-(1, 'Elektrotehnicki fakultet', 15);
+(1, 'Elektrotehnicki fakultet', 15),
+(2, 'fakultet Organizacionih  nauka', 15);
 
 -- --------------------------------------------------------
 
@@ -154,6 +194,38 @@ CREATE TABLE IF NOT EXISTS `frindlist` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `frindrequest`
+--
+
+DROP TABLE IF EXISTS `frindrequest`;
+CREATE TABLE IF NOT EXISTS `frindrequest` (
+  `IdFR` int(11) NOT NULL AUTO_INCREMENT,
+  `IdMe` int(11) DEFAULT NULL,
+  `IdFriend` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IdFR`),
+  KEY `FK_IdKor_Friend_idx` (`IdFriend`),
+  KEY `FK_IdKor_Me_idx` (`IdMe`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inbox`
+--
+
+DROP TABLE IF EXISTS `inbox`;
+CREATE TABLE IF NOT EXISTS `inbox` (
+  `IdKor_OD` int(11) NOT NULL,
+  `IdKor_KA` int(11) NOT NULL,
+  `notify` int(11) NOT NULL,
+  PRIMARY KEY (`IdKor_OD`,`IdKor_KA`),
+  KEY `FK_IdKor_OD_idx` (`IdKor_OD`),
+  KEY `FK_IdKor_KA_idx` (`IdKor_KA`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `korisnik`
 --
 
@@ -164,27 +236,29 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
   `Prezime` varchar(20) DEFAULT NULL,
   `Date_of_birth` date DEFAULT NULL,
   `Country` varchar(45) DEFAULT NULL,
-  `E-mail` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT NULL,
   `Username` varchar(45) DEFAULT NULL,
   `Password` varchar(45) DEFAULT NULL,
   `Last_login` datetime DEFAULT NULL,
-  `img` longblob,
   `Active` int(11) DEFAULT '0',
+  `img` varchar(256) DEFAULT NULL,
+  `bio` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`IdKor`),
   UNIQUE KEY `Username_UNIQUE` (`Username`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `korisnik`
 --
 
-INSERT INTO `korisnik` (`IdKor`, `Ime`, `Prezime`, `Date_of_birth`, `Country`, `E-mail`, `Username`, `Password`, `Last_login`, `img`, `Active`) VALUES
-(2, 'Djole', 'Popara', '2000-05-09', 'Serbia', 'poparaLegija23@yahoo.com', 'Poparino', 'vebdizajnko?', '2022-05-31 15:48:06', NULL, 0),
-(3, 'Nikola', 'uze', '2000-05-03', 'Serbia', 'Uze@gmail.com', 'nikola', '123', '2022-05-31 21:40:46', NULL, 0),
-(4, 'neko', 'neko', NULL, 'Serbia', NULL, 'mod', '123', '2022-05-31 22:16:48', NULL, 0),
-(5, 'rekl', 'rekl', NULL, NULL, NULL, 'rekl', '123', '2022-05-31 22:17:40', NULL, 0),
-(15, 'Univerzitet u Beogradu', NULL, NULL, 'Montenegro', 'BG@gmail.com', 'UniBg', '123', '2022-05-17 17:27:03', NULL, 0),
-(16, 'Misko ', 'Krstic', '2000-11-12', NULL, 'Marko@etf.com', 'milovan23', 'Gogle-12@', NULL, NULL, 0);
+INSERT INTO `korisnik` (`IdKor`, `Ime`, `Prezime`, `Date_of_birth`, `Country`, `Email`, `Username`, `Password`, `Last_login`, `Active`, `img`, `bio`) VALUES
+(2, 'Djole', 'Popara', '2000-05-09', 'Serbia', 'poparaLegija23@yahoo.com', 'Poparino', 'vebdizajnko?', '2022-05-31 15:48:06', 0, 'StudNet Profile Picture Default.svg', NULL),
+(3, 'Nikola', 'uze', '2000-05-03', 'Rumunija', 'Uze@gmail.com', 'nikola', '123', '2022-05-31 21:40:46', 0, 'StudNet Profile Picture Default.svg', NULL),
+(4, 'neko', 'neko', NULL, 'Serbia', NULL, 'mod', '123', '2022-05-31 22:16:48', 0, 'StudNet Profile Picture Default.svg', NULL),
+(5, 'rekl', 'rekl', NULL, NULL, NULL, 'rekl', '123', '2022-05-31 22:17:40', 0, 'StudNet Profile Picture Default.svg', NULL),
+(15, 'Univerzitet u Beogradu', NULL, NULL, 'Montenegro', 'BG@gmail.com', 'UniBg', '123', '2022-05-17 17:27:03', 0, 'StudNet Profile Picture Default.svg', NULL),
+(16, 'Misko ', 'Krstic', '2000-11-12', 'Serbia', 'Marko@etf.com', 'milovan23', '123', NULL, 0, '16_user.jpg', NULL),
+(20, 'Mladen', 'Lulic', '2000-06-14', 'SSSR', 'Staljin234@yahoo.com', 'Muladen', '123', '2022-06-02 19:53:09', 0, 'StudNet Profile Picture Default.svg', NULL);
 
 -- --------------------------------------------------------
 
@@ -270,14 +344,15 @@ CREATE TABLE IF NOT EXISTS `smerovi` (
   `IdFak` int(11) NOT NULL,
   PRIMARY KEY (`IdSmr`),
   KEY `FK_IdF_Smerovi_idx` (`IdFak`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `smerovi`
 --
 
 INSERT INTO `smerovi` (`IdSmr`, `Name`, `Num_of_class`, `IdFak`) VALUES
-(1, 'SI', 50, 1);
+(1, 'SI', 50, 1),
+(2, 'ISI', 50, 2);
 
 -- --------------------------------------------------------
 
@@ -289,8 +364,8 @@ DROP TABLE IF EXISTS `student`;
 CREATE TABLE IF NOT EXISTS `student` (
   `Faculty` varchar(45) NOT NULL,
   `Course` varchar(45) NOT NULL,
-  `IdGod` int(11) NOT NULL,
-  `IdNum` int(11) NOT NULL,
+  `IdGod` varchar(256) NOT NULL,
+  `IdNum` varchar(256) NOT NULL,
   `Penalty_points` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `IdStud` int(11) NOT NULL,
   PRIMARY KEY (`IdStud`)
@@ -301,9 +376,10 @@ CREATE TABLE IF NOT EXISTS `student` (
 --
 
 INSERT INTO `student` (`Faculty`, `Course`, `IdGod`, `IdNum`, `Penalty_points`, `IdStud`) VALUES
-('Elektrotehnicki fakultet', 'SI', 2019, 456, 0, 2),
-('Elektrotehnicki fakultet', 'SI', 2019, 556, 0, 3),
-('Elektrotehnicki fakultet', 'SI', 2019, 709, 0, 16);
+('Elektrotehnicki fakultet', 'SI', '2019', '456', 0, 2),
+('Elektrotehnicki fakultet', 'SI', '2019', '556', 0, 3),
+('Elektrotehnicki fakultet', 'SI', '2019', '709', 0, 16),
+('Geografski fakultet', 'GDF', '2019', '482', 0, 20);
 
 -- --------------------------------------------------------
 
@@ -372,6 +448,20 @@ ALTER TABLE `fakultet`
 ALTER TABLE `frindlist`
   ADD CONSTRAINT `FK_IdKor_FL` FOREIGN KEY (`IdM`) REFERENCES `student` (`IdStud`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_IdKor_FL2` FOREIGN KEY (`IdF`) REFERENCES `student` (`IdStud`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `frindrequest`
+--
+ALTER TABLE `frindrequest`
+  ADD CONSTRAINT `FK_IdKor_Friend` FOREIGN KEY (`IdFriend`) REFERENCES `korisnik` (`IdKor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_IdKor_Me` FOREIGN KEY (`IdMe`) REFERENCES `korisnik` (`IdKor`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inbox`
+--
+ALTER TABLE `inbox`
+  ADD CONSTRAINT `FK_IdKor_KA` FOREIGN KEY (`IdKor_KA`) REFERENCES `korisnik` (`IdKor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_IdKor_OD` FOREIGN KEY (`IdKor_OD`) REFERENCES `korisnik` (`IdKor`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `licence`

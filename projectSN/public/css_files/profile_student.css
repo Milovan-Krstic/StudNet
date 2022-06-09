@@ -305,3 +305,10 @@ html, body {
 
     position: relative;
 }
+
+#imgUpload{
+     display: none;
+}
+#imgUploadbutton{
+     display: none;
+}

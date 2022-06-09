@@ -108,6 +108,7 @@
 
     position: relative;
     
+    width: 19%;
 
 }
 
@@ -118,7 +119,9 @@
     
     z-index: 2;
     margin-right: 18px;
-    margin-left: 10px;
+    margin-left: 5px;
+
+    width: 200px;
 
     cursor: pointer;
 }
@@ -141,6 +144,7 @@
     align-items: center;
     justify-content: flex-start;
 
+    padding-right: 30px;
     position: relative;
 }
 
@@ -177,14 +181,13 @@
 }
 
 .notifications {
-    margin-left: 50px;
+    /* margin-left: 50px; */
     margin-right: 20px;
 
     z-index: 2;
 }
 
 .options {
-    margin-right: 40px;
 
     z-index: 2;
 }

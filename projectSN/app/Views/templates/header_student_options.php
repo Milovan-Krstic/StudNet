@@ -35,10 +35,10 @@
 
         <div class="header-info">
             <div class="user">
-                <img src="images/StudNet Profile Picture Red.svg" alt="Profile picture">
+                <img src="" alt="Profile picture">
                 <div class="user-info">
-                    <span id="header-name">Djordje Popara</span><br>
-                    <span id="header-index">2019/0460</span>
+                    <span id="header-name"></span><br>
+                    <span id="header-index"></span>
                 </div>
             </div>
             <div class="notifications">

@@ -12,6 +12,10 @@
     position: relative;
 }
 
+.header img {
+    cursor: pointer;
+}
+
 .logo {
     margin-left: 40px;
     width: 165px;

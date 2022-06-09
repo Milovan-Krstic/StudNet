@@ -179,7 +179,7 @@ $(document).ready(function () {
                             "click", function () {
                                    if($(this).hasClass("clicked"))return;
                                 
-                                
+                                    clearInterval(interval2);
                                 $(".message-scroll").empty();
                                 $("#input-message").removeClass("friend");
                                 $(".friends-scroll .friend.active").removeClass("active");
@@ -234,21 +234,8 @@ $(document).ready(function () {
                                         })
                                     }
                                 })
-                            });
-                        ul.prepend(l);
-                    }
-                })
-                if (ul.children().length > 0) {
-                    semestarc.prepend(ul);
-                }
-                semestarc.prepend(li);
-            }
-        },
-        error: function () {
-            alert("greska");
-        }
-    })
-
+                                
+                                
     interval=setInterval(() => {
         if($(".friends-scroll .friend.active")[0]!=null){
          
@@ -283,7 +270,7 @@ $(document).ready(function () {
                                 let message_span = $("<span></span>").text(value.Text);
                                 let message_box = $("<div></div>").addClass("message-box");
 
-                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                let img = $("<img>").attr("src", "localFIles/"+value.img);
                                 message_box.append(message_span);
                                 let message = $("<div></div>").addClass("message").addClass("right");
 
@@ -294,7 +281,7 @@ $(document).ready(function () {
                             } else {
                                 let message_span = $("<span></span>").text(value.Text);
                                 let message_box = $("<div></div>").addClass("message-box");
-                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                let img = $("<img>").attr("src", "localFIles/"+value.img);
                                 message_box.append(message_span);
                                 let message = $("<div></div>").addClass("message").addClass("left");
                                 message.append(img);
@@ -311,58 +298,26 @@ $(document).ready(function () {
     }, 700);
 
 
- interval2=setInterval(() => {
-        if($(".friends-scroll .friend.active")[0]==null){
-      
-            return ;
+                                
+                                
+                                
+                                
+                            });
+                        ul.prepend(l);
+                    }
+                })
+                if (ul.children().length > 0) {
+                    semestarc.prepend(ul);
+                }
+                semestarc.prepend(li);
+            }
+        },
+        error: function () {
+            alert("greska");
         }
-                            
-        
-                                    $.ajax({
-                                        
-                                        url: base_url+"/ajax-chta-friend-get-all",
-                                          type: "POST",
-                                         data: {
-                                             friend: $(".friends-scroll .friend.active").attr("id"),
-                                         },
-                                          dataType: "JSON",
-                                        success: function (response) {
-                                       let myId = response['myID'];              
-                                    let messages = $(".message-box span").first();
-                                    let messArr = response['message'].slice(newCurrentLoadedMessagesFriend+1);
+    })
 
-                                    if (messArr.length > 0) {
-                                        
-                                            $.each(response['message'], function (index, value) {
-                                               newCurrentLoadedMessagesFriend ++;
-                                            if (myId === value.IdKor) {
-                                                let message_span = $("<span></span>").text(value.Text);
-                                                let message_box = $("<div></div>").addClass("message-box");
 
-                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
-                                                message_box.append(message_span);
-                                                let message = $("<div></div>").addClass("message").addClass("right");
-
-                                                message.append(img);
-                                                message.append(message_box);
-                                                $(".message-scroll").prepend(message);
-
-                                            } else {
-                                                let message_span = $("<span></span>").text(value.Text);
-                                                let message_box = $("<div></div>").addClass("message-box");
-                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
-                                                message_box.append(message_span);
-                                                let message = $("<div></div>").addClass("message").addClass("left");
-                                                message.append(img);
-                                                message.append(message_box);
-                                                $(".message-scroll").prepend(message);
-
-                                            }
-                                            })
-                                        }
-                                    }
-                                 })
-    }, 700);
 
 
 
@@ -434,7 +389,7 @@ $(document).ready(function () {
 
             let today = new Date();
 
-            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+          var time = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate()+" "+today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             
              $.ajax({
                 url: "http://localhost:8080/ajax-chta-friend",
@@ -485,7 +440,7 @@ $(document).ready(function () {
 
             let today = new Date();
 
-            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var time = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate()+" "+today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
             $.ajax({
                 url: "http://localhost:8080/Chet/ajaxSendMyTextToGroup",
@@ -712,6 +667,7 @@ $(document).ready(function () {
                              if($(this).parent().hasClass("active"))return;
                             
                               $(".message-scroll").empty();
+                              clearInterval(interval);
                              setTimeout(() => {
                               $(".tags").addClass("hidden");
                                 $(".center-part .header-search").addClass("hidden");
@@ -770,6 +726,67 @@ $(document).ready(function () {
                                     
                                     
                                }, 300);
+                                interval2=setInterval(() => {
+                                    if($(".friends-scroll .friend.active")[0]==null){
+
+                                        return ;
+                                    }
+
+        
+                                    $.ajax({
+                                        
+                                        url: base_url+"/ajax-chta-friend-get-all",
+                                          type: "POST",
+                                         data: {
+                                             friend: $(".friends-scroll .friend.active").attr("id"),
+                                         },
+                                          dataType: "JSON",
+                                        success: function (response) {
+                                       let myId = response['myID'];              
+                                    let messages = $(".message-box span").first();
+                                    let messArr = response['message'].slice(newCurrentLoadedMessagesFriend+1);
+
+                                    if (messArr.length > 0) {
+                                        
+                                            $.each(messArr, function (index, value) {
+                                               newCurrentLoadedMessagesFriend ++;
+                                            if (myId === value.IdKor) {
+                                                let message_span = $("<span></span>").text(value.Text);
+                                                let message_box = $("<div></div>").addClass("message-box");
+
+                                                let img = $("<img>").attr("src", "localFIles/"+value.img);
+                                                message_box.append(message_span);
+                                                let message = $("<div></div>").addClass("message").addClass("right");
+
+                                                message.append(img);
+                                                message.append(message_box);
+                                                $(".message-scroll").prepend(message);
+
+                                            } else {
+                                                let message_span = $("<span></span>").text(value.Text);
+                                                let message_box = $("<div></div>").addClass("message-box");
+                                                let img = $("<img>").attr("src", "localFIles/"+value.img);
+                                                message_box.append(message_span);
+                                                let message = $("<div></div>").addClass("message").addClass("left");
+                                                message.append(img);
+                                                message.append(message_box);
+                                                $(".message-scroll").prepend(message);
+
+                                            }
+                                            })
+                                        }
+                                    }
+                                                                })
+                                   }, 700);
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
                              $(".friends-scroll .friend.active").removeClass("active");
                              $(this).parent().addClass("active");
                          });

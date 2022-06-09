@@ -12,6 +12,7 @@ use App\Models\StudentModel;
 use App\Models\ModeratorModel;
 use App\Models\FacultyModel;
 use App\Models\UniversityModel;
+use App\Models\SmeroviModel;
 
 class Guest extends BaseController
 {
@@ -348,4 +349,31 @@ class Guest extends BaseController
         }
         
     }
+    
+       public function ajaxRequestFacultyNames() {
+
+        $facultyModel = new facultyModel();
+        $facultyNames = $facultyModel->findAll();
+
+        echo json_encode([
+            "facultyNames" => $facultyNames
+        ]);
+    }
+
+    public function ajaxRequestCourseNames() {
+        $data = $this->request->getVar();
+
+        $facultyModel = new FacultyModel();
+        $facultyID = $facultyModel->where("Name", $data['facultyName'])->first()->IdF;
+
+        $courseModel = new SmeroviModel();
+        $courses = $courseModel->where("IdFak", $facultyID)->findAll();
+
+        echo json_encode([
+            "courseNames" => $courses
+        ]);
+
+    }
+
+    
 }

@@ -20,18 +20,72 @@ $(document).ready(function() {
         country_dropdown.append("<li>"+element+"</li>");
     });
 
-    faculty_list.sort();
-    faculty_list.forEach(element => {
-        faculty_dropdown.append("<li>"+element+"</li>");
+    //faculty_list.sort();
+    //faculty_list.forEach(element => {
+   //     faculty_dropdown.append("<li>"+element+"</li>");
+   // });
+ $.ajax({
+        type: "POST",
+        url: base_url + "/ajax-request-faculty-names",
+        data: {},
+        dataType : "JSON",
+        success: function (response) {
+            let facultyNames = response['facultyNames'];
+
+            facultyNames.forEach(element => {
+                let newFaculty = $("<li>"+element['Name']+"</li>");
+                newFaculty.click(function(){
+                    let text = $(this).text();
+
+                    let id = $(this).parent().attr("name");
+                    let selector = "#" + id;
+
+                    let span = $(selector);
+                    span.text(text);
+
+                    span.parent().css({"color" : "#444444"});
+
+                    $.ajax({
+                        type: "POST",
+                        url: base_url + "/ajax-request-course-names",
+                        data: {
+                            facultyName : $("#s2").text()
+                        },
+                        dataType : "JSON",
+                        success: function (response) {
+                            course_dropdown.empty();
+                            $("#s3").text("Course");
+                            $("#s3").parent().css({"color" : "#BCBCBC"});
+                            let courseNames = response['courseNames'];
+                            courseNames.forEach(element => {
+                                let newCourse = $("<li>"+element['Name']+"</li>");
+                                newCourse.click(function(){
+                                    let text = $(this).text();
+
+                                    let id = $(this).parent().attr("name");
+                                    let selector = "#" + id;
+
+                                    let span = $(selector);
+                                    span.text(text);
+
+                                    span.parent().css({"color" : "#444444"});
+                                })
+                                course_dropdown.append(newCourse);
+                            });
+                        }
+                    });
+                })
+                faculty_dropdown.append(newFaculty);
+           });
+        }
     });
+
 
     for(let n = 2022; n >= 1990; n--) {
         id_year_dropdown.append("<li>" + n + "</li>");
     }
 
-    for(n = 1; n <= 20; n++) {
-        course_dropdown.append("<li>" + "Course " + n + "</li>");
-    }
+ 
 
     let id_num_dropdown_element;
     for(n = 1; n <= 1000; n++) {
@@ -288,4 +342,18 @@ $(document).ready(function() {
         });
         
     });
+    
+    $(".header img").click(function(){
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-redirect",
+            data: {
+                page : "/"
+            },
+            dataType : "JSON",
+            success: function (response) {
+                window.location.href = response['url'];
+            }
+        });
+    })
 });

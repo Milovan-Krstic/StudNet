@@ -390,6 +390,20 @@ html, body {
 
     cursor: pointer;
 }
+#emojis{
+      width: 300px;
+      height:100px;
+      background-color: red;
+          border-radius: 7px;
+       background-color: #FCFCFC;
+     display: flex;
+
+    box-shadow: 0px 0px 20px rgba(64, 64, 64, 0.1);
+    position: absolute;
+
+    right: 30px;
+    top: -110px;
+}
 
 /* Right part */
 

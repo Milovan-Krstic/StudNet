@@ -11,6 +11,7 @@ $(document).ready(function(){
      * ajax request - backend team (Milovan & Mladen)
      * lines 12-26
      */
+     $("#emojis").hide();
     $.ajax({
         url:"http://localhost:8080/LogIn/ajaxGetStud",
         type:"POST",

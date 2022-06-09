@@ -84,7 +84,7 @@ $(document).ready(function(){
         }
         else {
             $(".dropdown-search").addClass("active");
-
+                
            
             $.ajax({
                 type: "POST",
@@ -95,7 +95,7 @@ $(document).ready(function(){
                 dataType : "JSON",
                 success: function (response) {
                    
-
+   $(".search-scroll").empty();
                     $.each(response['message'],function(index,val){
                     let search_user = $("<div></div>").addClass("search-user");
                     let info = $("<div></div>");

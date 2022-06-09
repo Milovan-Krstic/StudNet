@@ -613,7 +613,7 @@ $(document).ready(function () {
                                      divA.addClass("unactive");
                                  }else
                                      if(divA.hasClass("unactive")==true && response[i].status==1){
-                                          divA.css({"color":"lightgreen"});
+                                          divA.css({"color":"#67DBB8"});
                                            divA.removeClass("unactive");
                                              divA.addClass("active");
                                      }
@@ -658,7 +658,7 @@ $(document).ready(function () {
                     });
                         let friend_name; 
                         if(response[i].status==1){
-                             friend_name = $("<span></span>").addClass("active").css({"color":"lightgreen"}).text(response[i].name+" "+response[i].prezime);
+                             friend_name = $("<span></span>").addClass("active").css({"color":"#67DBB8"}).text(response[i].name+" "+response[i].prezime);
                         }else{
                          friend_name = $("<span></span>").addClass("unactive").text(response[i].name+" "+response[i].prezime);
                         }

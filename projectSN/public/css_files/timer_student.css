@@ -1,0 +1,167 @@
+/*
+    author Djordje Popara 2019/0460
+
+    Student timer page style
+ */
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+
+    overflow-y: hidden;
+}
+
+button{
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    margin-left: 12px;
+    margin-right: 12px;
+    
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #F0F5F5;
+
+    background-image: linear-gradient(#f0f5f59d, transparent),url("../images/StudNet-Pattern-Light-v2.png");
+    background-repeat: repeat;
+}
+
+.box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    width: 50%;
+    height: 100%;
+}
+
+.info {
+    margin: 60px 20px 20px 20px;
+
+    text-align: center;
+}
+
+#text {
+    font-family: roboto-medium;
+    font-size: 33px;
+    color: #444444;
+
+    transition: all 0.4s ease;
+}
+
+#message {
+    font-family: roboto-light;
+    font-size: 33px;
+    color: #44444472;
+
+    transition: all 0.4s ease;
+}
+
+.timer-box {
+    margin: 20px;
+    width: 40%;
+    height: 200px;
+    border-radius: 20px;
+    background-color: #FCFCFC;
+    box-shadow: 0px 0px 20px rgba(64, 64, 64, 0.1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.timer-box span {
+    font-family: roboto-medium;
+    font-size: 50px;
+
+    color: #444444;
+
+    margin: 5px;
+}
+
+.up,
+.down {
+    visibility: visible;
+    opacity: 1;
+}
+
+.up.disabled,
+.down.disabled {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.up svg,
+.down svg {
+    width: 25px;
+    margin: 0 35px 0 35px;
+
+    cursor: pointer;
+    
+    
+}
+
+.up .st0,
+.down .st0 {
+    fill: #E6E6E6;
+
+    transition: all 0.4s ease;
+}
+
+.buttons input {
+    width: 100px;
+    height: 45px;
+    border-radius: 12px;
+
+    outline: none;
+    border: 0px solid;
+
+    margin: 20px 7px 7px 7px;
+
+    font-family: roboto-light;
+    font-size: 20px;
+    color: #FCFCFC;
+
+    background-color: #DADCDC;
+
+    box-shadow: 0px 0px 10px rgba(64, 64, 64, 0.1);
+}
+
+#start:disabled,
+#reset:disabled,
+#stop:disabled {
+    font-family: roboto-light;
+    font-size: 20px;
+    color: #FCFCFC;
+    background-color: #DADCDC;
+}
+
+#start {
+    background-color: #67DBB8;
+
+    transition: all 0.4s ease;
+}
+
+#reset {
+    background-color: #54A0FF;
+
+    transition: all 0.4s ease;
+}
+
+#stop {
+    background-color: #EE5253;
+
+    transition: all 0.4s ease;
+}

@@ -12,6 +12,7 @@ let lastSelectedClass = [
 ];
 
 let newCurrentLoadedMessages = 0;
+let newCurrentLoadedMessagesFriend = 0;
 $(document).ready(function () {
 
     /**
@@ -153,7 +154,15 @@ $(document).ready(function () {
                     if (i + 1 == value.semestar) {
                         let l = $("<li></li>").text(value.Name).on(
                             "click", function () {
+                                   if($(this).hasClass("clicked"))return;
+                                
+                                
                                 $(".message-scroll").empty();
+                                $("#input-message").removeClass("friend");
+                                $(".friends-scroll .friend.active").removeClass("active");
+                                  $(".tags").removeClass("hidden");
+                                $(".center-part .header-search").removeClass("hidden");
+                                $(".friend-chat").removeClass("active");
                                 $(".subject li").removeClass("clicked");
                                 $(this).toggleClass("clicked");
                                 lastSelectedClass.pop();
@@ -217,8 +226,11 @@ $(document).ready(function () {
         }
     })
 
-    setInterval(() => {
-
+    interval=setInterval(() => {
+        if($(".friends-scroll .friend.active")[0]!=null){
+         
+            return ;
+        }
         let test = $("ul .subject li .clicked");
         if (test !== null) {
 
@@ -276,6 +288,73 @@ $(document).ready(function () {
     }, 700);
 
 
+ interval2=setInterval(() => {
+        if($(".friends-scroll .friend.active")[0]==null){
+      
+            return ;
+        }
+                            
+        
+                                    $.ajax({
+                                        
+                                        url: base_url+"/ajax-chta-friend-get-all",
+                                          type: "POST",
+                                         data: {
+                                             friend: $(".friends-scroll .friend.active").attr("id"),
+                                         },
+                                          dataType: "JSON",
+                                        success: function (response) {
+                                       let myId = response['myID'];              
+                                    let messages = $(".message-box span").first();
+                                    let messArr = response['message'].slice(newCurrentLoadedMessagesFriend+1);
+
+                                    if (messArr.length > 0) {
+                                        
+                                            $.each(response['message'], function (index, value) {
+                                               newCurrentLoadedMessagesFriend ++;
+                                            if (myId === value.IdKor) {
+                                                let message_span = $("<span></span>").text(value.Text);
+                                                let message_box = $("<div></div>").addClass("message-box");
+
+                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                                message_box.append(message_span);
+                                                let message = $("<div></div>").addClass("message").addClass("right");
+
+                                                message.append(img);
+                                                message.append(message_box);
+                                                $(".message-scroll").prepend(message);
+
+                                            } else {
+                                                let message_span = $("<span></span>").text(value.Text);
+                                                let message_box = $("<div></div>").addClass("message-box");
+                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                                message_box.append(message_span);
+                                                let message = $("<div></div>").addClass("message").addClass("left");
+                                                message.append(img);
+                                                message.append(message_box);
+                                                $(".message-scroll").prepend(message);
+
+                                            }
+                                            })
+                                        }
+                                    }
+                                 })
+    }, 700);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     let locSto = localStorage.getItem("lastSelCls");
     if (locSto != null) {
         setTimeout(function () {
@@ -312,9 +391,57 @@ $(document).ready(function () {
 
 
     $("#input-message").keypress(function (e) {
-
+      
         if (e.which == 13) {
+            
+               if($("#input-message").hasClass("friend")==true){
+                   e.preventDefault();
+            let text = $("#input-message").val();
+            if (text.length <= 0) {
+                $("#input-message").val("");
+                return;
+            }
+            let message_span = $("<span></span>").text(text);
+            let message_box = $("<div></div>").addClass("message-box");
+            let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+            message_box.append(message_span);
+            let message = $("<div></div>").addClass("message").addClass("right");
+            message.append(img);
+            message.append(message_box);
 
+            let today = new Date();
+
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            
+             $.ajax({
+                url: "http://localhost:8080/ajax-chta-friend",
+                type: "POST",
+                data: {
+
+                    text: text,
+                    time: time,
+                    friend: $(".friends-scroll .friend.active").attr("id")
+                },
+                dataType: "JSON",
+                success: function (response) {
+
+                newCurrentLoadedMessagesFriend++;
+                
+                },
+                error: function () {
+
+                    alert("greska");
+                }
+
+            });
+            $(".message-scroll").prepend(message);
+            $("#input-message").val("");
+            
+            
+            
+            
+            
+            }else{
             e.preventDefault();
             let text = $("#input-message").val();
             if (text.length <= 0) {
@@ -361,7 +488,8 @@ $(document).ready(function () {
             $(".message-scroll").prepend(message);
             $("#input-message").val("");
         }
-    });
+    }
+   });
 
 
     $(".subject li").click(function () {
@@ -498,7 +626,22 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (response) {
 
-
+                    if(numf==response.length){
+                            for(var i = 0;i<response.length;i++){
+                                let divA= $("div#"+response[i].id+" span");
+                                 if(divA.hasClass("active")==true && response[i].status==0){
+                                     divA.css({"color":"#444444"});
+                                     divA.removeClass("active");
+                                     divA.addClass("unactive");
+                                 }else
+                                     if(divA.hasClass("unactive")==true && response[i].status==1){
+                                          divA.css({"color":"lightgreen"});
+                                           divA.removeClass("unactive");
+                                             divA.addClass("active");
+                                     }
+                            }
+                            return;
+                    }
             $(".friends-scroll").empty();
                 //No requests
                if(response.length == 0) {
@@ -506,7 +649,12 @@ $(document).ready(function () {
                     $(".friends-scroll").empty();
                }
                else{
+                 
+                   
                     for(var i = 0;i<response.length;i++){
+                        
+                        numf=response.length;
+                       
                     let friend = $("<div></div>").addClass("friend").attr("id",response[i].id);
 
                     let friend_image = $("<img/>").attr("src", "images/StudNet Profile Picture Default.svg")//response[i].image)
@@ -524,44 +672,89 @@ $(document).ready(function () {
                                  //window.location.href = response['url'];
 
                                  window.localStorage.setItem("IdKor",response['IdKor']);
-
-                                /*let naziv = response['Ime']+" "+response['Prezime'];
-                
-                                window.localStorage.setItem("Naziv",naziv);
-                                window.localStorage.setItem("Faculty",response['Faculty']);
-                                window.localStorage.setItem("Course",response['Course']);                                
-                                window.localStorage.setItem("Email",response['Email']);
-                
-                                let indeks = response['IdGod']+"/"+response['IdNum'];
-                
-                                window.localStorage.setItem("Indeks",indeks);
-                                window.localStorage.setItem("Friends",response['Friends']);*/
-
-
-
-
-
-
                                 window.location.href = response['url'];
 
                             }
                         });
 
                     });
+                        let friend_name; 
+                        if(response[i].status==1){
+                             friend_name = $("<span></span>").addClass("active").css({"color":"lightgreen"}).text(response[i].name+" "+response[i].prezime);
+                        }else{
+                         friend_name = $("<span></span>").addClass("unactive").text(response[i].name+" "+response[i].prezime);
+                        }
+                        friend_name.on("click",function (){
+                            
+                             if($(this).parent().hasClass("active"))return;
+                            
+                              $(".message-scroll").empty();
+                             setTimeout(() => {
+                              $(".tags").addClass("hidden");
+                                $(".center-part .header-search").addClass("hidden");
 
+                                $(".friend-chat").addClass("active");
+                                $(".friend-chat .friend span").text($(this).text());
+                                 
+                                $("#input-message").addClass("friend");
+                                  $(".subject.active .clicked").removeClass("clicked");
+                                    $(".subject.active").removeClass("active");
+                                  
+                                    $.ajax({
+                                        
+                                        url: base_url+"/ajax-chta-friend-get-all",
+                                          type: "POST",
+                                         data: {
+                                             friend: $(".friends-scroll .friend.active").attr("id"),
+                                         },
+                                          dataType: "JSON",
+                                        success: function (response) {
+                                              let myId = response['myID'];
+                                            $.each(response['message'], function (index, value) {
+                                               newCurrentLoadedMessagesFriend = index;
+                                            if (myId === value.IdKor) {
+                                                let message_span = $("<span></span>").text(value.Text);
+                                                let message_box = $("<div></div>").addClass("message-box");
 
-                    let friend_name = $("<span></span>").text(response[i].name);
-                    friend.append(friend_image).append(friend_name);
+                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                                message_box.append(message_span);
+                                                let message = $("<div></div>").addClass("message").addClass("right");
 
-                    $(".friends-scroll").append(friend);
+                                                message.append(img);
+                                                message.append(message_box);
+                                                $(".message-scroll").prepend(message);
+
+                                            } else {
+                                                let message_span = $("<span></span>").text(value.Text);
+                                                let message_box = $("<div></div>").addClass("message-box");
+                                                let img = $("<img>").attr("src", "images/StudNet Profile Picture Default.svg");
+                                                message_box.append(message_span);
+                                                let message = $("<div></div>").addClass("message").addClass("left");
+                                                message.append(img);
+                                                message.append(message_box);
+                                                $(".message-scroll").prepend(message);
+
+                                            }
+                                            })
+                                        }
+                                        
+                                    })
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                               }, 300);
+                             $(".friends-scroll .friend.active").removeClass("active");
+                             $(this).parent().addClass("active");
+                         });
+                        
+                        friend.append(friend_image).append(friend_name);
+
+                        $(".friends-scroll").append(friend);
+                        }
                     }
-                }
-
-
-
-
-
-
             }
         });
     }

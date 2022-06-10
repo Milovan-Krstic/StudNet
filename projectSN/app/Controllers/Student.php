@@ -318,12 +318,16 @@ class Student extends BaseController
         $friend=$userModel->where('IdKor',$friend_id)->find();
         $student_friend = $studentModel->where('IdStud',$friend_id)->find();
         
-        $status=0;
+        $status=2;
         $friends_row = $friendlistModel->checkIfFriends($student_id,$friend_id);
         if($friends_row){
             $status=1;
         }
-
+        else{
+        $friends_row = $friendlistModel->checkIfFriendsRequested($student_id,$friend_id);
+        if($friends_row){
+            $status=0;
+        }}
 
         /*$simple_string = $friend[0]->IdKor;
   
@@ -358,11 +362,11 @@ class Student extends BaseController
         ]);
     }
 
-    /*
+    
     public function ajaxRequestSendFriend(){
         $data = $this->request->getVar();
          $student  = $_SESSION['logedinUsers'];
-        $student_id= $student->idKor;
+        $student_id= $student->IdKor;
         
         $friendModel = new FriendlistModel();
         
@@ -371,9 +375,29 @@ class Student extends BaseController
             "IdF"=>$data['id'],
             'status'=>0
         ]);
+        return;
         
         
     }
-    */
+    public function ajaxRequestRemoveFriend(){
+        $data = $this->request->getVar();
+         $student  = $_SESSION['logedinUsers'];
+        $student_id= $student->IdKor;
+        
+        $friendModel = new FriendlistModel();
+        
+        $friend_row = $friendModel->where('IdM',$student_id)->where('IdF',$data['id'])->where('status',1)->find();
+        if($friend_row!=null){
+            $friendModel->delete($friend_row[0]->IdFL);
+        }
+       else{
+            $friend_row = $friendModel->where('IdF',$student_id)->where('IdM',$data['id'])->where('status',1)->find();
+        if($friend_row!=null){
+            $friendModel->delete($friend_row[0]->IdFL);
+        }
+       }
+       return;
+        
+    }
     
 }

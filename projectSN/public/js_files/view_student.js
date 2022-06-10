@@ -29,14 +29,63 @@ $(document).ready(function(){
                 if(parseInt(response['Friends'])===1){
                     $("#status").text("Friend");
                     $(".buttons input").val("Remove Friend");
-                    $(".buttons input").addClass("remove");
-                    $(".buttons input").removeClass("request");
+                    $(".buttons").addClass("remove");
+                    $(".buttons").removeClass("request");
+                    $(".buttons input").on("click",function(){
+                        $.ajax({
+                            type: "POST",
+                            url: base_url + "/ajax-request-remove-friend",
+                            data: {
+
+                                id:window.localStorage.getItem("IdKor")
+                            },
+                            dataType : "JSON",
+                            success: function (response) {
+
+                            }
+                        });
+                        $(this).prop("disabled", true);
+                        $(this).val("Friend Removed");
+                        //$(this).parent().addClass("request");
+                        $(this).parent().removeClass("remove");
+
+        
+                        //Send request
+                        });
+                    
                 }
-                else{
+                else if(parseInt(response['Friends'])===2){
                     $("#status").text("None");
                     $(".buttons input").val("Send Friend Request")
                     $(".buttons").addClass("request");
                     $(".buttons").removeClass("remove");
+                    $(".buttons input").on("click",function(){
+                         $.ajax({
+                                type: "POST",
+                                url: base_url + "/ajax-request-send-friend",
+                                data: {
+
+                                    id:window.localStorage.getItem("IdKor")
+                                },
+                                dataType : "JSON",
+                                success: function (response) {
+
+                                }
+                            });
+                            $(this).prop("disabled", true);
+                            $(this).val("Request sent");
+                            $(this).parent().removeClass("request");
+                            //$(this).parent().addClass("remove");
+                            //$(this).valid();
+                            //Send request
+                    });
+                }
+                else if(parseInt(response['Friends'])===0){
+                    $("#status").text("Requested");
+                    $(".buttons input").val("Request Sent");
+                    $(".buttons input").prop("disabled", true);
+                    
+                    
                 }
 
 
@@ -44,21 +93,71 @@ $(document).ready(function(){
         });
 
  
-    $(".buttons input").val("Send Friend Request")
-    $(".buttons").addClass("request");
-    $(".buttons").removeClass("remove");
+    //$(".buttons input").val("Send Friend Request")
+    //$(".buttons").addClass("request");
+    //$(".buttons").removeClass("remove");
+    
+    function AddFriends(){
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-send-friend",
+            data: {
 
-
-    $(".buttons.request input").click(function() {
-        $(this).prop("disabled", true);
+                id:window.localStorage.getItem("IdKor")
+            },
+            dataType : "JSON",
+            success: function (response) {
+                
+            }
+        });
+         $(this).prop("disabled", true);
         $(this).val("Request sent");
         $(this).parent().removeClass("request");
+        $(this).parent().addClass("remove");
+        //Send request
+    
+    }
+
+
+    $(".buttons.request input").on("click",function() {
+       
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-send-friend",
+            data: {
+
+                id:window.localStorage.getItem("IdKor")
+            },
+            dataType : "JSON",
+            success: function (response) {
+                
+            }
+        });
+         $(this).prop("disabled", true);
+        $(this).val("Request sent");
+        $(this).parent().removeClass("request");
+        $(this).parent().addClass("remove");
         //Send request
     })
-      $(".buttons.remove input").click(function() {
-        $(this).prop("disabled", false);
-        $(this).val("Request sent");
-        $(this).parent().removeClass("request");
+      $(".buttons.remove input").on("click",function() {
+       
+        $.ajax({
+            type: "POST",
+            url: base_url + "/ajax-request-remove-friend",
+            data: {
+
+                id:window.localStorage.getItem("IdKor")
+            },
+            dataType : "JSON",
+            success: function (response) {
+                
+            }
+        });
+        $(this).val("Send Friend Request");
+        $(this).parent().addClass("request");
+        $(this).parent().removeClass("remove");
+        
+        
         //Send request
     })
 });

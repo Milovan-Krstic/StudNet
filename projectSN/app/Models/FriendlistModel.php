@@ -38,4 +38,18 @@ class FriendlistModel extends Model {
         }
         else {return false;}
     }
+    
+    public function checkIfFriendsRequested($id_stud,$id_friend){
+        $data = $this->where('IdM',$id_stud)->where('IdF',$id_friend)->where('status',0)->find();
+        if($data!=null){
+            return true;
+        }
+        else{
+            $data = $this->where('IdF',$id_stud)->where('IdM',$id_friend)->where('status',0)->find();
+        }
+        if($data!=null){
+            return true;
+        }
+        else {return false;}
+    }
 }

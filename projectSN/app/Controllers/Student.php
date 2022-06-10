@@ -304,14 +304,25 @@ class Student extends BaseController
     }
     public function ajaxRequestFriendData(){
         $data = $this->request->getVar();
+        
+        $student  = $_SESSION['logedinUsers'];
+        $student_id= $student->IdKor;
 
         $friend_id = $data['id'];
 
         $userModel = new UserModel();
         $studentModel = new StudentModel();
+        
+        $friendlistModel=new FriendlistModel();
 
         $friend=$userModel->where('IdKor',$friend_id)->find();
         $student_friend = $studentModel->where('IdStud',$friend_id)->find();
+        
+        $status=0;
+        $friends_row = $friendlistModel->checkIfFriends($student_id,$friend_id);
+        if($friends_row){
+            $status=1;
+        }
 
 
         /*$simple_string = $friend[0]->IdKor;
@@ -343,7 +354,7 @@ class Student extends BaseController
             "IdNum"=>$student_friend[0]->IdNum,
             "IdGod"=>$student_friend[0]->IdGod,
             "img"=>$friend[0]->img,
-            "Friends"=>1
+            "Friends"=>$status
         ]);
     }
 

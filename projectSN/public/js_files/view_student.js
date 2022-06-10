@@ -55,5 +55,10 @@ $(document).ready(function(){
         $(this).parent().removeClass("request");
         //Send request
     })
-      
+      $(".buttons.remove input").click(function() {
+        $(this).prop("disabled", false);
+        $(this).val("Request sent");
+        $(this).parent().removeClass("request");
+        //Send request
+    })
 });

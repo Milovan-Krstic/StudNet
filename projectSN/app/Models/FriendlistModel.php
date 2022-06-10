@@ -24,4 +24,18 @@ class FriendlistModel extends Model {
         $idkor=$kor->IdKor;
         return $this->where('IdF',$idkor)->where('status',0)->findAll();
     }
+    
+    public function checkIfFriends($id_stud,$id_friend){
+        $data = $this->where('IdM',$id_stud)->where('IdF',$id_friend)->where('status',1)->find();
+        if($data!=null){
+            return true;
+        }
+        else{
+            $data = $this->where('IdF',$id_stud)->where('IdM',$id_friend)->where('status',1)->find();
+        }
+        if($data!=null){
+            return true;
+        }
+        else {return false;}
+    }
 }

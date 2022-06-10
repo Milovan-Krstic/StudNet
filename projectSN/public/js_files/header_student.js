@@ -96,7 +96,8 @@ $(document).ready(function(){
                    
 
                     $.each(response['message'],function(index,val){
-                    let search_user = $("<div></div>").addClass("search-user");
+                        
+                    let search_user = $("<div></div>").addClass("search-user").attr('id',response['message'][index].IdKor);
                     let info = $("<div></div>");
                     let user_image = $("<img>").attr("src", "../images/StudNet Profile Picture Default.svg");
                     
@@ -111,15 +112,21 @@ $(document).ready(function(){
 
                     search_user.append(info);
                         search_user.on("click",function(){
-                             $.ajax({
-                            type: "POST",
-                            url: base_url + "/ajax-request-redirect",
-                            data: {
-                                page : "student-view"
-                            },
-                            dataType : "JSON",
-                            success: function (response) {
-                               window.location.href = response['url'];
+
+                                 $.ajax({
+                                 type: "POST",
+                                 url: base_url + "/ajax-friend-view",
+                                 data: {
+                                        id: $(this).attr("id"),
+                                        page:"student-view"
+                                 },
+                                 dataType: "JSON",
+                                 success: function (response) {
+                                 //window.location.href = response['url'];
+
+                                 window.localStorage.setItem("IdKor",response['IdKor']);
+                                window.location.href = response['url'];
+
                             }
                                 })
                         })

@@ -18,7 +18,9 @@ html, body {
     z-index: 0;
 
 }
-
+#fileUploader{
+    visibility: hidden;
+}
 /*Left part*/
 
 .left-part {
@@ -386,6 +388,17 @@ html, body {
     position: absolute;
 
     right: 45px;
+    top: 9px;
+
+    cursor: pointer;
+}
+.type-box .slideEmoj {
+    width: 20px;
+    z-index: 1;
+
+    position: absolute;
+
+    right: 75px;
     top: 9px;
 
     cursor: pointer;

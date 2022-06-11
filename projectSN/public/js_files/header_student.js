@@ -1,5 +1,5 @@
 /**
- * @author Djordje Popara 2019-0460
+ * @author Milovan Krstic 709/19
  * @category Student
  */
 let interval;
@@ -97,9 +97,9 @@ $(document).ready(function(){
                    
    $(".search-scroll").empty();
                     $.each(response['message'],function(index,val){
-                    let search_user = $("<div></div>").addClass("search-user");
+                      let search_user = $("<div></div>").addClass("search-user").attr('id',response['message'][index].IdKor);
                     let info = $("<div></div>");
-                    let user_image = $("<img>").attr("src", "../images/StudNet Profile Picture Default.svg");
+                    let user_image = $("<img>").attr("src", "localFiles/"+val.img);
                     
                     let user_text = val.Ime + " " + val.Prezime + ", " + val.Faculty + ", " + val.Country;
                     let user_info = $("<span></span>").text(user_text);
@@ -113,14 +113,19 @@ $(document).ready(function(){
                     search_user.append(info);
                         search_user.on("click",function(){
                              $.ajax({
-                            type: "POST",
-                            url: base_url + "/ajax-request-redirect",
-                            data: {
-                                page : "student-view"
-                            },
-                            dataType : "JSON",
-                            success: function (response) {
-                               window.location.href = response['url'];
+                                 type: "POST",
+                                 url: base_url + "/ajax-friend-view",
+                                 data: {
+                                        id: $(this).attr("id"),
+                                        page:"student-view"
+                                 },
+                                 dataType: "JSON",
+                                 success: function (response) {
+                                 //window.location.href = response['url'];
+
+                                 window.localStorage.setItem("IdKor",response['IdKor']);
+                                window.location.href = response['url'];
+
                             }
                                 })
                         })
@@ -186,7 +191,7 @@ function checkFriendRequests() {
                         //Delete request from dropdown
                         $(this).parent().parent().remove();
     });
-let decline = $("<input/>").attr({
+    let decline = $("<input/>").attr({
                         type : 'button',
                         value : 'Decline'
                }).addClass("request-decline").

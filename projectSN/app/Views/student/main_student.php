@@ -89,8 +89,9 @@
                 <div class="type-box col-12">
                     <div id="emojis"> </div>
                     <textarea name="" id="input-message" cols="10" rows="1" placeholder="Type..." maxlength="250"></textarea>
-                    
-                    <img src="icons/StudNet Plus.svg" alt="+">
+                    <img  class="slideEmoj"src="emojis/em1.svg" alt=":D">
+                    <img id="plus" src="icons/StudNet Plus.svg" alt="+">
+                    <input type="file" id="fileUploader" namesni="file">
                 </div>
             </div>
 

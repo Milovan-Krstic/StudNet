@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @category Guest
- * @author   Djordje Popara 2019/0460
+
+ * author Milovan Krstic 709/19
  */
 
 namespace App\Controllers;
@@ -259,7 +259,7 @@ class Student extends BaseController
         echo json_encode($result);
     }
 
-    public function ajaxFriendView(){
+  public function ajaxFriendView(){
         $data = $this->request->getVar();
 
         $friend_id = $data['id'];
@@ -269,70 +269,40 @@ class Student extends BaseController
 
         $friend=$userModel->where('IdKor',$friend_id)->find();
         $student_friend = $studentModel->where('IdStud',$friend_id)->find();
-
-
-        /*$simple_string = $friend[0]->IdKor;
-  
-  
-        $ciphering = "AES-128-CTR";
-  
-        $iv_length = openssl_cipher_iv_length($ciphering);
-        $options = 0;
-  
-        $encryption_iv = '1234567891011121';
-  
-        $encryption_key = "GeeksforGeeks";
-  
-        $encryption = openssl_encrypt($simple_string, $ciphering,$encryption_key, $options, $encryption_iv);*/
-
-
 
 
         echo json_encode([
             "url"=>base_url($data['page']),
             "IdKor"=>$friend[0]->IdKor,
-            /*"Ime"=>$friend[0]->Ime,
-            "Prezime"=>$friend[0]->Prezime,
-            "Country"=>$friend[0]->Country,
-            "Email"=>$friend[0]->Email,
-            "Faculty"=>$student_friend[0]->Faculty,
-            "Course"=>$student_friend[0]->Course,
-            "IdNum"=>$student_friend[0]->IdNum,
-            "IdGod"=>$student_friend[0]->IdGod,
-            "Friends"=>1*/
         ]);
     }
     public function ajaxRequestFriendData(){
-        $data = $this->request->getVar();
-
+         $data = $this->request->getVar();
+        
+        $student  = $_SESSION['logedinUsers'];
+        $student_id= $student->IdKor;
         $friend_id = $data['id'];
-
         $userModel = new UserModel();
         $studentModel = new StudentModel();
-
+        
+        $friendlistModel=new FriendlistModel();
         $friend=$userModel->where('IdKor',$friend_id)->find();
         $student_friend = $studentModel->where('IdStud',$friend_id)->find();
 
+      
+        $status=2;
+        $friends_row = $friendlistModel->checkIfFriends($student_id,$friend_id);
+        if($friends_row){
+            $status=1;
+        }
 
-        /*$simple_string = $friend[0]->IdKor;
-  
-  
-        $ciphering = "AES-128-CTR";
-  
-        $iv_length = openssl_cipher_iv_length($ciphering);
-        $options = 0;
-  
-        $encryption_iv = '1234567891011121';
-  
-        $encryption_key = "GeeksforGeeks";
-  
-        $encryption = openssl_encrypt($simple_string, $ciphering,$encryption_key, $options, $encryption_iv);*/
-
-
-
-
-        echo json_encode([
-
+        else{
+        $friends_row = $friendlistModel->checkIfFriendsRequested($student_id,$friend_id);
+        if($friends_row){
+            $status=0;
+        }}
+        
+         echo json_encode([
             "IdKor"=>$friend[0]->IdKor,
             "Ime"=>$friend[0]->Ime,
             "Prezime"=>$friend[0]->Prezime,
@@ -343,26 +313,45 @@ class Student extends BaseController
             "IdNum"=>$student_friend[0]->IdNum,
             "IdGod"=>$student_friend[0]->IdGod,
             "img"=>$friend[0]->img,
-            "Friends"=>1
+            "Friends"=>$status
         ]);
+        
     }
-
-    /*
-    public function ajaxRequestSendFriend(){
+     public function ajaxRequestSendFriend(){
         $data = $this->request->getVar();
          $student  = $_SESSION['logedinUsers'];
-        $student_id= $student->idKor;
-        
+        $student_id= $student->IdKor;
+
         $friendModel = new FriendlistModel();
-        
+
         $friendModel->insert([
            "IdM"=> $student_id,
             "IdF"=>$data['id'],
             'status'=>0
         ]);
-        
-        
+        return;
+
+
     }
-    */
+    public function ajaxRequestRemoveFriend(){
+        $data = $this->request->getVar();
+         $student  = $_SESSION['logedinUsers'];
+        $student_id= $student->IdKor;
+
+        $friendModel = new FriendlistModel();
+
+        $friend_row = $friendModel->where('IdM',$student_id)->where('IdF',$data['id'])->where('status',1)->find();
+        if($friend_row!=null){
+            $friendModel->delete($friend_row[0]->IdFL);
+        }
+       else{
+            $friend_row = $friendModel->where('IdF',$student_id)->where('IdM',$data['id'])->where('status',1)->find();
+        if($friend_row!=null){
+            $friendModel->delete($friend_row[0]->IdFL);
+        }
+       }
+       return;
+
+    }
     
 }

@@ -73,6 +73,9 @@ $routes->post('/ajax-request-decline', 'Student::ajaxRequestDecline');
 $routes->post('/ajax-friend-view', 'Student::ajaxFriendView');
 /*$routes->post('/ajax-request-send-friend', 'Student::ajaxRequestSendFriend');
 */
+$routes->post('/ajax-request-send-friend', 'Student::ajaxRequestSendFriend');
+$routes->post('/ajax-request-remove-friend', 'Student::ajaxRequestRemoveFriend');
+
 $routes->post('/ajax-request-get-all-friends', 'Student::ajaxRequestGetAllFriends');
 $routes->post('/ajax-request-friend-data','Student::ajaxRequestFriendData');
 $routes->post('/ajax-chta-friend','Chet::ajaxSendMyTextToFriend');

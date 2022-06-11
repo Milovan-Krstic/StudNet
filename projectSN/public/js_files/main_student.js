@@ -9,7 +9,8 @@ let emojis = [0x1F600, 0x1F603,0x1F604,0x1F606, 0x1F605,0x1F923, 0x1F602,0x1F34A
               0x1F354, 0x1F35F, 0x1F6C0, 0x1F48E, 0x1F5FA, 0x23F0, 0x1F579, 0x1F4DA,
               0x1F431, 0x1F42A, 0x1F439, 0x1F424,];
           
-
+let emm=[1,2,3,4,5,6,7];
+let emInd=0;
 let lastSelectedClass = [
     {
         class_name: "_",
@@ -208,8 +209,18 @@ $(document).ready(function () {
                                         let myId = response['myID'];
                                         $.each(response['message'], function (index, value) {
                                             newCurrentLoadedMessages = index;
+                                            let message_span;
                                             if (myId === value.IdKor) {
-                                                let message_span = $("<span></span>").text(value.Text);
+                                                        if(value.LinkTag){
+
+                                                         let link =$("<a>").attr("href",value.LinkTag).text(value.LinkTag);
+
+                                                         message_span = $("<span></span>").append(link);
+
+                                                     }
+                                                         if(!value.LinkTag){
+                                                           message_span = $("<span></span>").text(value.Text);
+                                                     }
                                                 let message_box = $("<div></div>").addClass("message-box");
 
                                                 let img = $("<img>").attr("src", "localFiles/"+value.img);
@@ -221,7 +232,15 @@ $(document).ready(function () {
                                                 $(".message-scroll").prepend(message);
 
                                             } else {
-                                                let message_span = $("<span></span>").text(value.Text);
+                                                                if(value.LinkTag !== null){
+
+                                                            let link =$("<a>").attr("href",value.LinkTag).text(value.LinkTag);
+
+                                                           message_span = $("<span></span>").append(link);
+
+                                                        }else{
+                                                              message_span = $("<span></span>").text(value.Text);
+                                                        }
                                                 let message_box = $("<div></div>").addClass("message-box");
                                                  let img = $("<img>").attr("src", "localFiles/"+value.img);
                                                 message_box.append(message_span);
@@ -265,9 +284,19 @@ $(document).ready(function () {
                     if (messArr.length > 0) {
                         $.each(messArr, function (index, value) {
                             newCurrentLoadedMessages++;
-
+                                 let message_span;
                             if (myId === value.IdKor) {
-                                let message_span = $("<span></span>").text(value.Text);
+                                      let message_span;
+                                      
+                                        if(value.LinkTag ){
+                                            
+                                            let link =$("<a>").attr("href",value.LinkTag).text(value.LinkTag);
+
+                                           message_span = $("<span></span>").append(link);
+
+                                        }else{
+                                              message_span = $("<span></span>").text(value.Text);
+                                        }
                                 let message_box = $("<div></div>").addClass("message-box");
 
                                 let img = $("<img>").attr("src", "localFIles/"+value.img);
@@ -279,7 +308,15 @@ $(document).ready(function () {
                                 $(".message-scroll").prepend(message);
 
                             } else {
-                                let message_span = $("<span></span>").text(value.Text);
+                               if(value.LinkTag !== null){
+                                            
+                                            let link =$("<a>").attr("href",value.LinkTag).text(value.LinkTag);
+
+                                           message_span = $("<span></span>").append(link);
+
+                                        }else{
+                                              message_span = $("<span></span>").text(value.Text);
+                                        }
                                 let message_box = $("<div></div>").addClass("message-box");
                                 let img = $("<img>").attr("src", "localFIles/"+value.img);
                                 message_box.append(message_span);
@@ -367,9 +404,16 @@ $(document).ready(function () {
 
     }
 
+
+
+
+
     $("#input-message").on("click",()=>{$("#emojis").hide()})
     $("#input-message").keypress(function (e) {
-      
+        if(e.which == 13 &&e.shiftKey){
+            var content = this.value; 
+            e.stopPropagation();
+        }else
         if (e.which == 13) {
            
                if($("#input-message").hasClass("friend")==true){
@@ -379,13 +423,7 @@ $(document).ready(function () {
                 $("#input-message").val("");
                 return;
             }
-            let message_span = $("<span></span>").text(text);
-            let message_box = $("<div></div>").addClass("message-box");
-            let img = $("<img>").attr("src", $(".header-info .user img").attr("src"));
-            message_box.append(message_span);
-            let message = $("<div></div>").addClass("message").addClass("right");
-            message.append(img);
-            message.append(message_box);
+           
 
             let today = new Date();
 
@@ -402,9 +440,25 @@ $(document).ready(function () {
                 },
                 dataType: "JSON",
                 success: function (response) {
-
+                          
                 newCurrentLoadedMessagesFriend++;
-                
+                   let message_span;
+                    if(response['message']=="success1"){
+                        let link =$("<a>").attr("href",text).text(text);
+                           
+                       message_span = $("<span></span>").append(link);
+                        
+                    }else{
+                          message_span = $("<span></span>").text(text);
+                    }
+               let message_box = $("<div></div>").addClass("message-box");
+               let img = $("<img>").attr("src", $(".header-info .user img").attr("src"));
+               message_box.append(message_span);
+               let message = $("<div></div>").addClass("message").addClass("right");
+               message.append(img);
+               message.append(message_box);
+                $(".message-scroll").prepend(message);
+            $("#input-message").val("");
                 },
                 error: function () {
 
@@ -412,8 +466,7 @@ $(document).ready(function () {
                 }
 
             });
-            $(".message-scroll").prepend(message);
-            $("#input-message").val("");
+            
             
             
             
@@ -426,13 +479,7 @@ $(document).ready(function () {
                 $("#input-message").val("");
                 return;
             }
-            let message_span = $("<span></span>").text(text);
-            let message_box = $("<div></div>").addClass("message-box");
-            let img = $("<img>").attr("src", $(".header-info .user img").attr("src"));
-            message_box.append(message_span);
-            let message = $("<div></div>").addClass("message").addClass("right");
-            message.append(img);
-            message.append(message_box);
+   
 
 
 
@@ -455,7 +502,24 @@ $(document).ready(function () {
                 success: function (response) {
 
                     newCurrentLoadedMessages++;
-
+                     let message_span;
+                    if(response['message']=="success1"){
+                        let link =$("<a>").attr("href",text).text(text);
+                           
+                       message_span = $("<span></span>").append(link);
+                        
+                    }else{
+                          message_span = $("<span></span>").text(text);
+                    }
+               
+                 let message_box = $("<div></div>").addClass("message-box");
+                 let img = $("<img>").attr("src", $(".header-info .user img").attr("src"));
+                 message_box.append(message_span);
+                 let message = $("<div></div>").addClass("message").addClass("right");
+                 message.append(img);
+                 message.append(message_box);
+                     $(".message-scroll").prepend(message);
+                    $("#input-message").val("");
                 },
                 error: function () {
 
@@ -463,8 +527,7 @@ $(document).ready(function () {
                 }
 
             });
-            $(".message-scroll").prepend(message);
-            $("#input-message").val("");
+        
         }
     }
    });
@@ -490,11 +553,7 @@ $(document).ready(function () {
 
     });
 
-    //     $("textarea").keypress(function(e){
-    //         if(e.which == 13) {
-    //             //Submit text to the base
-    //         }
-    //     });
+   ;
 
 
     // Add these dynamically
@@ -692,8 +751,18 @@ $(document).ready(function () {
                                               let myId = response['myID'];
                                             $.each(response['message'], function (index, value) {
                                                newCurrentLoadedMessagesFriend = index;
+                                               let message_span;
                                             if (myId === value.IdKor) {
-                                                let message_span = $("<span></span>").text(value.Text);
+                                                if(value.LinkTag){
+
+                                                         let link =$("<a>").attr("href",value.LinkTag).text(value.LinkTag);
+
+                                                         message_span = $("<span></span>").append(link);
+
+                                                     }
+                                                         if(!value.LinkTag){
+                                                           message_span = $("<span></span>").text(value.Text);
+                                                     }
                                                 let message_box = $("<div></div>").addClass("message-box");
 
                                                 let img = $("<img>").attr("src", "localFiles/"+value.img);
@@ -705,7 +774,16 @@ $(document).ready(function () {
                                                 $(".message-scroll").prepend(message);
 
                                             } else {
-                                                let message_span = $("<span></span>").text(value.Text);
+                                                if(value.LinkTag){
+
+                                                         let link =$("<a>").attr("href",value.LinkTag).text(value.LinkTag);
+
+                                                         message_span = $("<span></span>").append(link);
+
+                                                     }
+                                                         if(!value.LinkTag){
+                                                           message_span = $("<span></span>").text(value.Text);
+                                                     }
                                                 let message_box = $("<div></div>").addClass("message-box");
                                                 let img = $("<img>").attr("src", "localFiles/"+value.img);
                                                 message_box.append(message_span);
@@ -750,8 +828,18 @@ $(document).ready(function () {
                                         
                                             $.each(messArr, function (index, value) {
                                                newCurrentLoadedMessagesFriend ++;
+                                               let message_span;
                                             if (myId === value.IdKor) {
-                                                let message_span = $("<span></span>").text(value.Text);
+                                                if(value.LinkTag){
+
+                                                         let link =$("<a>").attr("href",value.LinkTag).text(value.LinkTag);
+
+                                                         message_span = $("<span></span>").append(link);
+
+                                                     }
+                                                         if(!value.LinkTag){
+                                                           message_span = $("<span></span>").text(value.Text);
+                                                     }
                                                 let message_box = $("<div></div>").addClass("message-box");
 
                                                 let img = $("<img>").attr("src", "localFIles/"+value.img);
@@ -763,7 +851,16 @@ $(document).ready(function () {
                                                 $(".message-scroll").prepend(message);
 
                                             } else {
-                                                let message_span = $("<span></span>").text(value.Text);
+                                                if(value.LinkTag){
+
+                                                         let link =$("<a>").attr("href",value.LinkTag).text(value.LinkTag);
+
+                                                         message_span = $("<span></span>").append(link);
+
+                                                     }
+                                                         if(!value.LinkTag){
+                                                           message_span = $("<span></span>").text(value.Text);
+                                                     }
                                                 let message_box = $("<div></div>").addClass("message-box");
                                                 let img = $("<img>").attr("src", "localFIles/"+value.img);
                                                 message_box.append(message_span);
@@ -805,7 +902,38 @@ $(document).ready(function () {
        getAllFriends();
     }, 500);
    
-    $(".type-box img").on("click",function (){
-         $("#emojis").toggle();
+    $(".type-box #plus").on("click",function (){
+        $("#fileUploader").click();
     })
+    $(".message-scroll").on("click",()=>{
+         $("#emojis").hide();
+    })
+    $(".circle").on("click",function (){
+           $(".message-scroll").empty();
+           clearInterval(interval2);
+           $("#course").click();
+           lastSelectedClass = JSON.parse(locSto);
+            let name = lastSelectedClass[0].class_name;
+            $("#course").click();
+            let li = $(".subject li");
+            li.each(function () {
+                if ($(this).text() === name) {
+                    $(this).click();
+                    $(this).parent().prev().click();
+
+                }
+            })
+    })
+    
+    $(".slideEmoj").mouseenter(function (){
+       
+       if(emInd==7)emInd=0;
+       $(this).attr("src","emojis/em"+emm[emInd]+".svg");
+       emInd++;
+       
+    })
+     $(".slideEmoj").on("click",()=>{
+         $("#emojis").toggle();
+     })
+    
 });

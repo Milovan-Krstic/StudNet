@@ -28,19 +28,40 @@ class Chet extends BaseController{
         $clsModel = new ClassModel();
         $mycl = $clsModel->where('IdSmr',$mysm->IdSmr)->where("Name",$class)->find();
         $mycl=$mycl[0];
-        
-        $chetModel->insert([
+         if(strpos($text,"http://")>-1){
+             $chetModel->insert([
          
              "IdKor_OD"=>$idkor,
             
-                "Text"=>$text,     
+                "LinkTag"=>$text,     
                 "IdCl"=>$mycl->idC,
                 "time_send"=>$time
-             
+               
         ]);
+              return json_encode(['message'=>"success1"]) ;
+         }else if(strpos($text,"https://")>-1){
+         $chetModel->insert([
+         
+                "IdKor_OD"=>$idkor,
+
+                   "LinkTag"=>$text,     
+                   "IdCl"=>$mycl->idC,
+                   "time_send"=>$time
+                
+           ]);
+         return json_encode(['message'=>"success1"]) ;
+         }else{
+            $chetModel->insert([
+
+                 "IdKor_OD"=>$idkor,
+
+                    "Text"=>$text,     
+                    "IdCl"=>$mycl->idC,
+                    "time_send"=>$time
       
-       return json_encode(['message'=>'success']) ;
-        
+            ]);
+         }
+        return json_encode(['message'=>"success"]) ;
     }
     
     //put message for friend chat
@@ -52,16 +73,36 @@ class Chet extends BaseController{
         $time= $this->request->getVar("time");
         $friendid= $this->request->getVar("friend");
         $chetModel = new Chat_RoomModel();
-        
-        $chetModel->insert([
-         
-             "IdKor_OD"=>$idkor,
-             "IdKor_KA"=>$friendid,
-              "Text"=>$text,     
-               "time_send"=>$time
-             
-        ]);
-      
+          if(strpos($text,"http://")>-1){
+                 $chetModel->insert([
+
+                 "IdKor_OD"=>$idkor,
+                 "IdKor_KA"=>$friendid,
+                  "LinkTag"=>$text,     
+                   "time_send"=>$time
+
+            ]);
+          return json_encode(['message'=>'success1']) ;
+          }else   if(strpos($text,"https://")>-1){
+                 $chetModel->insert([
+
+                 "IdKor_OD"=>$idkor,
+                 "IdKor_KA"=>$friendid,
+                  "LinkTag"=>$text,     
+                   "time_send"=>$time
+
+            ]);
+          return json_encode(['message'=>'success1']) ;
+          }else{
+            $chetModel->insert([
+
+                 "IdKor_OD"=>$idkor,
+                 "IdKor_KA"=>$friendid,
+                  "Text"=>$text,     
+                   "time_send"=>$time
+
+            ]);
+          }
        return json_encode(['message'=>'success']) ;
         
     }

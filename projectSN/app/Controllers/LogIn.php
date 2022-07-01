@@ -104,7 +104,6 @@ class LogIn extends BaseController
     
     
     public function ajaxGetStud() {
-        
         $kor = $_SESSION['logedinUsers'];
         $usermodel = new StudentModel();
         $user= $usermodel->where("IdStud",$kor->IdKor)->find();

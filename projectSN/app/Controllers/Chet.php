@@ -116,8 +116,8 @@ class Chet extends BaseController{
         $db= \Config\Database::connect();
         $query = $db->query("SELECT * FROM chet_rooms 
 	JOIN korisnik ON korisnik.IdKor= chet_rooms.IdKor_OD
-            WHERE (chet_rooms.IdKor_KA ={$friend} AND chet_rooms.IdKor_OD ={$myIdkor})||(chet_rooms.IdKor_KA ={$myIdkor} AND chet_rooms.IdKor_OD ={$friend})
-            ORDER BY chet_rooms.time_send ASC")->getResultArray();
+            WHERE (chet_rooms.IdKor_KA =? AND chet_rooms.IdKor_OD =?)||(chet_rooms.IdKor_KA = ? AND chet_rooms.IdKor_OD =?)
+            ORDER BY chet_rooms.time_send ASC",[$friend,$myIdkor,$myIdkor,$friend])->getResultArray();
         
         return json_encode(['message'=>$query,'myID'=>$myIdkor]);
     }
